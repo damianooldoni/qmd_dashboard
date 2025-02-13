@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Damiano Oldoni">
 
-<title>About the Data – Emerging trends for raccoon in Europe</title>
+<title>Emerging trend indicators of raccoon in Europe – Emerging trends for raccoon in Europe</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -101,17 +100,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<link href="../site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+
+<script src="../site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+
 
 
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../images/assets/b3-logo.png" alt="" class="navbar-logo">
+    </a>
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Emerging trends for raccoon in Europe</span>
     </a>
@@ -123,8 +129,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../src/dashboard.html"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../src/dashboard.html"> 
+<span class="menu-text">Dashboard</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link active" href="../src/about_data.html" aria-current="page"> 
@@ -141,25 +151,56 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">1</span> Introduction</a>
+  <ul>
+  <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup"><span class="header-section-number">1.1</span> Setup</a></li>
+  </ul></li>
+  <li><a href="#scope" id="toc-scope" class="nav-link" data-scroll-target="#scope"><span class="header-section-number">2</span> Scope</a>
+  <ul>
+  <li><a href="#taxonomic-scope" id="toc-taxonomic-scope" class="nav-link" data-scroll-target="#taxonomic-scope"><span class="header-section-number">2.1</span> Taxonomic scope</a></li>
+  <li><a href="#spatial-scope" id="toc-spatial-scope" class="nav-link" data-scroll-target="#spatial-scope"><span class="header-section-number">2.2</span> Spatial scope</a></li>
+  <li><a href="#temporal-scope" id="toc-temporal-scope" class="nav-link" data-scroll-target="#temporal-scope"><span class="header-section-number">2.3</span> Temporal scope</a></li>
+  </ul></li>
+  <li><a href="#species-occurrence-cube" id="toc-species-occurrence-cube" class="nav-link" data-scroll-target="#species-occurrence-cube"><span class="header-section-number">3</span> Species occurrence cube</a></li>
+  <li><a href="#from-cubes-to-emerging-status" id="toc-from-cubes-to-emerging-status" class="nav-link" data-scroll-target="#from-cubes-to-emerging-status"><span class="header-section-number">4</span> From cubes to emerging status</a>
+  <ul>
+  <li><a href="#preprocess-from-cube-to-time-series" id="toc-preprocess-from-cube-to-time-series" class="nav-link" data-scroll-target="#preprocess-from-cube-to-time-series"><span class="header-section-number">4.1</span> Preprocess: from cube to time series</a></li>
+  <li><a href="#apply-gam" id="toc-apply-gam" class="nav-link" data-scroll-target="#apply-gam"><span class="header-section-number">4.2</span> Apply GAM</a></li>
+  </ul></li>
+  <li><a href="#plots" id="toc-plots" class="nav-link" data-scroll-target="#plots"><span class="header-section-number">5</span> Plots</a>
+  <ul>
+  <li><a href="#standard-plots" id="toc-standard-plots" class="nav-link" data-scroll-target="#standard-plots"><span class="header-section-number">5.1</span> Standard plots</a>
+  <ul class="collapse">
+  <li><a href="#occurrences" id="toc-occurrences" class="nav-link" data-scroll-target="#occurrences"><span class="header-section-number">5.1.1</span> Occurrences</a></li>
+  <li><a href="#measured-occupancy" id="toc-measured-occupancy" class="nav-link" data-scroll-target="#measured-occupancy"><span class="header-section-number">5.1.2</span> Measured occupancy</a></li>
+  </ul></li>
+  <li><a href="#short-titles" id="toc-short-titles" class="nav-link" data-scroll-target="#short-titles"><span class="header-section-number">5.2</span> Short titles</a>
+  <ul class="collapse">
+  <li><a href="#occurrences-1" id="toc-occurrences-1" class="nav-link" data-scroll-target="#occurrences-1"><span class="header-section-number">5.2.1</span> Occurrences</a></li>
+  <li><a href="#occupancy" id="toc-occupancy" class="nav-link" data-scroll-target="#occupancy"><span class="header-section-number">5.2.2</span> Occupancy</a></li>
+  </ul></li>
+  <li><a href="#grid" id="toc-grid" class="nav-link" data-scroll-target="#grid"><span class="header-section-number">5.3</span> Grid</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">About the Data</h1>
+<div class="quarto-title-block"><div><h1 class="title">Emerging trend indicators of raccoon in Europe</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Damiano Oldoni </p>
-          </div>
-  </div>
     
   
     
@@ -170,28 +211,1302 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="quarto" class="level2">
-<h2 class="anchored" data-anchor-id="quarto">Quarto</h2>
-<p>Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <a href="https://quarto.org" class="uri">https://quarto.org</a>.</p>
+<section id="introduction" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">1</span> Introduction</h2>
+<p>This document shows how using GBIF species occurrence cubes to assess the emerging status of raccoon (<a href="https://www.gbif.org/species/5218786"><em>Procyon lotor</em></a>) in Europe and in European countries. This workflow is strongly based on the <a href="https://github.com/trias-project/indicators"><strong>occurrence TrIAS indicators</strong></a> and can be extended to other (invasive alien) species.</p>
+<section id="setup" class="level3" data-number="1.1">
+<h3 data-number="1.1" class="anchored" data-anchor-id="setup"><span class="header-section-number">1.1</span> Setup</h3>
+<p>First, list and load the needed packages.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(trias)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(countrycode)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 </section>
-<section id="running-code" class="level2">
-<h2 class="anchored" data-anchor-id="running-code">Running Code</h2>
-<p>When you click the <strong>Render</strong> button a document will be generated that includes both content and the output of embedded code. You can embed code like this:</p>
+</section>
+<section id="scope" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="scope"><span class="header-section-number">2</span> Scope</h2>
+<section id="taxonomic-scope" class="level3" data-number="2.1">
+<h3 data-number="2.1" class="anchored" data-anchor-id="taxonomic-scope"><span class="header-section-number">2.1</span> Taxonomic scope</h3>
+<p>The species of interest is the raccoon (<em>Procyon lotor (Linnaeus, 1758)</em>, GBIF Key: <a href="https://www.gbif.org/species/5218786">5218786</a>). This workflow can easily be extended to other species.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>species <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tibble</span>(</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">specieskey =</span> <span class="fu">c</span>(<span class="dv">5218786</span>),</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">canonical_name =</span> <span class="fu">c</span>(<span class="st">"Procyon lotor"</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
-</div>
-<p>You can add options to executable code like this</p>
+</section>
+<section id="spatial-scope" class="level3" data-number="2.2">
+<h3 data-number="2.2" class="anchored" data-anchor-id="spatial-scope"><span class="header-section-number">2.2</span> Spatial scope</h3>
+<p>We are interested over the emerging status of the four species in the <strong>European countries</strong> and all <strong>Europe</strong>.</p>
+</section>
+<section id="temporal-scope" class="level3" data-number="2.3">
+<h3 data-number="2.3" class="anchored" data-anchor-id="temporal-scope"><span class="header-section-number">2.3</span> Temporal scope</h3>
+<p>We request a species occurrence cube based on data from <strong>1950</strong>.</p>
+</section>
+</section>
+<section id="species-occurrence-cube" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="species-occurrence-cube"><span class="header-section-number">3</span> Species occurrence cube</h2>
+<p>We triggered a GBIF occurrence cube via the <a href="https://techdocs.gbif.org/en/data-use/api-sql-downloads">Occurrence SQL Download API</a> and on the hand of a JSON query (<a href="../../data/input/query_cube_raccoon.json">query_cube_raccoon.json</a>). The resulting cube (DOI: <a href="https://doi.org/10.15468/dl.mmnusj">10.15468/dl.mmnusj</a>, <code>downloadKey</code>: 0023024-250127130748423) can be downloaded in TSV format from GBIF. We have it saved at <code>data/input</code> as <a href="../../data/input/0023024-250127130748423.csv"><code>0023024-250127130748423.csv</code></a>:</p>
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>cube <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_tsv</span>(</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  here<span class="sc">::</span><span class="fu">here</span>(</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"data"</span>,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"input"</span>,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"0023024-250127130748423.csv"</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Preview:</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cube)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["countrycode"],"name":[2],"type":["chr"],"align":["left"]},{"label":["eeacellcode"],"name":[3],"type":["chr"],"align":["left"]},{"label":["classkey"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["class"],"name":[5],"type":["chr"],"align":["left"]},{"label":["specieskey"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["species"],"name":[7],"type":["chr"],"align":["left"]},{"label":["occurrences"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["mincoordinateuncertaintyinmeters"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["mintemporaluncertainty"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["classcount"],"name":[11],"type":["dbl"],"align":["right"]}],"data":[{"1":"2025","2":"BE","3":"1kmE3946N3135","4":"359","5":"Mammalia","6":"5218786","7":"Procyon lotor","8":"3","9":"7","10":"86400","11":"21001"},{"1":"2025","2":"BE","3":"1kmE3950N3122","4":"359","5":"Mammalia","6":"5218786","7":"Procyon lotor","8":"1","9":"50","10":"86400","11":"21001"},{"1":"2025","2":"BE","3":"1kmE3975N3112","4":"359","5":"Mammalia","6":"5218786","7":"Procyon lotor","8":"1","9":"4","10":"86400","11":"21001"},{"1":"2025","2":"NL","3":"1kmE4089N3342","4":"359","5":"Mammalia","6":"5218786","7":"Procyon lotor","8":"1","9":"5000","10":"86400","11":"21001"},{"1":"2025","2":"DE","3":"1kmE4150N2888","4":"359","5":"Mammalia","6":"5218786","7":"Procyon lotor","8":"1","9":"25","10":"86400","11":"21001"},{"1":"2025","2":"DE","3":"1kmE4159N3215","4":"359","5":"Mammalia","6":"5218786","7":"Procyon lotor","8":"1","9":"4","10":"86400","11":"21001"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<p>Notice the presence of column <code>countrycode</code> as we grouped by country. It can happen that an occurrence is assigned to a cell in another country or a cell on the border of two different countries It happens few times:</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>cube <span class="sc">|&gt;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">distinct</span>(eeacellcode, countrycode, year) <span class="sc">|&gt;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">add_count</span>(eeacellcode, year) <span class="sc">|&gt;</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(n <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">|&gt;</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">arrange</span>(eeacellcode)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["eeacellcode"],"name":[1],"type":["chr"],"align":["left"]},{"label":["countrycode"],"name":[2],"type":["chr"],"align":["left"]},{"label":["year"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["n"],"name":[4],"type":["int"],"align":["right"]}],"data":[{"1":"1kmE4017N2981","2":"LU","3":"2016","4":"2"},{"1":"1kmE4017N2981","2":"BE","3":"2016","4":"2"},{"1":"1kmE4025N2958","2":"BE","3":"2024","4":"2"},{"1":"1kmE4025N2958","2":"LU","3":"2024","4":"2"},{"1":"1kmE4044N3006","2":"DE","3":"2016","4":"2"},{"1":"1kmE4044N3006","2":"LU","3":"2016","4":"2"},{"1":"NA","2":"GE","3":"2023","4":"2"},{"1":"NA","2":"AZ","3":"2023","4":"2"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<p>Countries with at least one occurrence:</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>cube <span class="sc">|&gt;</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">distinct</span>(countrycode) <span class="sc">|&gt;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">pull</span>(countrycode)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 4</code></pre>
+<pre><code> [1] "BE" "NL" "DE" "AZ" "ES" "GB" "FR" "LU" "CH" "DK" "LI" "SE" "CZ" "AT" "PL"
+[16] "RU" "GE" "IT" "LT" "IE" "UA" "PT" "NO"</code></pre>
 </div>
 </div>
-<p>The <code>echo: false</code> option disables the printing of code (only output is displayed).</p>
+<p>Remove countries not completely covered by the EEA grid:</p>
+<ul>
+<li>Ukraine (<code>UA</code>)</li>
+<li>Russia (<code>RU</code>)</li>
+<li>Azerbaijan (<code>AZ</code>)</li>
+</ul>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>cube <span class="ot">&lt;-</span> cube <span class="sc">|&gt;</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span>countrycode <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"UA"</span>, <span class="st">"RU"</span>, <span class="st">"AZ"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Are there rows without <code>eeacellcode</code>?</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>cube <span class="sc">|&gt;</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="fu">is.na</span>(eeacellcode))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["countrycode"],"name":[2],"type":["chr"],"align":["left"]},{"label":["eeacellcode"],"name":[3],"type":["chr"],"align":["left"]},{"label":["classkey"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["class"],"name":[5],"type":["chr"],"align":["left"]},{"label":["specieskey"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["species"],"name":[7],"type":["chr"],"align":["left"]},{"label":["occurrences"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["mincoordinateuncertaintyinmeters"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["mintemporaluncertainty"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["classcount"],"name":[11],"type":["dbl"],"align":["right"]}],"data":[{"1":"2023","2":"GE","3":"NA","4":"359","5":"Mammalia","6":"5218786","7":"Procyon lotor","8":"1","9":"9","10":"86400","11":"21001"},{"1":"2018","2":"GE","3":"NA","4":"359","5":"Mammalia","6":"5218786","7":"Procyon lotor","8":"1","9":"100","10":"86400","11":"21001"},{"1":"2017","2":"GE","3":"NA","4":"359","5":"Mammalia","6":"5218786","7":"Procyon lotor","8":"1","9":"10","10":"86400","11":"21001"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<p>We remove them:</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>cube <span class="ot">&lt;-</span> cube <span class="sc">|&gt;</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(eeacellcode))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Extract country codes:</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>countrycode <span class="ot">&lt;-</span> cube <span class="sc">|&gt;</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">distinct</span>(countrycode) <span class="sc">|&gt;</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">pull</span>(countrycode)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>countrycode</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "BE" "NL" "DE" "ES" "GB" "FR" "LU" "CH" "DK" "LI" "SE" "CZ" "AT" "PL" "IT"
+[16] "LT" "IE" "PT" "NO"</code></pre>
+</div>
+</div>
+<p>Get country names from country codes:</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>countries <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tibble</span>(</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">countrycode =</span> countrycode) <span class="sc">|&gt;</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">country_name =</span> countrycode<span class="sc">::</span><span class="fu">countrycode</span>(countrycode, <span class="st">"iso2c"</span>, <span class="st">"country.name"</span>))</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>countries</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["countrycode"],"name":[1],"type":["chr"],"align":["left"]},{"label":["country_name"],"name":[2],"type":["chr"],"align":["left"]}],"data":[{"1":"BE","2":"Belgium"},{"1":"NL","2":"Netherlands"},{"1":"DE","2":"Germany"},{"1":"ES","2":"Spain"},{"1":"GB","2":"United Kingdom"},{"1":"FR","2":"France"},{"1":"LU","2":"Luxembourg"},{"1":"CH","2":"Switzerland"},{"1":"DK","2":"Denmark"},{"1":"LI","2":"Liechtenstein"},{"1":"SE","2":"Sweden"},{"1":"CZ","2":"Czechia"},{"1":"AT","2":"Austria"},{"1":"PL","2":"Poland"},{"1":"IT","2":"Italy"},{"1":"LT","2":"Lithuania"},{"1":"IE","2":"Ireland"},{"1":"PT","2":"Portugal"},{"1":"NO","2":"Norway"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<p>We add <code>"Europe"</code> to the list of country names and codes. We use <code>"Europe"</code> as “country code”: the abbreviation EU would be confusing as it is the acronym of the European Union:</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>countries <span class="ot">&lt;-</span> countries <span class="sc">|&gt;</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">add_row</span>(<span class="at">countrycode =</span> <span class="st">"Europe"</span>, <span class="at">country_name =</span> <span class="st">"Europe"</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>countrycode <span class="ot">&lt;-</span> <span class="fu">c</span>(countrycode, <span class="st">"Europe"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>So, from now on, when we refer to “country”, we also mean “Europe”.</p>
+<p>We calculate the cube for Europe:</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>cube_europe <span class="ot">&lt;-</span> cube <span class="sc">|&gt;</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(specieskey, species, year, eeacellcode) <span class="sc">|&gt;</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">countrycode =</span> <span class="st">"Europe"</span>,</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">occurrences =</span> <span class="fu">sum</span>(occurrences),</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">class =</span> <span class="fu">unique</span>(class),</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">classkey =</span> <span class="fu">unique</span>(classkey),</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">mincoordinateuncertaintyinmeters =</span> <span class="fu">min</span>(mincoordinateuncertaintyinmeters),</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">mintemporaluncertainty =</span> <span class="fu">min</span>(mintemporaluncertainty),</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">classcount =</span> <span class="fu">unique</span>(classcount),</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">"drop"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># order columns as in the original cube</span></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">all_of</span>(<span class="fu">names</span>(cube))</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cube_europe)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["year"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["countrycode"],"name":[2],"type":["chr"],"align":["left"]},{"label":["eeacellcode"],"name":[3],"type":["chr"],"align":["left"]},{"label":["classkey"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["class"],"name":[5],"type":["chr"],"align":["left"]},{"label":["specieskey"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["species"],"name":[7],"type":["chr"],"align":["left"]},{"label":["occurrences"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["mincoordinateuncertaintyinmeters"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["mintemporaluncertainty"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["classcount"],"name":[11],"type":["dbl"],"align":["right"]}],"data":[{"1":"1965","2":"Europe","3":"1kmE4954N3064","4":"359","5":"Mammalia","6":"5218786","7":"Procyon lotor","8":"1","9":"1000","10":"86400","11":"21001"},{"1":"1972","2":"Europe","3":"1kmE4493N2684","4":"359","5":"Mammalia","6":"5218786","7":"Procyon lotor","8":"1","9":"1000","10":"2592000","11":"21001"},{"1":"1974","2":"Europe","3":"1kmE3846N2966","4":"359","5":"Mammalia","6":"5218786","7":"Procyon lotor","8":"1","9":"1191","10":"2678400","11":"21001"},{"1":"1974","2":"Europe","3":"1kmE4542N2763","4":"359","5":"Mammalia","6":"5218786","7":"Procyon lotor","8":"1","9":"1000","10":"86400","11":"21001"},{"1":"1975","2":"Europe","3":"1kmE4140N2677","4":"359","5":"Mammalia","6":"5218786","7":"Procyon lotor","8":"1","9":"3535","10":"31536000","11":"21001"},{"1":"1975","2":"Europe","3":"1kmE4181N2714","4":"359","5":"Mammalia","6":"5218786","7":"Procyon lotor","8":"1","9":"3535","10":"31536000","11":"21001"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<p>And we add it to <code>cube</code>:</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>cube <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">bind_rows</span>(cube, cube_europe)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="from-cubes-to-emerging-status" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="from-cubes-to-emerging-status"><span class="header-section-number">4</span> From cubes to emerging status</h2>
+<p>We assess the emerging status of the species at country level and in all Europe for 2024. We first have to create time series up to 2024.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>last_year <span class="ot">&lt;-</span> <span class="dv">2024</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<section id="preprocess-from-cube-to-time-series" class="level3" data-number="4.1">
+<h3 data-number="4.1" class="anchored" data-anchor-id="preprocess-from-cube-to-time-series"><span class="header-section-number">4.1</span> Preprocess: from cube to time series</h3>
+<p>For each country, define cells with at least one observation:</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>df_cc <span class="ot">&lt;-</span>   cube <span class="sc">|&gt;</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(specieskey, countrycode) <span class="sc">|&gt;</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">distinct</span>(eeacellcode) <span class="sc">|&gt;</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">ungroup</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>For each country, identify the first year with at least one observation:</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>df_begin_year <span class="ot">&lt;-</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  cube <span class="sc">|&gt;</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(specieskey, countrycode) <span class="sc">|&gt;</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarize</span>(<span class="at">begin_year =</span> <span class="fu">min</span>(year))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>`summarise()` has grouped output by 'specieskey'. You can override using the
+`.groups` argument.</code></pre>
+</div>
+</div>
+<p>For each country, combine <code>begin_year</code> and unique <code>eeacellcode</code> as found above:</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>df_cc <span class="ot">&lt;-</span>   df_cc <span class="sc">|&gt;</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">left_join</span>(df_begin_year, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"specieskey"</span>, <span class="st">"countrycode"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(specieskey, countrycode, begin_year, eeacellcode)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Preview:</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_cc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["specieskey"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["countrycode"],"name":[2],"type":["chr"],"align":["left"]},{"label":["begin_year"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["eeacellcode"],"name":[4],"type":["chr"],"align":["left"]}],"data":[{"1":"5218786","2":"BE","3":"1986","4":"1kmE3946N3135"},{"1":"5218786","2":"BE","3":"1986","4":"1kmE3950N3122"},{"1":"5218786","2":"BE","3":"1986","4":"1kmE3975N3112"},{"1":"5218786","2":"NL","3":"1978","4":"1kmE4089N3342"},{"1":"5218786","2":"DE","3":"1975","4":"1kmE4150N2888"},{"1":"5218786","2":"DE","3":"1975","4":"1kmE4159N3215"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<p>For each cell (<code>eeacellcode</code>), country (<code>countrycode</code>) and species (<code>specieskey</code>) we can now create a time series:</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define help function</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>make_time_series <span class="ot">&lt;-</span> <span class="cf">function</span>(eeacellcode, countrycode, specieskey, begin_year, last_year) {</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">expand_grid</span>(</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">eeacellcode =</span> eeacellcode,</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">countrycode =</span> countrycode,</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">specieskey =</span> specieskey,</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">year =</span> <span class="fu">seq</span>(<span class="at">from =</span> begin_year, <span class="at">to =</span> last_year)</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Create timeseries slots</span></span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>df_ts <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">pmap_dfr</span>(df_cc,</span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">.f =</span> make_time_series,</span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">last_year =</span> last_year</span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Add occurrence data</span></span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>df_ts <span class="ot">&lt;-</span></span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>  df_ts <span class="sc">|&gt;</span></span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">left_join</span>(</span>
+<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a>    cube <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">select</span>(</span>
+<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a>      specieskey,</span>
+<span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a>      countrycode,</span>
+<span id="cb23-24"><a href="#cb23-24" aria-hidden="true" tabindex="-1"></a>      year,</span>
+<span id="cb23-25"><a href="#cb23-25" aria-hidden="true" tabindex="-1"></a>      eeacellcode,</span>
+<span id="cb23-26"><a href="#cb23-26" aria-hidden="true" tabindex="-1"></a>      occurrences</span>
+<span id="cb23-27"><a href="#cb23-27" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb23-28"><a href="#cb23-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"specieskey"</span>, <span class="st">"countrycode"</span>, <span class="st">"year"</span>, <span class="st">"eeacellcode"</span>)</span>
+<span id="cb23-29"><a href="#cb23-29" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb23-30"><a href="#cb23-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-31"><a href="#cb23-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace NAs with 0</span></span>
+<span id="cb23-32"><a href="#cb23-32" aria-hidden="true" tabindex="-1"></a>df_ts <span class="ot">&lt;-</span></span>
+<span id="cb23-33"><a href="#cb23-33" aria-hidden="true" tabindex="-1"></a>  df_ts <span class="sc">|&gt;</span></span>
+<span id="cb23-34"><a href="#cb23-34" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">replace_na</span>(<span class="fu">list</span>(<span class="at">occurrences =</span> <span class="dv">0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Add column for presence (1) or absence (0):</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>df_ts <span class="ot">&lt;-</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  df_ts <span class="sc">|&gt;</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">ispresent =</span> dplyr<span class="sc">::</span><span class="fu">if_else</span>(occurrences <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Save the time series at country level as an interim output, <code>time_series.tsv</code> in directory <code>data/interim</code>:</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">write_tsv</span>(</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  df_ts,</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"interim"</span>, <span class="st">"time_series.tsv"</span>),</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">na =</span> <span class="st">""</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="apply-gam" class="level3" data-number="4.2">
+<h3 data-number="4.2" class="anchored" data-anchor-id="apply-gam"><span class="header-section-number">4.2</span> Apply GAM</h3>
+<p>We are now ready to apply a Generalized Additive Model (GAM) to assess the emerging status of raccoon.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>eval_year <span class="ot">&lt;-</span> <span class="dv">2024</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Let’s compact the time series:</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>compact_df_ts <span class="ot">&lt;-</span> df_ts <span class="sc">|&gt;</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">group_by</span>(specieskey, countrycode, year) <span class="sc">|&gt;</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">summarise</span>(</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">occs =</span> <span class="fu">sum</span>(occurrences),</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">ncells =</span> <span class="fu">sum</span>(ispresent),</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">.groups =</span> <span class="st">"drop"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>All plots will be saved in subdirectories of <code>./data/output/GAM_outputs</code>:</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>dir_name_basic <span class="ot">&lt;-</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"output"</span>, <span class="st">"GAM_outputs"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>We also define the plot dimensions in pixels:</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>plot_dimensions <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">width =</span> <span class="dv">2800</span>, <span class="at">height =</span> <span class="dv">1500</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>We apply GAM for each country for the number of occurrences:</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>gam_occs <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">map</span>(</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  countrycode,</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">function</span>(code) {</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>    gam_occs_per_country <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">map2</span>(</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>      species<span class="sc">$</span>specieskey, species<span class="sc">$</span>canonical_name,</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>      <span class="cf">function</span>(t, n) {</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>        df_key <span class="ot">&lt;-</span> compact_df_ts <span class="sc">|&gt;</span></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>          dplyr<span class="sc">::</span><span class="fu">filter</span>(specieskey <span class="sc">==</span> t, countrycode <span class="sc">==</span> code)</span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>        trias<span class="sc">::</span><span class="fu">apply_gam</span>(</span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>          <span class="at">df =</span> df_key,</span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>          <span class="at">y_var =</span> <span class="st">"occs"</span>,</span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a>          <span class="at">taxonKey =</span> <span class="st">"specieskey"</span>,</span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>          <span class="at">eval_years =</span> <span class="dv">2024</span>,</span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a>          <span class="at">type_indicator =</span> <span class="st">"observations"</span>,</span>
+<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a>          <span class="at">taxon_key =</span> t,</span>
+<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a>          <span class="at">name =</span> n,</span>
+<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a>          <span class="at">df_title =</span> code,</span>
+<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a>          <span class="at">dir_name =</span> <span class="fu">paste0</span>(dir_name_basic, <span class="st">"/long_titles"</span>),</span>
+<span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a>          <span class="at">y_label =</span> <span class="st">"number of observations"</span>,</span>
+<span id="cb30-20"><a href="#cb30-20" aria-hidden="true" tabindex="-1"></a>          <span class="at">saveplot =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb30-21"><a href="#cb30-21" aria-hidden="true" tabindex="-1"></a>          <span class="at">width =</span> plot_dimensions<span class="sc">$</span>width,</span>
+<span id="cb30-22"><a href="#cb30-22" aria-hidden="true" tabindex="-1"></a>          <span class="at">height =</span> plot_dimensions<span class="sc">$</span>height</span>
+<span id="cb30-23"><a href="#cb30-23" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb30-24"><a href="#cb30-24" aria-hidden="true" tabindex="-1"></a>      })</span>
+<span id="cb30-25"><a href="#cb30-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">names</span>(gam_occs_per_country) <span class="ot">&lt;-</span> species<span class="sc">$</span>canonical_name</span>
+<span id="cb30-26"><a href="#cb30-26" aria-hidden="true" tabindex="-1"></a>    gam_occs_per_country</span>
+<span id="cb30-27"><a href="#cb30-27" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb30-28"><a href="#cb30-28" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb30-29"><a href="#cb30-29" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(gam_occs) <span class="ot">&lt;-</span> countrycode</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>And the number of occupied cells, or <strong>measured occupancy</strong>:</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>gam_ncells <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">map</span>(</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  countrycode,</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">function</span>(code) {</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>    gam_ncells_per_country <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">map2</span>(</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>      species<span class="sc">$</span>specieskey, species<span class="sc">$</span>canonical_name,</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>      <span class="cf">function</span>(t, n) {</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>        df_key <span class="ot">&lt;-</span> compact_df_ts <span class="sc">|&gt;</span></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>          dplyr<span class="sc">::</span><span class="fu">filter</span>(specieskey <span class="sc">==</span> t, countrycode <span class="sc">==</span> code)</span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>        trias<span class="sc">::</span><span class="fu">apply_gam</span>(</span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>          <span class="at">df =</span> df_key,</span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>          <span class="at">y_var =</span> <span class="st">"ncells"</span>,</span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>          <span class="at">taxonKey =</span> <span class="st">"specieskey"</span>,</span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>          <span class="at">eval_years =</span> <span class="dv">2024</span>,</span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>          <span class="at">type_indicator =</span> <span class="st">"occupancy"</span>,</span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>          <span class="at">taxon_key =</span> t,</span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a>          <span class="at">name =</span> n,</span>
+<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a>          <span class="at">df_title =</span> code,</span>
+<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a>          <span class="at">dir_name =</span> <span class="fu">paste0</span>(dir_name_basic, <span class="st">"/long_titles"</span>),</span>
+<span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a>          <span class="at">y_label =</span> <span class="st">"number of occupied cells"</span>,</span>
+<span id="cb31-20"><a href="#cb31-20" aria-hidden="true" tabindex="-1"></a>          <span class="at">saveplot =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb31-21"><a href="#cb31-21" aria-hidden="true" tabindex="-1"></a>          <span class="at">width =</span> plot_dimensions<span class="sc">$</span>width,</span>
+<span id="cb31-22"><a href="#cb31-22" aria-hidden="true" tabindex="-1"></a>          <span class="at">height =</span> plot_dimensions<span class="sc">$</span>height</span>
+<span id="cb31-23"><a href="#cb31-23" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb31-24"><a href="#cb31-24" aria-hidden="true" tabindex="-1"></a>      })</span>
+<span id="cb31-25"><a href="#cb31-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">names</span>(gam_ncells_per_country) <span class="ot">&lt;-</span> species<span class="sc">$</span>canonical_name</span>
+<span id="cb31-26"><a href="#cb31-26" aria-hidden="true" tabindex="-1"></a>    gam_ncells_per_country</span>
+<span id="cb31-27"><a href="#cb31-27" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb31-28"><a href="#cb31-28" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb31-29"><a href="#cb31-29" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(gam_ncells) <span class="ot">&lt;-</span> countrycode</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+</section>
+<section id="plots" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="plots"><span class="header-section-number">5</span> Plots</h2>
+<p>Please go to <a href="https://github.com/b-cubed-eu/euroraccoon/tree/main/data/output/GAM_outputs"><code>./data/output/GAM_outputs</code></a> to download the plots shown in this section.</p>
+<section id="standard-plots" class="level3" data-number="5.1">
+<h3 data-number="5.1" class="anchored" data-anchor-id="standard-plots"><span class="header-section-number">5.1</span> Standard plots</h3>
+<p>In this section we show the plots as returned by <code>apply_gam()</code>. Plot titles could be quite long. Folder: <a href="https://github.com/b-cubed-eu/euroraccoon/tree/main/data/output/GAM_outputs/long_titles"><code>./data/output/GAM_outputs/long_titles</code></a>.</p>
+<section id="occurrences" class="level4" data-number="5.1.1">
+<h4 data-number="5.1.1" class="anchored" data-anchor-id="occurrences"><span class="header-section-number">5.1.1</span> Occurrences</h4>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>purrr<span class="sc">::</span><span class="fu">walk</span>(gam_occs, <span class="cf">function</span>(country) {</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  purrr<span class="sc">::</span><span class="fu">walk</span>(country, <span class="cf">function</span>(x) <span class="fu">print</span>(x<span class="sc">$</span>plot))</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/occs-plots-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/occs-plots-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/occs-plots-3.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/occs-plots-4.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/occs-plots-5.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/occs-plots-6.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/occs-plots-7.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/occs-plots-8.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/occs-plots-9.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/occs-plots-10.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/occs-plots-11.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/occs-plots-12.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/occs-plots-13.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/occs-plots-14.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/occs-plots-15.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/occs-plots-16.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/occs-plots-17.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/occs-plots-18.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/occs-plots-19.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/occs-plots-20.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="measured-occupancy" class="level4" data-number="5.1.2">
+<h4 data-number="5.1.2" class="anchored" data-anchor-id="measured-occupancy"><span class="header-section-number">5.1.2</span> Measured occupancy</h4>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>purrr<span class="sc">::</span><span class="fu">walk</span>(gam_ncells, <span class="cf">function</span>(country) {</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  purrr<span class="sc">::</span><span class="fu">walk</span>(country, <span class="cf">function</span>(x) <span class="fu">print</span>(x<span class="sc">$</span>plot))</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/n_cells-plots-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/n_cells-plots-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/n_cells-plots-3.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/n_cells-plots-4.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/n_cells-plots-5.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/n_cells-plots-6.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/n_cells-plots-7.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/n_cells-plots-8.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/n_cells-plots-9.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/n_cells-plots-10.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/n_cells-plots-11.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/n_cells-plots-12.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/n_cells-plots-13.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/n_cells-plots-14.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/n_cells-plots-15.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/n_cells-plots-16.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/n_cells-plots-17.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/n_cells-plots-18.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/n_cells-plots-19.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/n_cells-plots-20.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="short-titles" class="level3" data-number="5.2">
+<h3 data-number="5.2" class="anchored" data-anchor-id="short-titles"><span class="header-section-number">5.2</span> Short titles</h3>
+<p>We show and save plots with the species only as title. We save them in sub folder <a href="https://github.com/b-cubed-eu/euroraccoon/tree/main/data/output/GAM_outputs/short_title"><code>./data/output/GAM_outputs/short_title</code></a>.</p>
+<section id="occurrences-1" class="level4" data-number="5.2.1">
+<h4 data-number="5.2.1" class="anchored" data-anchor-id="occurrences-1"><span class="header-section-number">5.2.1</span> Occurrences</h4>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>purrr<span class="sc">::</span><span class="fu">iwalk</span>(gam_occs, <span class="cf">function</span>(x, country) {</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  purrr<span class="sc">::</span><span class="fu">iwalk</span>(x, <span class="cf">function</span>(y, sp) {</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>    y<span class="sc">$</span>plot <span class="ot">&lt;-</span> y<span class="sc">$</span>plot <span class="sc">+</span> ggplot2<span class="sc">::</span><span class="fu">ggtitle</span>(<span class="at">label =</span> <span class="fu">paste</span>(sp, <span class="st">"-"</span>, country))</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">ggsave</span>(</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">filename =</span> here<span class="sc">::</span><span class="fu">here</span>(</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">"data"</span>,</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">"output"</span>,</span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">"GAM_outputs"</span>,</span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>        <span class="st">"short_title"</span>,</span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>        <span class="fu">paste0</span>(<span class="st">"occurrences_"</span>, sp, <span class="st">"_"</span>, country, <span class="st">".png"</span>)),</span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">plot =</span> y<span class="sc">$</span>plot,</span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">width =</span> plot_dimensions<span class="sc">$</span>width,</span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">height =</span> plot_dimensions<span class="sc">$</span>height,</span>
+<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a>      <span class="at">units =</span> <span class="st">"px"</span></span>
+<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb34-16"><a href="#cb34-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(y<span class="sc">$</span>plot)</span>
+<span id="cb34-17"><a href="#cb34-17" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb34-18"><a href="#cb34-18" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/remove_titles_occs-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/remove_titles_occs-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/remove_titles_occs-3.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/remove_titles_occs-4.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/remove_titles_occs-5.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/remove_titles_occs-6.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/remove_titles_occs-7.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/remove_titles_occs-8.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/remove_titles_occs-9.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/remove_titles_occs-10.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/remove_titles_occs-11.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/remove_titles_occs-12.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/remove_titles_occs-13.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/remove_titles_occs-14.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/remove_titles_occs-15.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/remove_titles_occs-16.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/remove_titles_occs-17.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/remove_titles_occs-18.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/remove_titles_occs-19.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/remove_titles_occs-20.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="occupancy" class="level4" data-number="5.2.2">
+<h4 data-number="5.2.2" class="anchored" data-anchor-id="occupancy"><span class="header-section-number">5.2.2</span> Occupancy</h4>
+<p>We do the same for the measured occupancy (number of occupied grid cells).</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>purrr<span class="sc">::</span><span class="fu">iwalk</span>(gam_ncells, <span class="cf">function</span>(x, country) {</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  purrr<span class="sc">::</span><span class="fu">iwalk</span>(x, <span class="cf">function</span>(y, sp) {</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>    y<span class="sc">$</span>plot <span class="ot">&lt;-</span> y<span class="sc">$</span>plot <span class="sc">+</span> ggplot2<span class="sc">::</span><span class="fu">ggtitle</span>(<span class="at">label =</span> <span class="fu">paste</span>(sp, <span class="st">"-"</span>, country))</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">ggsave</span>(</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">filename =</span> here<span class="sc">::</span><span class="fu">here</span>(</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">"data"</span>,</span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">"output"</span>,</span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">"GAM_outputs"</span>,</span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>        <span class="st">"short_title"</span>,</span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>        <span class="fu">paste0</span>(<span class="st">"occupancy_"</span>, sp, <span class="st">"_"</span>, country, <span class="st">".png"</span>)),</span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">plot =</span> y<span class="sc">$</span>plot,</span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">width =</span> plot_dimensions<span class="sc">$</span>width,</span>
+<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">height =</span> plot_dimensions<span class="sc">$</span>height,</span>
+<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a>      <span class="at">units =</span> <span class="st">"px"</span></span>
+<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb35-16"><a href="#cb35-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(y<span class="sc">$</span>plot)</span>
+<span id="cb35-17"><a href="#cb35-17" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb35-18"><a href="#cb35-18" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/remove_titles_ncells}-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/remove_titles_ncells}-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/remove_titles_ncells}-3.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/remove_titles_ncells}-4.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/remove_titles_ncells}-5.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/remove_titles_ncells}-6.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/remove_titles_ncells}-7.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/remove_titles_ncells}-8.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/remove_titles_ncells}-9.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/remove_titles_ncells}-10.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/remove_titles_ncells}-11.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/remove_titles_ncells}-12.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/remove_titles_ncells}-13.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/remove_titles_ncells}-14.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/remove_titles_ncells}-15.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/remove_titles_ncells}-16.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/remove_titles_ncells}-17.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/remove_titles_ncells}-18.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/remove_titles_ncells}-19.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/remove_titles_ncells}-20.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="grid" class="level3" data-number="5.3">
+<h3 data-number="5.3" class="anchored" data-anchor-id="grid"><span class="header-section-number">5.3</span> Grid</h3>
+<p>For each country, we can show the plots of the number of occurrences and the measured occupancy next to each other. We use the full country name. Plots are saved in subfolder <a href="https://github.com/b-cubed-eu/euroraccoon/tree/main/data/output/GAM_outputs/plots_for_countries"><code>./data/output/GAM_outputs/plots_for_countries</code></a>.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Transform gam_occs and gam_ncells into a list of lists </span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>gam_countries <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">map</span>(</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>  countrycode,</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">function</span>(code) {</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>    purrr<span class="sc">::</span><span class="fu">map2</span>(</span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>      gam_occs[[code]],</span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>      gam_ncells[[code]],</span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>      <span class="cf">function</span>(x, y) <span class="fu">list</span>(<span class="at">occurrences =</span> x, <span class="at">ncells =</span> y)</span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(gam_countries) <span class="ot">&lt;-</span> countrycode</span>
+<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a grid of plots for each country</span></span>
+<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a>purrr<span class="sc">::</span><span class="fu">walk2</span>(</span>
+<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a>  gam_countries,</span>
+<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a>  countrycode,</span>
+<span id="cb36-17"><a href="#cb36-17" aria-hidden="true" tabindex="-1"></a>  <span class="cf">function</span>(country, code) {</span>
+<span id="cb36-18"><a href="#cb36-18" aria-hidden="true" tabindex="-1"></a>    purrr<span class="sc">::</span><span class="fu">walk</span>(country, <span class="cf">function</span>(x) {</span>
+<span id="cb36-19"><a href="#cb36-19" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Remove title</span></span>
+<span id="cb36-20"><a href="#cb36-20" aria-hidden="true" tabindex="-1"></a>      x<span class="sc">$</span>occurrences<span class="sc">$</span>plot <span class="ot">&lt;-</span> x<span class="sc">$</span>occurrences<span class="sc">$</span>plot <span class="sc">+</span> ggplot2<span class="sc">::</span><span class="fu">ggtitle</span>(<span class="cn">NULL</span>)</span>
+<span id="cb36-21"><a href="#cb36-21" aria-hidden="true" tabindex="-1"></a>      x<span class="sc">$</span>ncells<span class="sc">$</span>plot <span class="ot">&lt;-</span> x<span class="sc">$</span>ncells<span class="sc">$</span>plot <span class="sc">+</span> ggplot2<span class="sc">::</span><span class="fu">ggtitle</span>(<span class="cn">NULL</span>)</span>
+<span id="cb36-22"><a href="#cb36-22" aria-hidden="true" tabindex="-1"></a>      p <span class="ot">&lt;-</span> patchwork<span class="sc">::</span><span class="fu">wrap_plots</span>(x<span class="sc">$</span>occurrences<span class="sc">$</span>plot,</span>
+<span id="cb36-23"><a href="#cb36-23" aria-hidden="true" tabindex="-1"></a>                                 x<span class="sc">$</span>ncells<span class="sc">$</span>plot,</span>
+<span id="cb36-24"><a href="#cb36-24" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">nrow =</span> <span class="dv">1</span>,</span>
+<span id="cb36-25"><a href="#cb36-25" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">ncol =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb36-26"><a href="#cb36-26" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Unify legends</span></span>
+<span id="cb36-27"><a href="#cb36-27" aria-hidden="true" tabindex="-1"></a>        patchwork<span class="sc">::</span><span class="fu">plot_layout</span>(<span class="at">guides =</span> <span class="st">'collect'</span>) <span class="sc">+</span> </span>
+<span id="cb36-28"><a href="#cb36-28" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Add general title</span></span>
+<span id="cb36-29"><a href="#cb36-29" aria-hidden="true" tabindex="-1"></a>        patchwork<span class="sc">::</span><span class="fu">plot_annotation</span>(</span>
+<span id="cb36-30"><a href="#cb36-30" aria-hidden="true" tabindex="-1"></a>          <span class="at">title =</span> countries<span class="sc">$</span>country_name[countries<span class="sc">$</span>countrycode <span class="sc">==</span> code]</span>
+<span id="cb36-31"><a href="#cb36-31" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb36-32"><a href="#cb36-32" aria-hidden="true" tabindex="-1"></a>      ggplot2<span class="sc">::</span><span class="fu">ggsave</span>(</span>
+<span id="cb36-33"><a href="#cb36-33" aria-hidden="true" tabindex="-1"></a>        <span class="at">filename =</span> here<span class="sc">::</span><span class="fu">here</span>(</span>
+<span id="cb36-34"><a href="#cb36-34" aria-hidden="true" tabindex="-1"></a>          <span class="st">"data"</span>,</span>
+<span id="cb36-35"><a href="#cb36-35" aria-hidden="true" tabindex="-1"></a>          <span class="st">"output"</span>,</span>
+<span id="cb36-36"><a href="#cb36-36" aria-hidden="true" tabindex="-1"></a>          <span class="st">"GAM_outputs"</span>,</span>
+<span id="cb36-37"><a href="#cb36-37" aria-hidden="true" tabindex="-1"></a>          <span class="st">"plots_for_countries"</span>,</span>
+<span id="cb36-38"><a href="#cb36-38" aria-hidden="true" tabindex="-1"></a>          <span class="fu">paste0</span>(code, <span class="st">"_grid.png"</span>)),</span>
+<span id="cb36-39"><a href="#cb36-39" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot =</span> p,</span>
+<span id="cb36-40"><a href="#cb36-40" aria-hidden="true" tabindex="-1"></a>        <span class="at">width =</span> plot_dimensions<span class="sc">$</span>width,</span>
+<span id="cb36-41"><a href="#cb36-41" aria-hidden="true" tabindex="-1"></a>        <span class="at">height =</span> plot_dimensions<span class="sc">$</span>height,</span>
+<span id="cb36-42"><a href="#cb36-42" aria-hidden="true" tabindex="-1"></a>        <span class="at">units =</span> <span class="st">"px"</span></span>
+<span id="cb36-43"><a href="#cb36-43" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb36-44"><a href="#cb36-44" aria-hidden="true" tabindex="-1"></a>      <span class="fu">print</span>(p)</span>
+<span id="cb36-45"><a href="#cb36-45" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb36-46"><a href="#cb36-46" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb36-47"><a href="#cb36-47" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/grid_per_country-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/grid_per_country-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/grid_per_country-3.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/grid_per_country-4.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/grid_per_country-5.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/grid_per_country-6.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/grid_per_country-7.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/grid_per_country-8.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/grid_per_country-9.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/grid_per_country-10.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/grid_per_country-11.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/grid_per_country-12.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/grid_per_country-13.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/grid_per_country-14.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/grid_per_country-15.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/grid_per_country-16.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/grid_per_country-17.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/grid_per_country-18.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/grid_per_country-19.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="about_data_files/figure-html/grid_per_country-20.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 
 
+<!-- -->
+
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -284,6 +1599,57 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       container: window.document.getElementById('quarto-embedded-source-code-modal')
     });
     clipboardModal.on('success', onCopySuccess);
+  }
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
@@ -614,7 +1980,518 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>
+</script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb37" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Emerging trend indicators of raccoon in Europe"</span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="co">    df-print: paged</span></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a><span class="co">    toc-float: true</span></span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a><span class="co">    toc-depth: 4</span></span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a><span class="co">    number-sections: true</span></span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: true</span></span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
+<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a><span class="an">execute:</span></span>
+<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a><span class="co">  eval: true</span></span>
+<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a><span class="co">  echo: true</span></span>
+<span id="cb37-15"><a href="#cb37-15" aria-hidden="true" tabindex="-1"></a><span class="co">  warning: true</span></span>
+<span id="cb37-16"><a href="#cb37-16" aria-hidden="true" tabindex="-1"></a><span class="co">  error: false</span></span>
+<span id="cb37-17"><a href="#cb37-17" aria-hidden="true" tabindex="-1"></a><span class="co">  include: true</span></span>
+<span id="cb37-18"><a href="#cb37-18" aria-hidden="true" tabindex="-1"></a><span class="an">from:</span><span class="co"> markdown+emoji</span></span>
+<span id="cb37-19"><a href="#cb37-19" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb37-20"><a href="#cb37-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-21"><a href="#cb37-21" aria-hidden="true" tabindex="-1"></a><span class="fu">## Introduction</span></span>
+<span id="cb37-22"><a href="#cb37-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-23"><a href="#cb37-23" aria-hidden="true" tabindex="-1"></a>This document shows how using GBIF species occurrence cubes to assess the emerging status of raccoon (<span class="co">[</span><span class="ot">_Procyon lotor_</span><span class="co">](https://www.gbif.org/species/5218786)</span>) in Europe and in European countries. This workflow is strongly based on the <span class="co">[</span><span class="ot">**occurrence TrIAS indicators**</span><span class="co">](https://github.com/trias-project/indicators)</span> and can be extended to other (invasive alien) species.</span>
+<span id="cb37-24"><a href="#cb37-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-25"><a href="#cb37-25" aria-hidden="true" tabindex="-1"></a><span class="fu">### Setup</span></span>
+<span id="cb37-26"><a href="#cb37-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-27"><a href="#cb37-27" aria-hidden="true" tabindex="-1"></a>First, list and load the needed packages.</span>
+<span id="cb37-28"><a href="#cb37-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-29"><a href="#cb37-29" aria-hidden="true" tabindex="-1"></a><span class="in">```{r pkgs, message=FALSE, warning=FALSE}</span></span>
+<span id="cb37-30"><a href="#cb37-30" aria-hidden="true" tabindex="-1"></a><span class="in">library(readr)</span></span>
+<span id="cb37-31"><a href="#cb37-31" aria-hidden="true" tabindex="-1"></a><span class="in">library(here)</span></span>
+<span id="cb37-32"><a href="#cb37-32" aria-hidden="true" tabindex="-1"></a><span class="in">library(dplyr)</span></span>
+<span id="cb37-33"><a href="#cb37-33" aria-hidden="true" tabindex="-1"></a><span class="in">library(patchwork)</span></span>
+<span id="cb37-34"><a href="#cb37-34" aria-hidden="true" tabindex="-1"></a><span class="in">library(tidyr)</span></span>
+<span id="cb37-35"><a href="#cb37-35" aria-hidden="true" tabindex="-1"></a><span class="in">library(purrr)</span></span>
+<span id="cb37-36"><a href="#cb37-36" aria-hidden="true" tabindex="-1"></a><span class="in">library(tibble)</span></span>
+<span id="cb37-37"><a href="#cb37-37" aria-hidden="true" tabindex="-1"></a><span class="in">library(trias)</span></span>
+<span id="cb37-38"><a href="#cb37-38" aria-hidden="true" tabindex="-1"></a><span class="in">library(countrycode)</span></span>
+<span id="cb37-39"><a href="#cb37-39" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb37-40"><a href="#cb37-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-41"><a href="#cb37-41" aria-hidden="true" tabindex="-1"></a><span class="fu">## Scope</span></span>
+<span id="cb37-42"><a href="#cb37-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-43"><a href="#cb37-43" aria-hidden="true" tabindex="-1"></a><span class="fu">### Taxonomic scope</span></span>
+<span id="cb37-44"><a href="#cb37-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-45"><a href="#cb37-45" aria-hidden="true" tabindex="-1"></a>The species of interest is the raccoon (*Procyon lotor (Linnaeus, 1758)*, GBIF Key: <span class="co">[</span><span class="ot">5218786</span><span class="co">](https://www.gbif.org/species/5218786)</span>). This workflow can easily be extended to other species.</span>
+<span id="cb37-46"><a href="#cb37-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-47"><a href="#cb37-47" aria-hidden="true" tabindex="-1"></a><span class="in">```{r define-species-of-interest}</span></span>
+<span id="cb37-48"><a href="#cb37-48" aria-hidden="true" tabindex="-1"></a><span class="in">species &lt;- tibble::tibble(</span></span>
+<span id="cb37-49"><a href="#cb37-49" aria-hidden="true" tabindex="-1"></a><span class="in">  specieskey = c(5218786),</span></span>
+<span id="cb37-50"><a href="#cb37-50" aria-hidden="true" tabindex="-1"></a><span class="in">  canonical_name = c("Procyon lotor")</span></span>
+<span id="cb37-51"><a href="#cb37-51" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
+<span id="cb37-52"><a href="#cb37-52" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb37-53"><a href="#cb37-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-54"><a href="#cb37-54" aria-hidden="true" tabindex="-1"></a><span class="fu">### Spatial scope</span></span>
+<span id="cb37-55"><a href="#cb37-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-56"><a href="#cb37-56" aria-hidden="true" tabindex="-1"></a>We are interested over the emerging status of the four species in the **European countries** and all **Europe**.</span>
+<span id="cb37-57"><a href="#cb37-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-58"><a href="#cb37-58" aria-hidden="true" tabindex="-1"></a><span class="fu">### Temporal scope</span></span>
+<span id="cb37-59"><a href="#cb37-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-60"><a href="#cb37-60" aria-hidden="true" tabindex="-1"></a>We request a species occurrence cube based on data from **1950**.</span>
+<span id="cb37-61"><a href="#cb37-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-62"><a href="#cb37-62" aria-hidden="true" tabindex="-1"></a><span class="fu">## Species occurrence cube</span></span>
+<span id="cb37-63"><a href="#cb37-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-64"><a href="#cb37-64" aria-hidden="true" tabindex="-1"></a>We triggered a GBIF occurrence cube via the <span class="co">[</span><span class="ot">Occurrence SQL Download API</span><span class="co">](https://techdocs.gbif.org/en/data-use/api-sql-downloads)</span> and on the hand of a JSON query (<span class="co">[</span><span class="ot">query_cube_raccoon.json</span><span class="co">](../../data/input/query_cube_raccoon.json)</span>). The resulting cube (DOI: <span class="co">[</span><span class="ot">10.15468/dl.mmnusj</span><span class="co">](https://doi.org/10.15468/dl.mmnusj)</span>, <span class="in">`downloadKey`</span>: 0023024-250127130748423) can be downloaded in TSV format from GBIF. We have it saved at <span class="in">`data/input`</span> as <span class="co">[</span><span class="ot">`0023024-250127130748423.csv`</span><span class="co">](../../data/input/0023024-250127130748423.csv)</span>:</span>
+<span id="cb37-65"><a href="#cb37-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-66"><a href="#cb37-66" aria-hidden="true" tabindex="-1"></a><span class="in">```{r read-cube, message=FALSE}</span></span>
+<span id="cb37-67"><a href="#cb37-67" aria-hidden="true" tabindex="-1"></a><span class="in">cube &lt;- readr::read_tsv(</span></span>
+<span id="cb37-68"><a href="#cb37-68" aria-hidden="true" tabindex="-1"></a><span class="in">  here::here(</span></span>
+<span id="cb37-69"><a href="#cb37-69" aria-hidden="true" tabindex="-1"></a><span class="in">    "data",</span></span>
+<span id="cb37-70"><a href="#cb37-70" aria-hidden="true" tabindex="-1"></a><span class="in">    "input",</span></span>
+<span id="cb37-71"><a href="#cb37-71" aria-hidden="true" tabindex="-1"></a><span class="in">    "0023024-250127130748423.csv"</span></span>
+<span id="cb37-72"><a href="#cb37-72" aria-hidden="true" tabindex="-1"></a><span class="in">  )</span></span>
+<span id="cb37-73"><a href="#cb37-73" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
+<span id="cb37-74"><a href="#cb37-74" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb37-75"><a href="#cb37-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-76"><a href="#cb37-76" aria-hidden="true" tabindex="-1"></a>Preview:</span>
+<span id="cb37-77"><a href="#cb37-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-80"><a href="#cb37-80" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb37-81"><a href="#cb37-81" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cube)</span>
+<span id="cb37-82"><a href="#cb37-82" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb37-83"><a href="#cb37-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-84"><a href="#cb37-84" aria-hidden="true" tabindex="-1"></a>Notice the presence of column <span class="in">`countrycode`</span> as we grouped by country. It can happen that an occurrence is assigned to a cell in another country or a cell on the border of two different countries It happens few times:</span>
+<span id="cb37-85"><a href="#cb37-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-86"><a href="#cb37-86" aria-hidden="true" tabindex="-1"></a><span class="in">```{r cells_with_multiple_countries}</span></span>
+<span id="cb37-87"><a href="#cb37-87" aria-hidden="true" tabindex="-1"></a><span class="in">cube |&gt;</span></span>
+<span id="cb37-88"><a href="#cb37-88" aria-hidden="true" tabindex="-1"></a><span class="in">  dplyr::distinct(eeacellcode, countrycode, year) |&gt;</span></span>
+<span id="cb37-89"><a href="#cb37-89" aria-hidden="true" tabindex="-1"></a><span class="in">  dplyr::add_count(eeacellcode, year) |&gt;</span></span>
+<span id="cb37-90"><a href="#cb37-90" aria-hidden="true" tabindex="-1"></a><span class="in">  dplyr::filter(n &gt; 1) |&gt;</span></span>
+<span id="cb37-91"><a href="#cb37-91" aria-hidden="true" tabindex="-1"></a><span class="in">  dplyr::arrange(eeacellcode)</span></span>
+<span id="cb37-92"><a href="#cb37-92" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb37-93"><a href="#cb37-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-94"><a href="#cb37-94" aria-hidden="true" tabindex="-1"></a>Countries with at least one occurrence:</span>
+<span id="cb37-95"><a href="#cb37-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-96"><a href="#cb37-96" aria-hidden="true" tabindex="-1"></a><span class="in">```{r countries}</span></span>
+<span id="cb37-97"><a href="#cb37-97" aria-hidden="true" tabindex="-1"></a><span class="in">cube |&gt;</span></span>
+<span id="cb37-98"><a href="#cb37-98" aria-hidden="true" tabindex="-1"></a><span class="in">  dplyr::distinct(countrycode) |&gt;</span></span>
+<span id="cb37-99"><a href="#cb37-99" aria-hidden="true" tabindex="-1"></a><span class="in">  dplyr::pull(countrycode)</span></span>
+<span id="cb37-100"><a href="#cb37-100" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb37-101"><a href="#cb37-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-102"><a href="#cb37-102" aria-hidden="true" tabindex="-1"></a>Remove countries not completely covered by the EEA grid:</span>
+<span id="cb37-103"><a href="#cb37-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-104"><a href="#cb37-104" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Ukraine (<span class="in">`UA`</span>)</span>
+<span id="cb37-105"><a href="#cb37-105" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Russia (<span class="in">`RU`</span>)</span>
+<span id="cb37-106"><a href="#cb37-106" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Azerbaijan (<span class="in">`AZ`</span>)</span>
+<span id="cb37-107"><a href="#cb37-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-108"><a href="#cb37-108" aria-hidden="true" tabindex="-1"></a><span class="in">```{r remove-ua-ru}</span></span>
+<span id="cb37-109"><a href="#cb37-109" aria-hidden="true" tabindex="-1"></a><span class="in">cube &lt;- cube |&gt;</span></span>
+<span id="cb37-110"><a href="#cb37-110" aria-hidden="true" tabindex="-1"></a><span class="in">  dplyr::filter(!countrycode %in% c("UA", "RU", "AZ"))</span></span>
+<span id="cb37-111"><a href="#cb37-111" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb37-112"><a href="#cb37-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-113"><a href="#cb37-113" aria-hidden="true" tabindex="-1"></a>Are there rows without <span class="in">`eeacellcode`</span>?</span>
+<span id="cb37-114"><a href="#cb37-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-115"><a href="#cb37-115" aria-hidden="true" tabindex="-1"></a><span class="in">```{r are_there_nas_cellcode}</span></span>
+<span id="cb37-116"><a href="#cb37-116" aria-hidden="true" tabindex="-1"></a><span class="in">cube |&gt;</span></span>
+<span id="cb37-117"><a href="#cb37-117" aria-hidden="true" tabindex="-1"></a><span class="in">  dplyr::filter(is.na(eeacellcode))</span></span>
+<span id="cb37-118"><a href="#cb37-118" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb37-119"><a href="#cb37-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-120"><a href="#cb37-120" aria-hidden="true" tabindex="-1"></a>We remove them:</span>
+<span id="cb37-121"><a href="#cb37-121" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-122"><a href="#cb37-122" aria-hidden="true" tabindex="-1"></a><span class="in">```{r remove_nas_cellcode}</span></span>
+<span id="cb37-123"><a href="#cb37-123" aria-hidden="true" tabindex="-1"></a><span class="in">cube &lt;- cube |&gt;</span></span>
+<span id="cb37-124"><a href="#cb37-124" aria-hidden="true" tabindex="-1"></a><span class="in">  dplyr::filter(!is.na(eeacellcode))</span></span>
+<span id="cb37-125"><a href="#cb37-125" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb37-126"><a href="#cb37-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-127"><a href="#cb37-127" aria-hidden="true" tabindex="-1"></a>Extract country codes:</span>
+<span id="cb37-128"><a href="#cb37-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-129"><a href="#cb37-129" aria-hidden="true" tabindex="-1"></a><span class="in">```{r extract_countries}</span></span>
+<span id="cb37-130"><a href="#cb37-130" aria-hidden="true" tabindex="-1"></a><span class="in">countrycode &lt;- cube |&gt;</span></span>
+<span id="cb37-131"><a href="#cb37-131" aria-hidden="true" tabindex="-1"></a><span class="in">  dplyr::distinct(countrycode) |&gt;</span></span>
+<span id="cb37-132"><a href="#cb37-132" aria-hidden="true" tabindex="-1"></a><span class="in">  dplyr::pull(countrycode)</span></span>
+<span id="cb37-133"><a href="#cb37-133" aria-hidden="true" tabindex="-1"></a><span class="in">countrycode</span></span>
+<span id="cb37-134"><a href="#cb37-134" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb37-135"><a href="#cb37-135" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-136"><a href="#cb37-136" aria-hidden="true" tabindex="-1"></a>Get country names from country codes:</span>
+<span id="cb37-137"><a href="#cb37-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-138"><a href="#cb37-138" aria-hidden="true" tabindex="-1"></a><span class="in">```{r country_names}</span></span>
+<span id="cb37-139"><a href="#cb37-139" aria-hidden="true" tabindex="-1"></a><span class="in">countries &lt;- tibble::tibble(</span></span>
+<span id="cb37-140"><a href="#cb37-140" aria-hidden="true" tabindex="-1"></a><span class="in">  countrycode = countrycode) |&gt;</span></span>
+<span id="cb37-141"><a href="#cb37-141" aria-hidden="true" tabindex="-1"></a><span class="in">  dplyr::mutate(country_name = countrycode::countrycode(countrycode, "iso2c", "country.name"))</span></span>
+<span id="cb37-142"><a href="#cb37-142" aria-hidden="true" tabindex="-1"></a><span class="in">countries</span></span>
+<span id="cb37-143"><a href="#cb37-143" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb37-144"><a href="#cb37-144" aria-hidden="true" tabindex="-1"></a>We add <span class="in">`"Europe"`</span> to the list of country names and codes. We use <span class="in">`"Europe"`</span> as "country code": the abbreviation EU would be confusing as it is the acronym of the European Union:</span>
+<span id="cb37-145"><a href="#cb37-145" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-146"><a href="#cb37-146" aria-hidden="true" tabindex="-1"></a><span class="in">```{r add_europe_country}</span></span>
+<span id="cb37-147"><a href="#cb37-147" aria-hidden="true" tabindex="-1"></a><span class="in">countries &lt;- countries |&gt;</span></span>
+<span id="cb37-148"><a href="#cb37-148" aria-hidden="true" tabindex="-1"></a><span class="in">  dplyr::add_row(countrycode = "Europe", country_name = "Europe")</span></span>
+<span id="cb37-149"><a href="#cb37-149" aria-hidden="true" tabindex="-1"></a><span class="in">countrycode &lt;- c(countrycode, "Europe")</span></span>
+<span id="cb37-150"><a href="#cb37-150" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb37-151"><a href="#cb37-151" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-152"><a href="#cb37-152" aria-hidden="true" tabindex="-1"></a>So, from now on, when we refer to "country", we also mean "Europe".</span>
+<span id="cb37-153"><a href="#cb37-153" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-154"><a href="#cb37-154" aria-hidden="true" tabindex="-1"></a>We calculate the cube for Europe:</span>
+<span id="cb37-155"><a href="#cb37-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-158"><a href="#cb37-158" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb37-159"><a href="#cb37-159" aria-hidden="true" tabindex="-1"></a>cube_europe <span class="ot">&lt;-</span> cube <span class="sc">|&gt;</span></span>
+<span id="cb37-160"><a href="#cb37-160" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(specieskey, species, year, eeacellcode) <span class="sc">|&gt;</span></span>
+<span id="cb37-161"><a href="#cb37-161" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb37-162"><a href="#cb37-162" aria-hidden="true" tabindex="-1"></a>    <span class="at">countrycode =</span> <span class="st">"Europe"</span>,</span>
+<span id="cb37-163"><a href="#cb37-163" aria-hidden="true" tabindex="-1"></a>    <span class="at">occurrences =</span> <span class="fu">sum</span>(occurrences),</span>
+<span id="cb37-164"><a href="#cb37-164" aria-hidden="true" tabindex="-1"></a>    <span class="at">class =</span> <span class="fu">unique</span>(class),</span>
+<span id="cb37-165"><a href="#cb37-165" aria-hidden="true" tabindex="-1"></a>    <span class="at">classkey =</span> <span class="fu">unique</span>(classkey),</span>
+<span id="cb37-166"><a href="#cb37-166" aria-hidden="true" tabindex="-1"></a>    <span class="at">mincoordinateuncertaintyinmeters =</span> <span class="fu">min</span>(mincoordinateuncertaintyinmeters),</span>
+<span id="cb37-167"><a href="#cb37-167" aria-hidden="true" tabindex="-1"></a>    <span class="at">mintemporaluncertainty =</span> <span class="fu">min</span>(mintemporaluncertainty),</span>
+<span id="cb37-168"><a href="#cb37-168" aria-hidden="true" tabindex="-1"></a>    <span class="at">classcount =</span> <span class="fu">unique</span>(classcount),</span>
+<span id="cb37-169"><a href="#cb37-169" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">"drop"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb37-170"><a href="#cb37-170" aria-hidden="true" tabindex="-1"></a>  <span class="co"># order columns as in the original cube</span></span>
+<span id="cb37-171"><a href="#cb37-171" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(</span>
+<span id="cb37-172"><a href="#cb37-172" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">all_of</span>(<span class="fu">names</span>(cube))</span>
+<span id="cb37-173"><a href="#cb37-173" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb37-174"><a href="#cb37-174" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cube_europe)</span>
+<span id="cb37-175"><a href="#cb37-175" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb37-176"><a href="#cb37-176" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-177"><a href="#cb37-177" aria-hidden="true" tabindex="-1"></a>And we add it to <span class="in">`cube`</span>:</span>
+<span id="cb37-178"><a href="#cb37-178" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-179"><a href="#cb37-179" aria-hidden="true" tabindex="-1"></a><span class="in">```{r add_europe_to_cube}</span></span>
+<span id="cb37-180"><a href="#cb37-180" aria-hidden="true" tabindex="-1"></a><span class="in">cube &lt;- dplyr::bind_rows(cube, cube_europe)</span></span>
+<span id="cb37-181"><a href="#cb37-181" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb37-182"><a href="#cb37-182" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-183"><a href="#cb37-183" aria-hidden="true" tabindex="-1"></a><span class="fu">## From cubes to emerging status</span></span>
+<span id="cb37-184"><a href="#cb37-184" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-185"><a href="#cb37-185" aria-hidden="true" tabindex="-1"></a>We assess the emerging status of the species at country level and in all Europe for 2024. We first have to create time series up to 2024.</span>
+<span id="cb37-186"><a href="#cb37-186" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-189"><a href="#cb37-189" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb37-190"><a href="#cb37-190" aria-hidden="true" tabindex="-1"></a>last_year <span class="ot">&lt;-</span> <span class="dv">2024</span></span>
+<span id="cb37-191"><a href="#cb37-191" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb37-192"><a href="#cb37-192" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-193"><a href="#cb37-193" aria-hidden="true" tabindex="-1"></a><span class="fu">### Preprocess: from cube to time series</span></span>
+<span id="cb37-194"><a href="#cb37-194" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-195"><a href="#cb37-195" aria-hidden="true" tabindex="-1"></a>For each country, define cells with at least one observation:</span>
+<span id="cb37-196"><a href="#cb37-196" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-199"><a href="#cb37-199" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb37-200"><a href="#cb37-200" aria-hidden="true" tabindex="-1"></a>df_cc <span class="ot">&lt;-</span>   cube <span class="sc">|&gt;</span></span>
+<span id="cb37-201"><a href="#cb37-201" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(specieskey, countrycode) <span class="sc">|&gt;</span></span>
+<span id="cb37-202"><a href="#cb37-202" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">distinct</span>(eeacellcode) <span class="sc">|&gt;</span></span>
+<span id="cb37-203"><a href="#cb37-203" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">ungroup</span>()</span>
+<span id="cb37-204"><a href="#cb37-204" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb37-205"><a href="#cb37-205" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-206"><a href="#cb37-206" aria-hidden="true" tabindex="-1"></a>For each country, identify the first year with at least one observation:</span>
+<span id="cb37-207"><a href="#cb37-207" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-210"><a href="#cb37-210" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb37-211"><a href="#cb37-211" aria-hidden="true" tabindex="-1"></a>df_begin_year <span class="ot">&lt;-</span></span>
+<span id="cb37-212"><a href="#cb37-212" aria-hidden="true" tabindex="-1"></a>  cube <span class="sc">|&gt;</span></span>
+<span id="cb37-213"><a href="#cb37-213" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(specieskey, countrycode) <span class="sc">|&gt;</span></span>
+<span id="cb37-214"><a href="#cb37-214" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">summarize</span>(<span class="at">begin_year =</span> <span class="fu">min</span>(year))</span>
+<span id="cb37-215"><a href="#cb37-215" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb37-216"><a href="#cb37-216" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-217"><a href="#cb37-217" aria-hidden="true" tabindex="-1"></a>For each country, combine <span class="in">`begin_year`</span> and unique <span class="in">`eeacellcode`</span> as found above:</span>
+<span id="cb37-218"><a href="#cb37-218" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-221"><a href="#cb37-221" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb37-222"><a href="#cb37-222" aria-hidden="true" tabindex="-1"></a>df_cc <span class="ot">&lt;-</span>   df_cc <span class="sc">|&gt;</span></span>
+<span id="cb37-223"><a href="#cb37-223" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">left_join</span>(df_begin_year, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"specieskey"</span>, <span class="st">"countrycode"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb37-224"><a href="#cb37-224" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(specieskey, countrycode, begin_year, eeacellcode)</span>
+<span id="cb37-225"><a href="#cb37-225" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb37-226"><a href="#cb37-226" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-227"><a href="#cb37-227" aria-hidden="true" tabindex="-1"></a>Preview:</span>
+<span id="cb37-228"><a href="#cb37-228" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-231"><a href="#cb37-231" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb37-232"><a href="#cb37-232" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_cc)</span>
+<span id="cb37-233"><a href="#cb37-233" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb37-234"><a href="#cb37-234" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-235"><a href="#cb37-235" aria-hidden="true" tabindex="-1"></a>For each cell (<span class="in">`eeacellcode`</span>), country (<span class="in">`countrycode`</span>) and species (<span class="in">`specieskey`</span>) we can now create a time series:</span>
+<span id="cb37-236"><a href="#cb37-236" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-237"><a href="#cb37-237" aria-hidden="true" tabindex="-1"></a><span class="in">```{r Create_timeseries_slots}</span></span>
+<span id="cb37-238"><a href="#cb37-238" aria-hidden="true" tabindex="-1"></a><span class="in"># Define help function</span></span>
+<span id="cb37-239"><a href="#cb37-239" aria-hidden="true" tabindex="-1"></a><span class="in">make_time_series &lt;- function(eeacellcode, countrycode, specieskey, begin_year, last_year) {</span></span>
+<span id="cb37-240"><a href="#cb37-240" aria-hidden="true" tabindex="-1"></a><span class="in">  tidyr::expand_grid(</span></span>
+<span id="cb37-241"><a href="#cb37-241" aria-hidden="true" tabindex="-1"></a><span class="in">    eeacellcode = eeacellcode,</span></span>
+<span id="cb37-242"><a href="#cb37-242" aria-hidden="true" tabindex="-1"></a><span class="in">    countrycode = countrycode,</span></span>
+<span id="cb37-243"><a href="#cb37-243" aria-hidden="true" tabindex="-1"></a><span class="in">    specieskey = specieskey,</span></span>
+<span id="cb37-244"><a href="#cb37-244" aria-hidden="true" tabindex="-1"></a><span class="in">    year = seq(from = begin_year, to = last_year)</span></span>
+<span id="cb37-245"><a href="#cb37-245" aria-hidden="true" tabindex="-1"></a><span class="in">  )</span></span>
+<span id="cb37-246"><a href="#cb37-246" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb37-247"><a href="#cb37-247" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-248"><a href="#cb37-248" aria-hidden="true" tabindex="-1"></a><span class="in"># Create timeseries slots</span></span>
+<span id="cb37-249"><a href="#cb37-249" aria-hidden="true" tabindex="-1"></a><span class="in">df_ts &lt;- purrr::pmap_dfr(df_cc,</span></span>
+<span id="cb37-250"><a href="#cb37-250" aria-hidden="true" tabindex="-1"></a><span class="in">  .f = make_time_series,</span></span>
+<span id="cb37-251"><a href="#cb37-251" aria-hidden="true" tabindex="-1"></a><span class="in">  last_year = last_year</span></span>
+<span id="cb37-252"><a href="#cb37-252" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
+<span id="cb37-253"><a href="#cb37-253" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-254"><a href="#cb37-254" aria-hidden="true" tabindex="-1"></a><span class="in"># Add occurrence data</span></span>
+<span id="cb37-255"><a href="#cb37-255" aria-hidden="true" tabindex="-1"></a><span class="in">df_ts &lt;-</span></span>
+<span id="cb37-256"><a href="#cb37-256" aria-hidden="true" tabindex="-1"></a><span class="in">  df_ts |&gt;</span></span>
+<span id="cb37-257"><a href="#cb37-257" aria-hidden="true" tabindex="-1"></a><span class="in">  dplyr::left_join(</span></span>
+<span id="cb37-258"><a href="#cb37-258" aria-hidden="true" tabindex="-1"></a><span class="in">    cube |&gt; dplyr::select(</span></span>
+<span id="cb37-259"><a href="#cb37-259" aria-hidden="true" tabindex="-1"></a><span class="in">      specieskey,</span></span>
+<span id="cb37-260"><a href="#cb37-260" aria-hidden="true" tabindex="-1"></a><span class="in">      countrycode,</span></span>
+<span id="cb37-261"><a href="#cb37-261" aria-hidden="true" tabindex="-1"></a><span class="in">      year,</span></span>
+<span id="cb37-262"><a href="#cb37-262" aria-hidden="true" tabindex="-1"></a><span class="in">      eeacellcode,</span></span>
+<span id="cb37-263"><a href="#cb37-263" aria-hidden="true" tabindex="-1"></a><span class="in">      occurrences</span></span>
+<span id="cb37-264"><a href="#cb37-264" aria-hidden="true" tabindex="-1"></a><span class="in">    ),</span></span>
+<span id="cb37-265"><a href="#cb37-265" aria-hidden="true" tabindex="-1"></a><span class="in">    by = c("specieskey", "countrycode", "year", "eeacellcode")</span></span>
+<span id="cb37-266"><a href="#cb37-266" aria-hidden="true" tabindex="-1"></a><span class="in">  )</span></span>
+<span id="cb37-267"><a href="#cb37-267" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-268"><a href="#cb37-268" aria-hidden="true" tabindex="-1"></a><span class="in"># Replace NAs with 0</span></span>
+<span id="cb37-269"><a href="#cb37-269" aria-hidden="true" tabindex="-1"></a><span class="in">df_ts &lt;-</span></span>
+<span id="cb37-270"><a href="#cb37-270" aria-hidden="true" tabindex="-1"></a><span class="in">  df_ts |&gt;</span></span>
+<span id="cb37-271"><a href="#cb37-271" aria-hidden="true" tabindex="-1"></a><span class="in">  tidyr::replace_na(list(occurrences = 0))</span></span>
+<span id="cb37-272"><a href="#cb37-272" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb37-273"><a href="#cb37-273" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-274"><a href="#cb37-274" aria-hidden="true" tabindex="-1"></a>Add column for presence (1) or absence (0):</span>
+<span id="cb37-275"><a href="#cb37-275" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-276"><a href="#cb37-276" aria-hidden="true" tabindex="-1"></a><span class="in">```{r presence_absence}</span></span>
+<span id="cb37-277"><a href="#cb37-277" aria-hidden="true" tabindex="-1"></a><span class="in">df_ts &lt;-</span></span>
+<span id="cb37-278"><a href="#cb37-278" aria-hidden="true" tabindex="-1"></a><span class="in">  df_ts |&gt;</span></span>
+<span id="cb37-279"><a href="#cb37-279" aria-hidden="true" tabindex="-1"></a><span class="in">  dplyr::mutate(</span></span>
+<span id="cb37-280"><a href="#cb37-280" aria-hidden="true" tabindex="-1"></a><span class="in">    ispresent = dplyr::if_else(occurrences &gt; 0, 1, 0)</span></span>
+<span id="cb37-281"><a href="#cb37-281" aria-hidden="true" tabindex="-1"></a><span class="in">  )</span></span>
+<span id="cb37-282"><a href="#cb37-282" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb37-283"><a href="#cb37-283" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-284"><a href="#cb37-284" aria-hidden="true" tabindex="-1"></a>Save the time series at country level as an interim output, <span class="in">`time_series.tsv`</span> in directory <span class="in">`data/interim`</span>:</span>
+<span id="cb37-285"><a href="#cb37-285" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-286"><a href="#cb37-286" aria-hidden="true" tabindex="-1"></a><span class="in">```{r save-time-series}</span></span>
+<span id="cb37-287"><a href="#cb37-287" aria-hidden="true" tabindex="-1"></a><span class="in">readr::write_tsv(</span></span>
+<span id="cb37-288"><a href="#cb37-288" aria-hidden="true" tabindex="-1"></a><span class="in">  df_ts,</span></span>
+<span id="cb37-289"><a href="#cb37-289" aria-hidden="true" tabindex="-1"></a><span class="in">  here::here("data", "interim", "time_series.tsv"),</span></span>
+<span id="cb37-290"><a href="#cb37-290" aria-hidden="true" tabindex="-1"></a><span class="in">  na = ""</span></span>
+<span id="cb37-291"><a href="#cb37-291" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
+<span id="cb37-292"><a href="#cb37-292" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb37-293"><a href="#cb37-293" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-294"><a href="#cb37-294" aria-hidden="true" tabindex="-1"></a><span class="fu">### Apply GAM</span></span>
+<span id="cb37-295"><a href="#cb37-295" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-296"><a href="#cb37-296" aria-hidden="true" tabindex="-1"></a>We are now ready to apply a Generalized Additive Model (GAM) to assess the emerging status of raccoon.</span>
+<span id="cb37-297"><a href="#cb37-297" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-300"><a href="#cb37-300" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb37-301"><a href="#cb37-301" aria-hidden="true" tabindex="-1"></a>eval_year <span class="ot">&lt;-</span> <span class="dv">2024</span></span>
+<span id="cb37-302"><a href="#cb37-302" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb37-303"><a href="#cb37-303" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-304"><a href="#cb37-304" aria-hidden="true" tabindex="-1"></a>Let's compact the time series:</span>
+<span id="cb37-305"><a href="#cb37-305" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-308"><a href="#cb37-308" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb37-309"><a href="#cb37-309" aria-hidden="true" tabindex="-1"></a>compact_df_ts <span class="ot">&lt;-</span> df_ts <span class="sc">|&gt;</span></span>
+<span id="cb37-310"><a href="#cb37-310" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">group_by</span>(specieskey, countrycode, year) <span class="sc">|&gt;</span></span>
+<span id="cb37-311"><a href="#cb37-311" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">summarise</span>(</span>
+<span id="cb37-312"><a href="#cb37-312" aria-hidden="true" tabindex="-1"></a>      <span class="at">occs =</span> <span class="fu">sum</span>(occurrences),</span>
+<span id="cb37-313"><a href="#cb37-313" aria-hidden="true" tabindex="-1"></a>      <span class="at">ncells =</span> <span class="fu">sum</span>(ispresent),</span>
+<span id="cb37-314"><a href="#cb37-314" aria-hidden="true" tabindex="-1"></a>      <span class="at">.groups =</span> <span class="st">"drop"</span>)</span>
+<span id="cb37-315"><a href="#cb37-315" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb37-316"><a href="#cb37-316" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-317"><a href="#cb37-317" aria-hidden="true" tabindex="-1"></a>All plots will be saved in subdirectories of <span class="in">`./data/output/GAM_outputs`</span>:</span>
+<span id="cb37-318"><a href="#cb37-318" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-319"><a href="#cb37-319" aria-hidden="true" tabindex="-1"></a><span class="in">```{r root-output-gam}</span></span>
+<span id="cb37-320"><a href="#cb37-320" aria-hidden="true" tabindex="-1"></a><span class="in">dir_name_basic &lt;- here::here("data", "output", "GAM_outputs")</span></span>
+<span id="cb37-321"><a href="#cb37-321" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb37-322"><a href="#cb37-322" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-323"><a href="#cb37-323" aria-hidden="true" tabindex="-1"></a>We also define the plot dimensions in pixels:</span>
+<span id="cb37-324"><a href="#cb37-324" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-325"><a href="#cb37-325" aria-hidden="true" tabindex="-1"></a><span class="in">```{r dims-plot}</span></span>
+<span id="cb37-326"><a href="#cb37-326" aria-hidden="true" tabindex="-1"></a><span class="in">plot_dimensions &lt;- list(width = 2800, height = 1500)</span></span>
+<span id="cb37-327"><a href="#cb37-327" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb37-328"><a href="#cb37-328" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-329"><a href="#cb37-329" aria-hidden="true" tabindex="-1"></a>We apply GAM for each country for the number of occurrences:</span>
+<span id="cb37-330"><a href="#cb37-330" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-331"><a href="#cb37-331" aria-hidden="true" tabindex="-1"></a><span class="in">```{r run-gam-occs}</span></span>
+<span id="cb37-332"><a href="#cb37-332" aria-hidden="true" tabindex="-1"></a><span class="in">gam_occs &lt;- purrr::map(</span></span>
+<span id="cb37-333"><a href="#cb37-333" aria-hidden="true" tabindex="-1"></a><span class="in">  countrycode,</span></span>
+<span id="cb37-334"><a href="#cb37-334" aria-hidden="true" tabindex="-1"></a><span class="in">  function(code) {</span></span>
+<span id="cb37-335"><a href="#cb37-335" aria-hidden="true" tabindex="-1"></a><span class="in">    gam_occs_per_country &lt;- purrr::map2(</span></span>
+<span id="cb37-336"><a href="#cb37-336" aria-hidden="true" tabindex="-1"></a><span class="in">      species$specieskey, species$canonical_name,</span></span>
+<span id="cb37-337"><a href="#cb37-337" aria-hidden="true" tabindex="-1"></a><span class="in">      function(t, n) {</span></span>
+<span id="cb37-338"><a href="#cb37-338" aria-hidden="true" tabindex="-1"></a><span class="in">        df_key &lt;- compact_df_ts |&gt;</span></span>
+<span id="cb37-339"><a href="#cb37-339" aria-hidden="true" tabindex="-1"></a><span class="in">          dplyr::filter(specieskey == t, countrycode == code)</span></span>
+<span id="cb37-340"><a href="#cb37-340" aria-hidden="true" tabindex="-1"></a><span class="in">        trias::apply_gam(</span></span>
+<span id="cb37-341"><a href="#cb37-341" aria-hidden="true" tabindex="-1"></a><span class="in">          df = df_key,</span></span>
+<span id="cb37-342"><a href="#cb37-342" aria-hidden="true" tabindex="-1"></a><span class="in">          y_var = "occs",</span></span>
+<span id="cb37-343"><a href="#cb37-343" aria-hidden="true" tabindex="-1"></a><span class="in">          taxonKey = "specieskey",</span></span>
+<span id="cb37-344"><a href="#cb37-344" aria-hidden="true" tabindex="-1"></a><span class="in">          eval_years = 2024,</span></span>
+<span id="cb37-345"><a href="#cb37-345" aria-hidden="true" tabindex="-1"></a><span class="in">          type_indicator = "observations",</span></span>
+<span id="cb37-346"><a href="#cb37-346" aria-hidden="true" tabindex="-1"></a><span class="in">          taxon_key = t,</span></span>
+<span id="cb37-347"><a href="#cb37-347" aria-hidden="true" tabindex="-1"></a><span class="in">          name = n,</span></span>
+<span id="cb37-348"><a href="#cb37-348" aria-hidden="true" tabindex="-1"></a><span class="in">          df_title = code,</span></span>
+<span id="cb37-349"><a href="#cb37-349" aria-hidden="true" tabindex="-1"></a><span class="in">          dir_name = paste0(dir_name_basic, "/long_titles"),</span></span>
+<span id="cb37-350"><a href="#cb37-350" aria-hidden="true" tabindex="-1"></a><span class="in">          y_label = "number of observations",</span></span>
+<span id="cb37-351"><a href="#cb37-351" aria-hidden="true" tabindex="-1"></a><span class="in">          saveplot = TRUE,</span></span>
+<span id="cb37-352"><a href="#cb37-352" aria-hidden="true" tabindex="-1"></a><span class="in">          width = plot_dimensions$width,</span></span>
+<span id="cb37-353"><a href="#cb37-353" aria-hidden="true" tabindex="-1"></a><span class="in">          height = plot_dimensions$height</span></span>
+<span id="cb37-354"><a href="#cb37-354" aria-hidden="true" tabindex="-1"></a><span class="in">        )</span></span>
+<span id="cb37-355"><a href="#cb37-355" aria-hidden="true" tabindex="-1"></a><span class="in">      })</span></span>
+<span id="cb37-356"><a href="#cb37-356" aria-hidden="true" tabindex="-1"></a><span class="in">    names(gam_occs_per_country) &lt;- species$canonical_name</span></span>
+<span id="cb37-357"><a href="#cb37-357" aria-hidden="true" tabindex="-1"></a><span class="in">    gam_occs_per_country</span></span>
+<span id="cb37-358"><a href="#cb37-358" aria-hidden="true" tabindex="-1"></a><span class="in">  }</span></span>
+<span id="cb37-359"><a href="#cb37-359" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
+<span id="cb37-360"><a href="#cb37-360" aria-hidden="true" tabindex="-1"></a><span class="in">names(gam_occs) &lt;- countrycode</span></span>
+<span id="cb37-361"><a href="#cb37-361" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb37-362"><a href="#cb37-362" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-363"><a href="#cb37-363" aria-hidden="true" tabindex="-1"></a>And the number of occupied cells, or **measured occupancy**:</span>
+<span id="cb37-364"><a href="#cb37-364" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-365"><a href="#cb37-365" aria-hidden="true" tabindex="-1"></a><span class="in">```{r run-gam-ncells}</span></span>
+<span id="cb37-366"><a href="#cb37-366" aria-hidden="true" tabindex="-1"></a><span class="in">gam_ncells &lt;- purrr::map(</span></span>
+<span id="cb37-367"><a href="#cb37-367" aria-hidden="true" tabindex="-1"></a><span class="in">  countrycode,</span></span>
+<span id="cb37-368"><a href="#cb37-368" aria-hidden="true" tabindex="-1"></a><span class="in">  function(code) {</span></span>
+<span id="cb37-369"><a href="#cb37-369" aria-hidden="true" tabindex="-1"></a><span class="in">    gam_ncells_per_country &lt;- purrr::map2(</span></span>
+<span id="cb37-370"><a href="#cb37-370" aria-hidden="true" tabindex="-1"></a><span class="in">      species$specieskey, species$canonical_name,</span></span>
+<span id="cb37-371"><a href="#cb37-371" aria-hidden="true" tabindex="-1"></a><span class="in">      function(t, n) {</span></span>
+<span id="cb37-372"><a href="#cb37-372" aria-hidden="true" tabindex="-1"></a><span class="in">        df_key &lt;- compact_df_ts |&gt;</span></span>
+<span id="cb37-373"><a href="#cb37-373" aria-hidden="true" tabindex="-1"></a><span class="in">          dplyr::filter(specieskey == t, countrycode == code)</span></span>
+<span id="cb37-374"><a href="#cb37-374" aria-hidden="true" tabindex="-1"></a><span class="in">        trias::apply_gam(</span></span>
+<span id="cb37-375"><a href="#cb37-375" aria-hidden="true" tabindex="-1"></a><span class="in">          df = df_key,</span></span>
+<span id="cb37-376"><a href="#cb37-376" aria-hidden="true" tabindex="-1"></a><span class="in">          y_var = "ncells",</span></span>
+<span id="cb37-377"><a href="#cb37-377" aria-hidden="true" tabindex="-1"></a><span class="in">          taxonKey = "specieskey",</span></span>
+<span id="cb37-378"><a href="#cb37-378" aria-hidden="true" tabindex="-1"></a><span class="in">          eval_years = 2024,</span></span>
+<span id="cb37-379"><a href="#cb37-379" aria-hidden="true" tabindex="-1"></a><span class="in">          type_indicator = "occupancy",</span></span>
+<span id="cb37-380"><a href="#cb37-380" aria-hidden="true" tabindex="-1"></a><span class="in">          taxon_key = t,</span></span>
+<span id="cb37-381"><a href="#cb37-381" aria-hidden="true" tabindex="-1"></a><span class="in">          name = n,</span></span>
+<span id="cb37-382"><a href="#cb37-382" aria-hidden="true" tabindex="-1"></a><span class="in">          df_title = code,</span></span>
+<span id="cb37-383"><a href="#cb37-383" aria-hidden="true" tabindex="-1"></a><span class="in">          dir_name = paste0(dir_name_basic, "/long_titles"),</span></span>
+<span id="cb37-384"><a href="#cb37-384" aria-hidden="true" tabindex="-1"></a><span class="in">          y_label = "number of occupied cells",</span></span>
+<span id="cb37-385"><a href="#cb37-385" aria-hidden="true" tabindex="-1"></a><span class="in">          saveplot = TRUE,</span></span>
+<span id="cb37-386"><a href="#cb37-386" aria-hidden="true" tabindex="-1"></a><span class="in">          width = plot_dimensions$width,</span></span>
+<span id="cb37-387"><a href="#cb37-387" aria-hidden="true" tabindex="-1"></a><span class="in">          height = plot_dimensions$height</span></span>
+<span id="cb37-388"><a href="#cb37-388" aria-hidden="true" tabindex="-1"></a><span class="in">        )</span></span>
+<span id="cb37-389"><a href="#cb37-389" aria-hidden="true" tabindex="-1"></a><span class="in">      })</span></span>
+<span id="cb37-390"><a href="#cb37-390" aria-hidden="true" tabindex="-1"></a><span class="in">    names(gam_ncells_per_country) &lt;- species$canonical_name</span></span>
+<span id="cb37-391"><a href="#cb37-391" aria-hidden="true" tabindex="-1"></a><span class="in">    gam_ncells_per_country</span></span>
+<span id="cb37-392"><a href="#cb37-392" aria-hidden="true" tabindex="-1"></a><span class="in">  }</span></span>
+<span id="cb37-393"><a href="#cb37-393" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
+<span id="cb37-394"><a href="#cb37-394" aria-hidden="true" tabindex="-1"></a><span class="in">names(gam_ncells) &lt;- countrycode</span></span>
+<span id="cb37-395"><a href="#cb37-395" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb37-396"><a href="#cb37-396" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-397"><a href="#cb37-397" aria-hidden="true" tabindex="-1"></a><span class="fu">## Plots</span></span>
+<span id="cb37-398"><a href="#cb37-398" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-399"><a href="#cb37-399" aria-hidden="true" tabindex="-1"></a>Please go to <span class="co">[</span><span class="ot">`./data/output/GAM_outputs`</span><span class="co">](https://github.com/b-cubed-eu/euroraccoon/tree/main/data/output/GAM_outputs)</span> to download the plots shown in this section.</span>
+<span id="cb37-400"><a href="#cb37-400" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-401"><a href="#cb37-401" aria-hidden="true" tabindex="-1"></a><span class="fu">### Standard plots</span></span>
+<span id="cb37-402"><a href="#cb37-402" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-403"><a href="#cb37-403" aria-hidden="true" tabindex="-1"></a>In this section we show the plots as returned by <span class="in">`apply_gam()`</span>. Plot titles could be quite long. Folder: <span class="co">[</span><span class="ot">`./data/output/GAM_outputs/long_titles`</span><span class="co">](https://github.com/b-cubed-eu/euroraccoon/tree/main/data/output/GAM_outputs/long_titles)</span>.</span>
+<span id="cb37-404"><a href="#cb37-404" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-405"><a href="#cb37-405" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Occurrences</span></span>
+<span id="cb37-406"><a href="#cb37-406" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-407"><a href="#cb37-407" aria-hidden="true" tabindex="-1"></a><span class="in">```{r occs-plots}</span></span>
+<span id="cb37-408"><a href="#cb37-408" aria-hidden="true" tabindex="-1"></a><span class="in">purrr::walk(gam_occs, function(country) {</span></span>
+<span id="cb37-409"><a href="#cb37-409" aria-hidden="true" tabindex="-1"></a><span class="in">  purrr::walk(country, function(x) print(x$plot))</span></span>
+<span id="cb37-410"><a href="#cb37-410" aria-hidden="true" tabindex="-1"></a><span class="in">  }</span></span>
+<span id="cb37-411"><a href="#cb37-411" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
+<span id="cb37-412"><a href="#cb37-412" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb37-413"><a href="#cb37-413" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-414"><a href="#cb37-414" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Measured occupancy</span></span>
+<span id="cb37-415"><a href="#cb37-415" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-416"><a href="#cb37-416" aria-hidden="true" tabindex="-1"></a><span class="in">```{r n_cells-plots}</span></span>
+<span id="cb37-417"><a href="#cb37-417" aria-hidden="true" tabindex="-1"></a><span class="in">purrr::walk(gam_ncells, function(country) {</span></span>
+<span id="cb37-418"><a href="#cb37-418" aria-hidden="true" tabindex="-1"></a><span class="in">  purrr::walk(country, function(x) print(x$plot))</span></span>
+<span id="cb37-419"><a href="#cb37-419" aria-hidden="true" tabindex="-1"></a><span class="in">  }</span></span>
+<span id="cb37-420"><a href="#cb37-420" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
+<span id="cb37-421"><a href="#cb37-421" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb37-422"><a href="#cb37-422" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-423"><a href="#cb37-423" aria-hidden="true" tabindex="-1"></a><span class="fu">### Short titles</span></span>
+<span id="cb37-424"><a href="#cb37-424" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-425"><a href="#cb37-425" aria-hidden="true" tabindex="-1"></a>We show and save plots with the species only as title. We save them in sub folder <span class="co">[</span><span class="ot">`./data/output/GAM_outputs/short_title`</span><span class="co">](https://github.com/b-cubed-eu/euroraccoon/tree/main/data/output/GAM_outputs/short_title)</span>.</span>
+<span id="cb37-426"><a href="#cb37-426" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-427"><a href="#cb37-427" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Occurrences</span></span>
+<span id="cb37-428"><a href="#cb37-428" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-429"><a href="#cb37-429" aria-hidden="true" tabindex="-1"></a><span class="in">```{r remove_titles_occs}</span></span>
+<span id="cb37-430"><a href="#cb37-430" aria-hidden="true" tabindex="-1"></a><span class="in">purrr::iwalk(gam_occs, function(x, country) {</span></span>
+<span id="cb37-431"><a href="#cb37-431" aria-hidden="true" tabindex="-1"></a><span class="in">  purrr::iwalk(x, function(y, sp) {</span></span>
+<span id="cb37-432"><a href="#cb37-432" aria-hidden="true" tabindex="-1"></a><span class="in">    y$plot &lt;- y$plot + ggplot2::ggtitle(label = paste(sp, "-", country))</span></span>
+<span id="cb37-433"><a href="#cb37-433" aria-hidden="true" tabindex="-1"></a><span class="in">    ggplot2::ggsave(</span></span>
+<span id="cb37-434"><a href="#cb37-434" aria-hidden="true" tabindex="-1"></a><span class="in">      filename = here::here(</span></span>
+<span id="cb37-435"><a href="#cb37-435" aria-hidden="true" tabindex="-1"></a><span class="in">        "data",</span></span>
+<span id="cb37-436"><a href="#cb37-436" aria-hidden="true" tabindex="-1"></a><span class="in">        "output",</span></span>
+<span id="cb37-437"><a href="#cb37-437" aria-hidden="true" tabindex="-1"></a><span class="in">        "GAM_outputs",</span></span>
+<span id="cb37-438"><a href="#cb37-438" aria-hidden="true" tabindex="-1"></a><span class="in">        "short_title",</span></span>
+<span id="cb37-439"><a href="#cb37-439" aria-hidden="true" tabindex="-1"></a><span class="in">        paste0("occurrences_", sp, "_", country, ".png")),</span></span>
+<span id="cb37-440"><a href="#cb37-440" aria-hidden="true" tabindex="-1"></a><span class="in">      plot = y$plot,</span></span>
+<span id="cb37-441"><a href="#cb37-441" aria-hidden="true" tabindex="-1"></a><span class="in">      width = plot_dimensions$width,</span></span>
+<span id="cb37-442"><a href="#cb37-442" aria-hidden="true" tabindex="-1"></a><span class="in">      height = plot_dimensions$height,</span></span>
+<span id="cb37-443"><a href="#cb37-443" aria-hidden="true" tabindex="-1"></a><span class="in">      units = "px"</span></span>
+<span id="cb37-444"><a href="#cb37-444" aria-hidden="true" tabindex="-1"></a><span class="in">    )</span></span>
+<span id="cb37-445"><a href="#cb37-445" aria-hidden="true" tabindex="-1"></a><span class="in">    print(y$plot)</span></span>
+<span id="cb37-446"><a href="#cb37-446" aria-hidden="true" tabindex="-1"></a><span class="in">  })</span></span>
+<span id="cb37-447"><a href="#cb37-447" aria-hidden="true" tabindex="-1"></a><span class="in">})</span></span>
+<span id="cb37-448"><a href="#cb37-448" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb37-449"><a href="#cb37-449" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-450"><a href="#cb37-450" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Occupancy</span></span>
+<span id="cb37-451"><a href="#cb37-451" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-452"><a href="#cb37-452" aria-hidden="true" tabindex="-1"></a>We do the same for the measured occupancy (number of occupied grid cells).</span>
+<span id="cb37-453"><a href="#cb37-453" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-454"><a href="#cb37-454" aria-hidden="true" tabindex="-1"></a><span class="in">```{r remove_titles_ncells}}</span></span>
+<span id="cb37-455"><a href="#cb37-455" aria-hidden="true" tabindex="-1"></a><span class="in">purrr::iwalk(gam_ncells, function(x, country) {</span></span>
+<span id="cb37-456"><a href="#cb37-456" aria-hidden="true" tabindex="-1"></a><span class="in">  purrr::iwalk(x, function(y, sp) {</span></span>
+<span id="cb37-457"><a href="#cb37-457" aria-hidden="true" tabindex="-1"></a><span class="in">    y$plot &lt;- y$plot + ggplot2::ggtitle(label = paste(sp, "-", country))</span></span>
+<span id="cb37-458"><a href="#cb37-458" aria-hidden="true" tabindex="-1"></a><span class="in">    ggplot2::ggsave(</span></span>
+<span id="cb37-459"><a href="#cb37-459" aria-hidden="true" tabindex="-1"></a><span class="in">      filename = here::here(</span></span>
+<span id="cb37-460"><a href="#cb37-460" aria-hidden="true" tabindex="-1"></a><span class="in">        "data",</span></span>
+<span id="cb37-461"><a href="#cb37-461" aria-hidden="true" tabindex="-1"></a><span class="in">        "output",</span></span>
+<span id="cb37-462"><a href="#cb37-462" aria-hidden="true" tabindex="-1"></a><span class="in">        "GAM_outputs",</span></span>
+<span id="cb37-463"><a href="#cb37-463" aria-hidden="true" tabindex="-1"></a><span class="in">        "short_title",</span></span>
+<span id="cb37-464"><a href="#cb37-464" aria-hidden="true" tabindex="-1"></a><span class="in">        paste0("occupancy_", sp, "_", country, ".png")),</span></span>
+<span id="cb37-465"><a href="#cb37-465" aria-hidden="true" tabindex="-1"></a><span class="in">      plot = y$plot,</span></span>
+<span id="cb37-466"><a href="#cb37-466" aria-hidden="true" tabindex="-1"></a><span class="in">      width = plot_dimensions$width,</span></span>
+<span id="cb37-467"><a href="#cb37-467" aria-hidden="true" tabindex="-1"></a><span class="in">      height = plot_dimensions$height,</span></span>
+<span id="cb37-468"><a href="#cb37-468" aria-hidden="true" tabindex="-1"></a><span class="in">      units = "px"</span></span>
+<span id="cb37-469"><a href="#cb37-469" aria-hidden="true" tabindex="-1"></a><span class="in">    )</span></span>
+<span id="cb37-470"><a href="#cb37-470" aria-hidden="true" tabindex="-1"></a><span class="in">    print(y$plot)</span></span>
+<span id="cb37-471"><a href="#cb37-471" aria-hidden="true" tabindex="-1"></a><span class="in">  })</span></span>
+<span id="cb37-472"><a href="#cb37-472" aria-hidden="true" tabindex="-1"></a><span class="in">})</span></span>
+<span id="cb37-473"><a href="#cb37-473" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb37-474"><a href="#cb37-474" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-475"><a href="#cb37-475" aria-hidden="true" tabindex="-1"></a><span class="fu">### Grid</span></span>
+<span id="cb37-476"><a href="#cb37-476" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-477"><a href="#cb37-477" aria-hidden="true" tabindex="-1"></a>For each country, we can show the plots of the number of occurrences and the measured occupancy next to each other. We use the full country name. Plots are saved in subfolder <span class="co">[</span><span class="ot">`./data/output/GAM_outputs/plots_for_countries`</span><span class="co">](https://github.com/b-cubed-eu/euroraccoon/tree/main/data/output/GAM_outputs/plots_for_countries)</span>.</span>
+<span id="cb37-478"><a href="#cb37-478" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-479"><a href="#cb37-479" aria-hidden="true" tabindex="-1"></a><span class="in">```{r grid_per_country}</span></span>
+<span id="cb37-480"><a href="#cb37-480" aria-hidden="true" tabindex="-1"></a><span class="in"># Transform gam_occs and gam_ncells into a list of lists </span></span>
+<span id="cb37-481"><a href="#cb37-481" aria-hidden="true" tabindex="-1"></a><span class="in">gam_countries &lt;- purrr::map(</span></span>
+<span id="cb37-482"><a href="#cb37-482" aria-hidden="true" tabindex="-1"></a><span class="in">  countrycode,</span></span>
+<span id="cb37-483"><a href="#cb37-483" aria-hidden="true" tabindex="-1"></a><span class="in">  function(code) {</span></span>
+<span id="cb37-484"><a href="#cb37-484" aria-hidden="true" tabindex="-1"></a><span class="in">    purrr::map2(</span></span>
+<span id="cb37-485"><a href="#cb37-485" aria-hidden="true" tabindex="-1"></a><span class="in">      gam_occs[[code]],</span></span>
+<span id="cb37-486"><a href="#cb37-486" aria-hidden="true" tabindex="-1"></a><span class="in">      gam_ncells[[code]],</span></span>
+<span id="cb37-487"><a href="#cb37-487" aria-hidden="true" tabindex="-1"></a><span class="in">      function(x, y) list(occurrences = x, ncells = y)</span></span>
+<span id="cb37-488"><a href="#cb37-488" aria-hidden="true" tabindex="-1"></a><span class="in">    )</span></span>
+<span id="cb37-489"><a href="#cb37-489" aria-hidden="true" tabindex="-1"></a><span class="in">  }</span></span>
+<span id="cb37-490"><a href="#cb37-490" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
+<span id="cb37-491"><a href="#cb37-491" aria-hidden="true" tabindex="-1"></a><span class="in">names(gam_countries) &lt;- countrycode</span></span>
+<span id="cb37-492"><a href="#cb37-492" aria-hidden="true" tabindex="-1"></a><span class="in"># Create a grid of plots for each country</span></span>
+<span id="cb37-493"><a href="#cb37-493" aria-hidden="true" tabindex="-1"></a><span class="in">purrr::walk2(</span></span>
+<span id="cb37-494"><a href="#cb37-494" aria-hidden="true" tabindex="-1"></a><span class="in">  gam_countries,</span></span>
+<span id="cb37-495"><a href="#cb37-495" aria-hidden="true" tabindex="-1"></a><span class="in">  countrycode,</span></span>
+<span id="cb37-496"><a href="#cb37-496" aria-hidden="true" tabindex="-1"></a><span class="in">  function(country, code) {</span></span>
+<span id="cb37-497"><a href="#cb37-497" aria-hidden="true" tabindex="-1"></a><span class="in">    purrr::walk(country, function(x) {</span></span>
+<span id="cb37-498"><a href="#cb37-498" aria-hidden="true" tabindex="-1"></a><span class="in">      # Remove title</span></span>
+<span id="cb37-499"><a href="#cb37-499" aria-hidden="true" tabindex="-1"></a><span class="in">      x$occurrences$plot &lt;- x$occurrences$plot + ggplot2::ggtitle(NULL)</span></span>
+<span id="cb37-500"><a href="#cb37-500" aria-hidden="true" tabindex="-1"></a><span class="in">      x$ncells$plot &lt;- x$ncells$plot + ggplot2::ggtitle(NULL)</span></span>
+<span id="cb37-501"><a href="#cb37-501" aria-hidden="true" tabindex="-1"></a><span class="in">      p &lt;- patchwork::wrap_plots(x$occurrences$plot,</span></span>
+<span id="cb37-502"><a href="#cb37-502" aria-hidden="true" tabindex="-1"></a><span class="in">                                 x$ncells$plot,</span></span>
+<span id="cb37-503"><a href="#cb37-503" aria-hidden="true" tabindex="-1"></a><span class="in">                                 nrow = 1,</span></span>
+<span id="cb37-504"><a href="#cb37-504" aria-hidden="true" tabindex="-1"></a><span class="in">                                 ncol = 2) +</span></span>
+<span id="cb37-505"><a href="#cb37-505" aria-hidden="true" tabindex="-1"></a><span class="in">        # Unify legends</span></span>
+<span id="cb37-506"><a href="#cb37-506" aria-hidden="true" tabindex="-1"></a><span class="in">        patchwork::plot_layout(guides = 'collect') + </span></span>
+<span id="cb37-507"><a href="#cb37-507" aria-hidden="true" tabindex="-1"></a><span class="in">        # Add general title</span></span>
+<span id="cb37-508"><a href="#cb37-508" aria-hidden="true" tabindex="-1"></a><span class="in">        patchwork::plot_annotation(</span></span>
+<span id="cb37-509"><a href="#cb37-509" aria-hidden="true" tabindex="-1"></a><span class="in">          title = countries$country_name[countries$countrycode == code]</span></span>
+<span id="cb37-510"><a href="#cb37-510" aria-hidden="true" tabindex="-1"></a><span class="in">        )</span></span>
+<span id="cb37-511"><a href="#cb37-511" aria-hidden="true" tabindex="-1"></a><span class="in">      ggplot2::ggsave(</span></span>
+<span id="cb37-512"><a href="#cb37-512" aria-hidden="true" tabindex="-1"></a><span class="in">        filename = here::here(</span></span>
+<span id="cb37-513"><a href="#cb37-513" aria-hidden="true" tabindex="-1"></a><span class="in">          "data",</span></span>
+<span id="cb37-514"><a href="#cb37-514" aria-hidden="true" tabindex="-1"></a><span class="in">          "output",</span></span>
+<span id="cb37-515"><a href="#cb37-515" aria-hidden="true" tabindex="-1"></a><span class="in">          "GAM_outputs",</span></span>
+<span id="cb37-516"><a href="#cb37-516" aria-hidden="true" tabindex="-1"></a><span class="in">          "plots_for_countries",</span></span>
+<span id="cb37-517"><a href="#cb37-517" aria-hidden="true" tabindex="-1"></a><span class="in">          paste0(code, "_grid.png")),</span></span>
+<span id="cb37-518"><a href="#cb37-518" aria-hidden="true" tabindex="-1"></a><span class="in">        plot = p,</span></span>
+<span id="cb37-519"><a href="#cb37-519" aria-hidden="true" tabindex="-1"></a><span class="in">        width = plot_dimensions$width,</span></span>
+<span id="cb37-520"><a href="#cb37-520" aria-hidden="true" tabindex="-1"></a><span class="in">        height = plot_dimensions$height,</span></span>
+<span id="cb37-521"><a href="#cb37-521" aria-hidden="true" tabindex="-1"></a><span class="in">        units = "px"</span></span>
+<span id="cb37-522"><a href="#cb37-522" aria-hidden="true" tabindex="-1"></a><span class="in">      )</span></span>
+<span id="cb37-523"><a href="#cb37-523" aria-hidden="true" tabindex="-1"></a><span class="in">      print(p)</span></span>
+<span id="cb37-524"><a href="#cb37-524" aria-hidden="true" tabindex="-1"></a><span class="in">    })</span></span>
+<span id="cb37-525"><a href="#cb37-525" aria-hidden="true" tabindex="-1"></a><span class="in">  }</span></span>
+<span id="cb37-526"><a href="#cb37-526" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
+<span id="cb37-527"><a href="#cb37-527" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+</code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
 </div> <!-- /content -->
 
 

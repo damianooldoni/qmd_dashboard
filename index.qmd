@@ -1,0 +1,12 @@
+---
+title: "Home"
+format: html
+editor: visual
+---
+
+# Emergency trends indicators of raccoon in Europe
+
+This is the homepage of the project. Here you can find the following sections:
+
+- **Dashboard**: show emergency trend indicators based on number of observations and measured occupancy, i.e. the number of 1x1km grid cells with one or more observations.
+- **About Data**: the workflow in R to calculate the emergency indicators.

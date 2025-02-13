@@ -1,26 +1,509 @@
 ---
-title: "About the Data"
-author: "Damiano Oldoni"
-format: html
+title: "Emerging trend indicators of raccoon in Europe"
+format:
+  html:
+    df-print: paged
+    toc: true
+    toc-float: true
+    toc-depth: 4
+    number-sections: true
+    code-fold: true
+    code-tools: true
+execute:
+  eval: true
+  echo: true
+  warning: true
+  error: false
+  include: true
+from: markdown+emoji
 ---
 
-## Quarto
+## Introduction
 
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+This document shows how using GBIF species occurrence cubes to assess the emerging status of raccoon ([_Procyon lotor_](https://www.gbif.org/species/5218786)) in Europe and in European countries. This workflow is strongly based on the [**occurrence TrIAS indicators**](https://github.com/trias-project/indicators) and can be extended to other (invasive alien) species.
 
-## Running Code
+### Setup
 
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+First, list and load the needed packages.
 
-```{r}
-1 + 1
+```{r pkgs, message=FALSE, warning=FALSE}
+library(readr)
+library(here)
+library(dplyr)
+library(patchwork)
+library(tidyr)
+library(purrr)
+library(tibble)
+library(trias)
+library(countrycode)
 ```
 
-You can add options to executable code like this
+## Scope
 
-```{r}
-#| echo: false
-2 * 2
+### Taxonomic scope
+
+The species of interest is the raccoon (*Procyon lotor (Linnaeus, 1758)*, GBIF Key: [5218786](https://www.gbif.org/species/5218786)). This workflow can easily be extended to other species.
+
+```{r define-species-of-interest}
+species <- tibble::tibble(
+  specieskey = c(5218786),
+  canonical_name = c("Procyon lotor")
+)
 ```
 
-The `echo: false` option disables the printing of code (only output is displayed).
+### Spatial scope
+
+We are interested over the emerging status of the four species in the **European countries** and all **Europe**.
+
+### Temporal scope
+
+We request a species occurrence cube based on data from **1950**.
+
+## Species occurrence cube
+
+We triggered a GBIF occurrence cube via the [Occurrence SQL Download API](https://techdocs.gbif.org/en/data-use/api-sql-downloads) and on the hand of a JSON query ([query_cube_raccoon.json](../../data/input/query_cube_raccoon.json)). The resulting cube (DOI: [10.15468/dl.mmnusj](https://doi.org/10.15468/dl.mmnusj), `downloadKey`: 0023024-250127130748423) can be downloaded in TSV format from GBIF. We have it saved at `data/input` as [`0023024-250127130748423.csv`](../../data/input/0023024-250127130748423.csv):
+
+```{r read-cube, message=FALSE}
+cube <- readr::read_tsv(
+  here::here(
+    "data",
+    "input",
+    "0023024-250127130748423.csv"
+  )
+)
+```
+
+Preview:
+
+```{r}
+head(cube)
+```
+
+Notice the presence of column `countrycode` as we grouped by country. It can happen that an occurrence is assigned to a cell in another country or a cell on the border of two different countries It happens few times:
+
+```{r cells_with_multiple_countries}
+cube |>
+  dplyr::distinct(eeacellcode, countrycode, year) |>
+  dplyr::add_count(eeacellcode, year) |>
+  dplyr::filter(n > 1) |>
+  dplyr::arrange(eeacellcode)
+```
+
+Countries with at least one occurrence:
+
+```{r countries}
+cube |>
+  dplyr::distinct(countrycode) |>
+  dplyr::pull(countrycode)
+```
+
+Remove countries not completely covered by the EEA grid:
+
+-   Ukraine (`UA`)
+-   Russia (`RU`)
+-   Azerbaijan (`AZ`)
+
+```{r remove-ua-ru}
+cube <- cube |>
+  dplyr::filter(!countrycode %in% c("UA", "RU", "AZ"))
+```
+
+Are there rows without `eeacellcode`?
+
+```{r are_there_nas_cellcode}
+cube |>
+  dplyr::filter(is.na(eeacellcode))
+```
+
+We remove them:
+
+```{r remove_nas_cellcode}
+cube <- cube |>
+  dplyr::filter(!is.na(eeacellcode))
+```
+
+Extract country codes:
+
+```{r extract_countries}
+countrycode <- cube |>
+  dplyr::distinct(countrycode) |>
+  dplyr::pull(countrycode)
+countrycode
+```
+
+Get country names from country codes:
+
+```{r country_names}
+countries <- tibble::tibble(
+  countrycode = countrycode) |>
+  dplyr::mutate(country_name = countrycode::countrycode(countrycode, "iso2c", "country.name"))
+countries
+```
+We add `"Europe"` to the list of country names and codes. We use `"Europe"` as "country code": the abbreviation EU would be confusing as it is the acronym of the European Union:
+
+```{r add_europe_country}
+countries <- countries |>
+  dplyr::add_row(countrycode = "Europe", country_name = "Europe")
+countrycode <- c(countrycode, "Europe")
+```
+
+So, from now on, when we refer to "country", we also mean "Europe".
+
+We calculate the cube for Europe:
+
+```{r}
+cube_europe <- cube |>
+  group_by(specieskey, species, year, eeacellcode) |>
+  summarise(
+    countrycode = "Europe",
+    occurrences = sum(occurrences),
+    class = unique(class),
+    classkey = unique(classkey),
+    mincoordinateuncertaintyinmeters = min(mincoordinateuncertaintyinmeters),
+    mintemporaluncertainty = min(mintemporaluncertainty),
+    classcount = unique(classcount),
+    .groups = "drop") %>%
+  # order columns as in the original cube
+  dplyr::select(
+    dplyr::all_of(names(cube))
+  )
+head(cube_europe)
+```
+
+And we add it to `cube`:
+
+```{r add_europe_to_cube}
+cube <- dplyr::bind_rows(cube, cube_europe)
+```
+
+## From cubes to emerging status
+
+We assess the emerging status of the species at country level and in all Europe for 2024. We first have to create time series up to 2024.
+
+```{r}
+last_year <- 2024
+```
+
+### Preprocess: from cube to time series
+
+For each country, define cells with at least one observation:
+
+```{r}
+df_cc <-   cube |>
+  dplyr::group_by(specieskey, countrycode) |>
+  dplyr::distinct(eeacellcode) |>
+  dplyr::ungroup()
+```
+
+For each country, identify the first year with at least one observation:
+
+```{r}
+df_begin_year <-
+  cube |>
+  dplyr::group_by(specieskey, countrycode) |>
+  dplyr::summarize(begin_year = min(year))
+```
+
+For each country, combine `begin_year` and unique `eeacellcode` as found above:
+
+```{r}
+df_cc <-   df_cc |>
+  dplyr::left_join(df_begin_year, by = c("specieskey", "countrycode")) |> 
+  dplyr::select(specieskey, countrycode, begin_year, eeacellcode)
+```
+
+Preview:
+
+```{r}
+head(df_cc)
+```
+
+For each cell (`eeacellcode`), country (`countrycode`) and species (`specieskey`) we can now create a time series:
+
+```{r Create_timeseries_slots}
+# Define help function
+make_time_series <- function(eeacellcode, countrycode, specieskey, begin_year, last_year) {
+  tidyr::expand_grid(
+    eeacellcode = eeacellcode,
+    countrycode = countrycode,
+    specieskey = specieskey,
+    year = seq(from = begin_year, to = last_year)
+  )
+}
+
+# Create timeseries slots
+df_ts <- purrr::pmap_dfr(df_cc,
+  .f = make_time_series,
+  last_year = last_year
+)
+
+# Add occurrence data
+df_ts <-
+  df_ts |>
+  dplyr::left_join(
+    cube |> dplyr::select(
+      specieskey,
+      countrycode,
+      year,
+      eeacellcode,
+      occurrences
+    ),
+    by = c("specieskey", "countrycode", "year", "eeacellcode")
+  )
+
+# Replace NAs with 0
+df_ts <-
+  df_ts |>
+  tidyr::replace_na(list(occurrences = 0))
+```
+
+Add column for presence (1) or absence (0):
+
+```{r presence_absence}
+df_ts <-
+  df_ts |>
+  dplyr::mutate(
+    ispresent = dplyr::if_else(occurrences > 0, 1, 0)
+  )
+```
+
+Save the time series at country level as an interim output, `time_series.tsv` in directory `data/interim`:
+
+```{r save-time-series}
+readr::write_tsv(
+  df_ts,
+  here::here("data", "interim", "time_series.tsv"),
+  na = ""
+)
+```
+
+### Apply GAM
+
+We are now ready to apply a Generalized Additive Model (GAM) to assess the emerging status of raccoon.
+
+```{r}
+eval_year <- 2024
+```
+
+Let's compact the time series:
+
+```{r}
+compact_df_ts <- df_ts |>
+    dplyr::group_by(specieskey, countrycode, year) |>
+    dplyr::summarise(
+      occs = sum(occurrences),
+      ncells = sum(ispresent),
+      .groups = "drop")
+```
+
+All plots will be saved in subdirectories of `./data/output/GAM_outputs`:
+
+```{r root-output-gam}
+dir_name_basic <- here::here("data", "output", "GAM_outputs")
+```
+
+We also define the plot dimensions in pixels:
+
+```{r dims-plot}
+plot_dimensions <- list(width = 2800, height = 1500)
+```
+
+We apply GAM for each country for the number of occurrences:
+
+```{r run-gam-occs}
+gam_occs <- purrr::map(
+  countrycode,
+  function(code) {
+    gam_occs_per_country <- purrr::map2(
+      species$specieskey, species$canonical_name,
+      function(t, n) {
+        df_key <- compact_df_ts |>
+          dplyr::filter(specieskey == t, countrycode == code)
+        trias::apply_gam(
+          df = df_key,
+          y_var = "occs",
+          taxonKey = "specieskey",
+          eval_years = 2024,
+          type_indicator = "observations",
+          taxon_key = t,
+          name = n,
+          df_title = code,
+          dir_name = paste0(dir_name_basic, "/long_titles"),
+          y_label = "number of observations",
+          saveplot = TRUE,
+          width = plot_dimensions$width,
+          height = plot_dimensions$height
+        )
+      })
+    names(gam_occs_per_country) <- species$canonical_name
+    gam_occs_per_country
+  }
+)
+names(gam_occs) <- countrycode
+```
+
+And the number of occupied cells, or **measured occupancy**:
+
+```{r run-gam-ncells}
+gam_ncells <- purrr::map(
+  countrycode,
+  function(code) {
+    gam_ncells_per_country <- purrr::map2(
+      species$specieskey, species$canonical_name,
+      function(t, n) {
+        df_key <- compact_df_ts |>
+          dplyr::filter(specieskey == t, countrycode == code)
+        trias::apply_gam(
+          df = df_key,
+          y_var = "ncells",
+          taxonKey = "specieskey",
+          eval_years = 2024,
+          type_indicator = "occupancy",
+          taxon_key = t,
+          name = n,
+          df_title = code,
+          dir_name = paste0(dir_name_basic, "/long_titles"),
+          y_label = "number of occupied cells",
+          saveplot = TRUE,
+          width = plot_dimensions$width,
+          height = plot_dimensions$height
+        )
+      })
+    names(gam_ncells_per_country) <- species$canonical_name
+    gam_ncells_per_country
+  }
+)
+names(gam_ncells) <- countrycode
+```
+
+## Plots
+
+Please go to [`./data/output/GAM_outputs`](https://github.com/b-cubed-eu/euroraccoon/tree/main/data/output/GAM_outputs) to download the plots shown in this section.
+
+### Standard plots
+
+In this section we show the plots as returned by `apply_gam()`. Plot titles could be quite long. Folder: [`./data/output/GAM_outputs/long_titles`](https://github.com/b-cubed-eu/euroraccoon/tree/main/data/output/GAM_outputs/long_titles).
+
+#### Occurrences
+
+```{r occs-plots}
+purrr::walk(gam_occs, function(country) {
+  purrr::walk(country, function(x) print(x$plot))
+  }
+)
+```
+
+#### Measured occupancy
+
+```{r n_cells-plots}
+purrr::walk(gam_ncells, function(country) {
+  purrr::walk(country, function(x) print(x$plot))
+  }
+)
+```
+
+### Short titles
+
+We show and save plots with the species only as title. We save them in sub folder [`./data/output/GAM_outputs/short_title`](https://github.com/b-cubed-eu/euroraccoon/tree/main/data/output/GAM_outputs/short_title).
+
+#### Occurrences
+
+```{r remove_titles_occs}
+purrr::iwalk(gam_occs, function(x, country) {
+  purrr::iwalk(x, function(y, sp) {
+    y$plot <- y$plot + ggplot2::ggtitle(label = paste(sp, "-", country))
+    ggplot2::ggsave(
+      filename = here::here(
+        "data",
+        "output",
+        "GAM_outputs",
+        "short_title",
+        paste0("occurrences_", sp, "_", country, ".png")),
+      plot = y$plot,
+      width = plot_dimensions$width,
+      height = plot_dimensions$height,
+      units = "px"
+    )
+    print(y$plot)
+  })
+})
+```
+
+#### Occupancy
+
+We do the same for the measured occupancy (number of occupied grid cells).
+
+```{r remove_titles_ncells}}
+purrr::iwalk(gam_ncells, function(x, country) {
+  purrr::iwalk(x, function(y, sp) {
+    y$plot <- y$plot + ggplot2::ggtitle(label = paste(sp, "-", country))
+    ggplot2::ggsave(
+      filename = here::here(
+        "data",
+        "output",
+        "GAM_outputs",
+        "short_title",
+        paste0("occupancy_", sp, "_", country, ".png")),
+      plot = y$plot,
+      width = plot_dimensions$width,
+      height = plot_dimensions$height,
+      units = "px"
+    )
+    print(y$plot)
+  })
+})
+```
+
+### Grid
+
+For each country, we can show the plots of the number of occurrences and the measured occupancy next to each other. We use the full country name. Plots are saved in subfolder [`./data/output/GAM_outputs/plots_for_countries`](https://github.com/b-cubed-eu/euroraccoon/tree/main/data/output/GAM_outputs/plots_for_countries).
+
+```{r grid_per_country}
+# Transform gam_occs and gam_ncells into a list of lists 
+gam_countries <- purrr::map(
+  countrycode,
+  function(code) {
+    purrr::map2(
+      gam_occs[[code]],
+      gam_ncells[[code]],
+      function(x, y) list(occurrences = x, ncells = y)
+    )
+  }
+)
+names(gam_countries) <- countrycode
+# Create a grid of plots for each country
+purrr::walk2(
+  gam_countries,
+  countrycode,
+  function(country, code) {
+    purrr::walk(country, function(x) {
+      # Remove title
+      x$occurrences$plot <- x$occurrences$plot + ggplot2::ggtitle(NULL)
+      x$ncells$plot <- x$ncells$plot + ggplot2::ggtitle(NULL)
+      p <- patchwork::wrap_plots(x$occurrences$plot,
+                                 x$ncells$plot,
+                                 nrow = 1,
+                                 ncol = 2) +
+        # Unify legends
+        patchwork::plot_layout(guides = 'collect') + 
+        # Add general title
+        patchwork::plot_annotation(
+          title = countries$country_name[countries$countrycode == code]
+        )
+      ggplot2::ggsave(
+        filename = here::here(
+          "data",
+          "output",
+          "GAM_outputs",
+          "plots_for_countries",
+          paste0(code, "_grid.png")),
+        plot = p,
+        width = plot_dimensions$width,
+        height = plot_dimensions$height,
+        units = "px"
+      )
+      print(p)
+    })
+  }
+)
+```
