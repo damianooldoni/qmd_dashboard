@@ -8,70 +8,73 @@ format:
         href: https://github.com/damianooldoni/qmd_dashboard
 ---
 
+# Europe
+
 ## Row {.fill}
 
-![Europe](https://raw.githubusercontent.com/b-cubed-eu/euroraccoon/main/data/output/GAM_outputs/plots_for_countries/Europe_grid.png){width=40% .center}
+![](https://raw.githubusercontent.com/b-cubed-eu/euroraccoon/main/data/output/GAM_outputs/plots_for_countries/Europe_grid.png){width=70% .center}
 
+# Countries
 
 ## Row {.fill}
 
 ::: {.panel-tabset}
 
 ### AT
-![](https://raw.githubusercontent.com/b-cubed-eu/euroraccoon/main/data/output/GAM_outputs/plots_for_countries/AT_grid.png){width=40%}
+![](https://raw.githubusercontent.com/b-cubed-eu/euroraccoon/main/data/output/GAM_outputs/plots_for_countries/AT_grid.png){width=70% .center}
 
 ### BE
-![](https://raw.githubusercontent.com/b-cubed-eu/euroraccoon/main/data/output/GAM_outputs/plots_for_countries/BE_grid.png){width=40%}
+![](https://raw.githubusercontent.com/b-cubed-eu/euroraccoon/main/data/output/GAM_outputs/plots_for_countries/BE_grid.png){width=70% .center}
 
 ### CH
-![](https://raw.githubusercontent.com/b-cubed-eu/euroraccoon/main/data/output/GAM_outputs/plots_for_countries/CH_grid.png){width=40%}
+![](https://raw.githubusercontent.com/b-cubed-eu/euroraccoon/main/data/output/GAM_outputs/plots_for_countries/CH_grid.png){width=70% .center}
 
 ### CZ
-![](https://raw.githubusercontent.com/b-cubed-eu/euroraccoon/main/data/output/GAM_outputs/plots_for_countries/CZ_grid.png){width=40%}
+![](https://raw.githubusercontent.com/b-cubed-eu/euroraccoon/main/data/output/GAM_outputs/plots_for_countries/CZ_grid.png){width=70% .center}
 
 ### DE
-![](https://raw.githubusercontent.com/b-cubed-eu/euroraccoon/main/data/output/GAM_outputs/plots_for_countries/DE_grid.png){width=40%}
+![](https://raw.githubusercontent.com/b-cubed-eu/euroraccoon/main/data/output/GAM_outputs/plots_for_countries/DE_grid.png){width=70% .center}
 
 ### DK
-![](https://raw.githubusercontent.com/b-cubed-eu/euroraccoon/main/data/output/GAM_outputs/plots_for_countries/DK_grid.png){width=40%}
+![](https://raw.githubusercontent.com/b-cubed-eu/euroraccoon/main/data/output/GAM_outputs/plots_for_countries/DK_grid.png){width=70% .center}
 
 ### ES
-![](https://raw.githubusercontent.com/b-cubed-eu/euroraccoon/main/data/output/GAM_outputs/plots_for_countries/ES_grid.png){width=40%}
+![](https://raw.githubusercontent.com/b-cubed-eu/euroraccoon/main/data/output/GAM_outputs/plots_for_countries/ES_grid.png){width=70% .center}
 
 ### FR
-![](https://raw.githubusercontent.com/b-cubed-eu/euroraccoon/main/data/output/GAM_outputs/plots_for_countries/FR_grid.png){width=40%}
+![](https://raw.githubusercontent.com/b-cubed-eu/euroraccoon/main/data/output/GAM_outputs/plots_for_countries/FR_grid.png){width=70% .center}
 
 ### GB
-![](https://raw.githubusercontent.com/b-cubed-eu/euroraccoon/main/data/output/GAM_outputs/plots_for_countries/GB_grid.png){width=40%}
+![](https://raw.githubusercontent.com/b-cubed-eu/euroraccoon/main/data/output/GAM_outputs/plots_for_countries/GB_grid.png){width=70% .center}
 
 ### IE
-![](https://raw.githubusercontent.com/b-cubed-eu/euroraccoon/main/data/output/GAM_outputs/plots_for_countries/IE_grid.png){width=40%}
+![](https://raw.githubusercontent.com/b-cubed-eu/euroraccoon/main/data/output/GAM_outputs/plots_for_countries/IE_grid.png){width=70% .center}
 
 ### IT
-![](https://raw.githubusercontent.com/b-cubed-eu/euroraccoon/main/data/output/GAM_outputs/plots_for_countries/IT_grid.png){width=40%}
+![](https://raw.githubusercontent.com/b-cubed-eu/euroraccoon/main/data/output/GAM_outputs/plots_for_countries/IT_grid.png){width=70% .center}
 
 ### LI
-![](https://raw.githubusercontent.com/b-cubed-eu/euroraccoon/main/data/output/GAM_outputs/plots_for_countries/LI_grid.png){width=40%}
+![](https://raw.githubusercontent.com/b-cubed-eu/euroraccoon/main/data/output/GAM_outputs/plots_for_countries/LI_grid.png){width=70% .center}
 
 ### LT
-![](https://raw.githubusercontent.com/b-cubed-eu/euroraccoon/main/data/output/GAM_outputs/plots_for_countries/LT_grid.png){width=40%}
+![](https://raw.githubusercontent.com/b-cubed-eu/euroraccoon/main/data/output/GAM_outputs/plots_for_countries/LT_grid.png){width=70% .center}
 
 ### LU
-![](https://raw.githubusercontent.com/b-cubed-eu/euroraccoon/main/data/output/GAM_outputs/plots_for_countries/LU_grid.png){width=40%}
+![](https://raw.githubusercontent.com/b-cubed-eu/euroraccoon/main/data/output/GAM_outputs/plots_for_countries/LU_grid.png){width=70% .center}
 
 ### NL
-![](https://raw.githubusercontent.com/b-cubed-eu/euroraccoon/main/data/output/GAM_outputs/plots_for_countries/NL_grid.png){width=40%}
+![](https://raw.githubusercontent.com/b-cubed-eu/euroraccoon/main/data/output/GAM_outputs/plots_for_countries/NL_grid.png){width=70% .center}
 
 ### NO
-![](https://raw.githubusercontent.com/b-cubed-eu/euroraccoon/main/data/output/GAM_outputs/plots_for_countries/NO_grid.png){width=40%}
+![](https://raw.githubusercontent.com/b-cubed-eu/euroraccoon/main/data/output/GAM_outputs/plots_for_countries/NO_grid.png){width=70% .center}
 
 ### PL
-![](https://raw.githubusercontent.com/b-cubed-eu/euroraccoon/main/data/output/GAM_outputs/plots_for_countries/PL_grid.png){width=40%}
+![](https://raw.githubusercontent.com/b-cubed-eu/euroraccoon/main/data/output/GAM_outputs/plots_for_countries/PL_grid.png){width=70% .center}
 
 ### PT
-![](https://raw.githubusercontent.com/b-cubed-eu/euroraccoon/main/data/output/GAM_outputs/plots_for_countries/PT_grid.png){width=40%}
+![](https://raw.githubusercontent.com/b-cubed-eu/euroraccoon/main/data/output/GAM_outputs/plots_for_countries/PT_grid.png){width=70% .center}
 
 ### SE
-![](https://raw.githubusercontent.com/b-cubed-eu/euroraccoon/main/data/output/GAM_outputs/plots_for_countries/SE_grid.png){width=40%}
+![](https://raw.githubusercontent.com/b-cubed-eu/euroraccoon/main/data/output/GAM_outputs/plots_for_countries/SE_grid.png){width=70% .center}
 
 :::
