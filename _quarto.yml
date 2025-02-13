@@ -6,9 +6,9 @@ website:
   title: "Emerging trends for raccoon in Europe"
   navbar:
     left:
-      - href: src/dashboard.qmd
+      - href: dashboard.qmd
         text: Home
-      - href: src/about_data.qmd
+      - href: about_data.qmd
         text: About the Data
 format:
   html:
