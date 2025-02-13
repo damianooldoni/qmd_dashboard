@@ -1,0 +1,77 @@
+---
+author: "Research Institute for Nature and Forest (INBO)"
+format: 
+  dashboard:
+    scrolling: false
+    nav-buttons:
+      - icon: github
+        href: https://github.com/damianooldoni/qmd_dashboard
+---
+
+## Row {.fill}
+
+![Europe](https://raw.githubusercontent.com/b-cubed-eu/euroraccoon/main/data/output/GAM_outputs/plots_for_countries/Europe_grid.png){width=40% .center}
+
+
+## Row {.fill}
+
+::: {.panel-tabset}
+
+### AT
+![](https://raw.githubusercontent.com/b-cubed-eu/euroraccoon/main/data/output/GAM_outputs/plots_for_countries/AT_grid.png){width=40%}
+
+### BE
+![](https://raw.githubusercontent.com/b-cubed-eu/euroraccoon/main/data/output/GAM_outputs/plots_for_countries/BE_grid.png){width=40%}
+
+### CH
+![](https://raw.githubusercontent.com/b-cubed-eu/euroraccoon/main/data/output/GAM_outputs/plots_for_countries/CH_grid.png){width=40%}
+
+### CZ
+![](https://raw.githubusercontent.com/b-cubed-eu/euroraccoon/main/data/output/GAM_outputs/plots_for_countries/CZ_grid.png){width=40%}
+
+### DE
+![](https://raw.githubusercontent.com/b-cubed-eu/euroraccoon/main/data/output/GAM_outputs/plots_for_countries/DE_grid.png){width=40%}
+
+### DK
+![](https://raw.githubusercontent.com/b-cubed-eu/euroraccoon/main/data/output/GAM_outputs/plots_for_countries/DK_grid.png){width=40%}
+
+### ES
+![](https://raw.githubusercontent.com/b-cubed-eu/euroraccoon/main/data/output/GAM_outputs/plots_for_countries/ES_grid.png){width=40%}
+
+### FR
+![](https://raw.githubusercontent.com/b-cubed-eu/euroraccoon/main/data/output/GAM_outputs/plots_for_countries/FR_grid.png){width=40%}
+
+### GB
+![](https://raw.githubusercontent.com/b-cubed-eu/euroraccoon/main/data/output/GAM_outputs/plots_for_countries/GB_grid.png){width=40%}
+
+### IE
+![](https://raw.githubusercontent.com/b-cubed-eu/euroraccoon/main/data/output/GAM_outputs/plots_for_countries/IE_grid.png){width=40%}
+
+### IT
+![](https://raw.githubusercontent.com/b-cubed-eu/euroraccoon/main/data/output/GAM_outputs/plots_for_countries/IT_grid.png){width=40%}
+
+### LI
+![](https://raw.githubusercontent.com/b-cubed-eu/euroraccoon/main/data/output/GAM_outputs/plots_for_countries/LI_grid.png){width=40%}
+
+### LT
+![](https://raw.githubusercontent.com/b-cubed-eu/euroraccoon/main/data/output/GAM_outputs/plots_for_countries/LT_grid.png){width=40%}
+
+### LU
+![](https://raw.githubusercontent.com/b-cubed-eu/euroraccoon/main/data/output/GAM_outputs/plots_for_countries/LU_grid.png){width=40%}
+
+### NL
+![](https://raw.githubusercontent.com/b-cubed-eu/euroraccoon/main/data/output/GAM_outputs/plots_for_countries/NL_grid.png){width=40%}
+
+### NO
+![](https://raw.githubusercontent.com/b-cubed-eu/euroraccoon/main/data/output/GAM_outputs/plots_for_countries/NO_grid.png){width=40%}
+
+### PL
+![](https://raw.githubusercontent.com/b-cubed-eu/euroraccoon/main/data/output/GAM_outputs/plots_for_countries/PL_grid.png){width=40%}
+
+### PT
+![](https://raw.githubusercontent.com/b-cubed-eu/euroraccoon/main/data/output/GAM_outputs/plots_for_countries/PT_grid.png){width=40%}
+
+### SE
+![](https://raw.githubusercontent.com/b-cubed-eu/euroraccoon/main/data/output/GAM_outputs/plots_for_countries/SE_grid.png){width=40%}
+
+:::

@@ -1,0 +1,15 @@
+project:
+  type: website
+  output-dir: docs
+  execute-dir: project
+website:
+  title: "Emerging trends for raccoon in Europe"
+  navbar:
+    left:
+      - href: src/dashboard.qmd
+        text: Home
+      - href: src/about_data.qmd
+        text: About the Data
+format:
+  html:
+    theme: flatly
