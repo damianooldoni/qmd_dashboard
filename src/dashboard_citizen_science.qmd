@@ -1,0 +1,77 @@
+---
+format: 
+  dashboard:
+    scrolling: false
+execute:
+  # Overwrite general settings in _quarto.yml
+  echo: false
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)      # to do datascience
+library(here)           # to work easily with paths
+library(flexdashboard)  # to add gauges (not basic in quarto)
+```
+
+```{r load_data, include=FALSE}
+cray_df <- readr::read_tsv(
+  here::here("data", "output", "20250224_craywatch_cleaned.txt"),
+  na = "",
+  guess_max = 10000
+)
+```
+
+## Row
+
+### Craywatch related data
+    
+```{r gauge}
+# Number of observations linked to craywatch (via waarnemingen.be)
+dataset_name <- "Waarnemingen.be - Non-native animal occurrences in Flanders and the Brussels Capital Region, Belgium"
+n_obs_craywatch <- cray_df %>%
+  filter(datasetName == dataset_name) %>%
+  nrow()
+tot_obs <- nrow(cray_df)
+percentage_craywatch <- n_obs_craywatch / tot_obs * 100
+gauge(min = 0,
+      max = tot_obs,
+      value = n_obs_craywatch, label = "waarnemingen.be")
+```
+
+### Number of observations via waarneemingen.be
+
+```{r valueBox}
+#| content: valuebox
+#| title: "Number of observations via waarnemingen.be"
+list(
+  icon = "camera-fill", # only bootstrap icons: https://icons.getbootstrap.com/
+  color = "info",
+  value = n_obs_craywatch
+)
+```
+
+## Row {height=70%}
+
+### Number of observations per dataset
+
+```{r}
+n_obs_per_dataset <- cray_df %>%
+  count(datasetName) %>%
+  arrange(desc(n)) %>%
+  # Abbreviate the dataset names
+  mutate(datasetName = case_when(
+    datasetName == "Waarnemingen.be - Non-native animal occurrences in Flanders and the Brussels Capital Region, Belgium" ~ "Waarnemingen.be",
+    datasetName == "RATO - Daily operations commissioned by the province East Flanders, Belgium" ~ "RATO",
+    datasetName == "Invasive species - American bullfrog (Lithobates catesbeianus) in Flanders, Belgium (post 2018)" ~ "American bullfrog ( INBO)",
+    datasetName == "iNaturalist research-grade observations" ~ "iNaturalist",
+    datasetName == "Monitoring of fishes and crustaceans by Province East Flanders in Flanders, Belgium" ~ "Monitoring POV",
+    TRUE ~ stringr::str_trunc(.data$datasetName, 20)
+  ))
+# Plot the number of observations per dataset
+ggplot(n_obs_per_dataset, aes(x = reorder(datasetName, n), y = n)) +
+  geom_col(fill = "steelblue") +
+  coord_flip() +
+  # Add title and labels
+  ggtitle("Number of observations per dataset") +
+  ylab("Number of observations") + xlab("Dataset")
+```

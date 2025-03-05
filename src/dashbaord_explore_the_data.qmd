@@ -1,0 +1,32 @@
+---
+format: 
+  dashboard:
+    scrolling: false
+execute:
+  echo: false
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)      # to do datascience
+library(here)           # to work easily with paths
+library(DT)             # to make interactive tables
+options(DT.options = list(
+  bPaginate = TRUE # to allow pagination. Default is FALSE
+))
+```
+
+```{r load_data, include=FALSE}
+cray_df <- readr::read_tsv(
+  here::here("data", "output", "20250224_craywatch_cleaned.txt"),
+  na = "",
+  guess_max = 10000
+)
+```
+
+## Row
+
+### Explore the data
+    
+```{r}
+DT::datatable(cray_df)
+```

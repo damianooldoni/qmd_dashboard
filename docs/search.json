@@ -4,21 +4,21 @@
     "href": "index.html",
     "title": "Home",
     "section": "",
-    "text": "Emergency trends indicators of raccoon in Europe\nThis is the homepage of the project. Here you can find the following sections:\n\nDashboard: show emergency trend indicators based on number of observations and measured occupancy, i.e. the number of 1x1km grid cells with one or more observations.\nAbout Data: the workflow in R to calculate the emergency indicators."
+    "text": "1 Example of a quarto website with dashboard\nWelcome 👋!\nThis GitHub Pages based website is the solution of “Bonus challenge 2: quarto website embedding the dashboard”. It shows how to combine dashboards with “standard” workflow webpages.\nThe website is composed of several pages:\n\nHomepage: the welcome page you are reading just now.\nA three paged dashboard: show graphs, leaflet map and data table using quarto syntax instead of flexdashboard.\nAbout the Data: the workflow in R to get the data used in the dashboard starting from th raw data."
   },
   {
     "objectID": "src/about_data.html",
     "href": "src/about_data.html",
-    "title": "Emerging trend indicators of raccoon in Europe",
+    "title": "Invasive crayfishes: citizence science contribution",
     "section": "",
-    "text": "This document shows how using GBIF species occurrence cubes to assess the emerging status of raccoon (Procyon lotor) in Europe and in European countries. This workflow is strongly based on the occurrence TrIAS indicators and can be extended to other (invasive alien) species.\n\n\nFirst, list and load the needed packages.\n\n\nCode\nlibrary(readr)\nlibrary(here)\nlibrary(dplyr)\nlibrary(patchwork)\nlibrary(tidyr)\nlibrary(purrr)\nlibrary(tibble)\nlibrary(trias)\nlibrary(countrycode)"
+    "text": "This page shows the workflow to get the cleaned data used in the dashboard starting from the raw data. Happy reading 📚.\n\n\nFirst, list and load the needed packages.\n\nlibrary(tidyverse)      # to do datascience\nlibrary(here)           # to work easily with paths"
   },
   {
     "objectID": "src/about_data.html#introduction",
     "href": "src/about_data.html#introduction",
-    "title": "Emerging trend indicators of raccoon in Europe",
+    "title": "Invasive crayfishes: citizence science contribution",
     "section": "",
-    "text": "This document shows how using GBIF species occurrence cubes to assess the emerging status of raccoon (Procyon lotor) in Europe and in European countries. This workflow is strongly based on the occurrence TrIAS indicators and can be extended to other (invasive alien) species.\n\n\nFirst, list and load the needed packages.\n\n\nCode\nlibrary(readr)\nlibrary(here)\nlibrary(dplyr)\nlibrary(patchwork)\nlibrary(tidyr)\nlibrary(purrr)\nlibrary(tibble)\nlibrary(trias)\nlibrary(countrycode)"
+    "text": "This page shows the workflow to get the cleaned data used in the dashboard starting from the raw data. Happy reading 📚.\n\n\nFirst, list and load the needed packages.\n\nlibrary(tidyverse)      # to do datascience\nlibrary(here)           # to work easily with paths"
   },
   {
     "objectID": "src/about_data.html#scope",
@@ -47,5 +47,61 @@
     "title": "Emerging trend indicators of raccoon in Europe",
     "section": "5 Plots",
     "text": "5 Plots\nPlease go to ./data/output/GAM_outputs to download the plots shown in this section.\n\n5.1 Standard plots\nIn this section we show the plots as returned by apply_gam(). Plot titles could be quite long. Folder: ./data/output/GAM_outputs/long_titles.\n\n5.1.1 Occurrences\n\n\nCode\npurrr::walk(gam_occs, function(country) {\n  purrr::walk(country, function(x) print(x$plot))\n  }\n)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n5.1.2 Measured occupancy\n\n\nCode\npurrr::walk(gam_ncells, function(country) {\n  purrr::walk(country, function(x) print(x$plot))\n  }\n)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n5.2 Short titles\nWe show and save plots with the species only as title. We save them in sub folder ./data/output/GAM_outputs/short_title.\n\n5.2.1 Occurrences\n\n\nCode\npurrr::iwalk(gam_occs, function(x, country) {\n  purrr::iwalk(x, function(y, sp) {\n    y$plot &lt;- y$plot + ggplot2::ggtitle(label = paste(sp, \"-\", country))\n    ggplot2::ggsave(\n      filename = here::here(\n        \"data\",\n        \"output\",\n        \"GAM_outputs\",\n        \"short_title\",\n        paste0(\"occurrences_\", sp, \"_\", country, \".png\")),\n      plot = y$plot,\n      width = plot_dimensions$width,\n      height = plot_dimensions$height,\n      units = \"px\"\n    )\n    print(y$plot)\n  })\n})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n5.2.2 Occupancy\nWe do the same for the measured occupancy (number of occupied grid cells).\n\n\nCode\npurrr::iwalk(gam_ncells, function(x, country) {\n  purrr::iwalk(x, function(y, sp) {\n    y$plot &lt;- y$plot + ggplot2::ggtitle(label = paste(sp, \"-\", country))\n    ggplot2::ggsave(\n      filename = here::here(\n        \"data\",\n        \"output\",\n        \"GAM_outputs\",\n        \"short_title\",\n        paste0(\"occupancy_\", sp, \"_\", country, \".png\")),\n      plot = y$plot,\n      width = plot_dimensions$width,\n      height = plot_dimensions$height,\n      units = \"px\"\n    )\n    print(y$plot)\n  })\n})\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n5.3 Grid\nFor each country, we can show the plots of the number of occurrences and the measured occupancy next to each other. We use the full country name. Plots are saved in subfolder ./data/output/GAM_outputs/plots_for_countries.\n\n\nCode\n# Transform gam_occs and gam_ncells into a list of lists \ngam_countries &lt;- purrr::map(\n  countrycode,\n  function(code) {\n    purrr::map2(\n      gam_occs[[code]],\n      gam_ncells[[code]],\n      function(x, y) list(occurrences = x, ncells = y)\n    )\n  }\n)\nnames(gam_countries) &lt;- countrycode\n# Create a grid of plots for each country\npurrr::walk2(\n  gam_countries,\n  countrycode,\n  function(country, code) {\n    purrr::walk(country, function(x) {\n      # Remove title\n      x$occurrences$plot &lt;- x$occurrences$plot + ggplot2::ggtitle(NULL)\n      x$ncells$plot &lt;- x$ncells$plot + ggplot2::ggtitle(NULL)\n      p &lt;- patchwork::wrap_plots(x$occurrences$plot,\n                                 x$ncells$plot,\n                                 nrow = 1,\n                                 ncol = 2) +\n        # Unify legends\n        patchwork::plot_layout(guides = 'collect') + \n        # Add general title\n        patchwork::plot_annotation(\n          title = countries$country_name[countries$countrycode == code]\n        )\n      ggplot2::ggsave(\n        filename = here::here(\n          \"data\",\n          \"output\",\n          \"GAM_outputs\",\n          \"plots_for_countries\",\n          paste0(code, \"_grid.png\")),\n        plot = p,\n        width = plot_dimensions$width,\n        height = plot_dimensions$height,\n        units = \"px\"\n      )\n      print(p)\n    })\n  }\n)"
+  },
+  {
+    "objectID": "src/about_data.html#read-raw-data",
+    "href": "src/about_data.html#read-raw-data",
+    "title": "Invasive crayfishes: citizence science contribution",
+    "section": "2 Read raw data",
+    "text": "2 Read raw data\n\ncray_raw_df &lt;- readr::read_tsv(\n  here::here(\"data\", \"input\", \"20250224_craywatch_raw.txt\"),\n  na = \"\",\n  guess_max = 10000\n)\n\nPreview (10 rows):\n\nhead(cray_raw_df, 10)"
+  },
+  {
+    "objectID": "src/about_data.html#clean-data",
+    "href": "src/about_data.html#clean-data",
+    "title": "Invasive crayfishes: citizence science contribution",
+    "section": "3 Clean data",
+    "text": "3 Clean data\nWe remove data without a specific year in column year and select only few columns we are interested to:\n\ncray_cleaned_df &lt;- cray_raw_df %&gt;%\n  filter(!is.na(year)) %&gt;%\n  select(gbifID, occurrenceID, species, speciesKey, decimalLatitude,\n         decimalLongitude, coordinateUncertaintyInMeters,\n         eventDate, year, month, countryCode, stateProvince,\n         county, locality, basisOfRecord, individualCount,\n         datasetName)\n\nPreview (10 rows):\n\nhead(cray_cleaned_df, 10)"
+  },
+  {
+    "objectID": "src/about_data.html#save-cleaned-data",
+    "href": "src/about_data.html#save-cleaned-data",
+    "title": "Invasive crayfishes: citizence science contribution",
+    "section": "4 Save cleaned data",
+    "text": "4 Save cleaned data\nWe save the cleaned data as 20250224_craywatch_cleaned.txt in data/20250224. This file will be the input file for the dashboard.\n\ncray_cleaned_df %&gt;%\n  readr::write_tsv(here::here(\"data\",\n                              \"output\",\n                              \"20250224_craywatch_cleaned.txt\")\n  )"
+  },
+  {
+    "objectID": "src/about_the_data.html",
+    "href": "src/about_the_data.html",
+    "title": "About the Data",
+    "section": "",
+    "text": "This page shows the workflow to get the cleaned data used in the dashboard starting from the raw data. Happy reading 📚.\n\n\nFirst, list and load the needed packages.\n\nlibrary(tidyverse)      # to do datascience\nlibrary(here)           # to work easily with paths"
+  },
+  {
+    "objectID": "src/about_the_data.html#introduction",
+    "href": "src/about_the_data.html#introduction",
+    "title": "About the Data",
+    "section": "",
+    "text": "This page shows the workflow to get the cleaned data used in the dashboard starting from the raw data. Happy reading 📚.\n\n\nFirst, list and load the needed packages.\n\nlibrary(tidyverse)      # to do datascience\nlibrary(here)           # to work easily with paths"
+  },
+  {
+    "objectID": "src/about_the_data.html#read-raw-data",
+    "href": "src/about_the_data.html#read-raw-data",
+    "title": "About the Data",
+    "section": "2 Read raw data",
+    "text": "2 Read raw data\nThe raw data are saved in data/input/20250224_craywatch_raw.txt as a tab separated text file. It contains GBIF observations of 6 invasive alien crayfishes in Flanders from 2024-06-13, start of the craywatch project. Derived from 10.15468/dl.pszsrh. The query the GBIF download was based on, is the same query running real-time to show the layer “Nieuwe waarnemingen” (new observations) in the craywatch map!\n\ncray_raw_df &lt;- readr::read_tsv(\n  here::here(\"data\", \"input\", \"20250224_craywatch_raw.txt\"),\n  na = \"\",\n  guess_max = 10000\n)\n\nPreview (10 rows):\n\nhead(cray_raw_df, 10)"
+  },
+  {
+    "objectID": "src/about_the_data.html#clean-data",
+    "href": "src/about_the_data.html#clean-data",
+    "title": "About the Data",
+    "section": "3 Clean data",
+    "text": "3 Clean data\nWe remove data without a specific year in column year and select only few columns we are interested to:\n\ncray_cleaned_df &lt;- cray_raw_df %&gt;%\n  filter(!is.na(year)) %&gt;%\n  select(gbifID, occurrenceID, species, speciesKey, decimalLatitude,\n         decimalLongitude, coordinateUncertaintyInMeters,\n         eventDate, year, month, countryCode, stateProvince,\n         county, locality, basisOfRecord, individualCount,\n         datasetName)\n\nPreview (10 rows):\n\nhead(cray_cleaned_df, 10)"
+  },
+  {
+    "objectID": "src/about_the_data.html#save-cleaned-data",
+    "href": "src/about_the_data.html#save-cleaned-data",
+    "title": "About the Data",
+    "section": "4 Save cleaned data",
+    "text": "4 Save cleaned data\nWe save the cleaned data as 20250224_craywatch_cleaned.txt in data/20250224. This file will be the input file for the dashboard.\n\ncray_cleaned_df %&gt;%\n  readr::write_tsv(here::here(\"data\",\n                              \"output\",\n                              \"20250224_craywatch_cleaned.txt\")\n  )"
   }
 ]

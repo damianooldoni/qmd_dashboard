@@ -1,0 +1,68 @@
+---
+title: "About the Data"
+---
+
+## Introduction
+
+This page shows the workflow to get the cleaned data used in the dashboard starting from the raw data. Happy reading 📚.
+
+### Setup
+
+First, list and load the needed packages.
+
+```{r pkgs, message=FALSE, warning=FALSE}
+library(tidyverse)      # to do datascience
+library(here)           # to work easily with paths
+```
+
+## Read raw data
+
+The raw data are saved in `data/input/20250224_craywatch_raw.txt` as a tab separated text file. It contains GBIF observations of 6 invasive alien crayfishes in Flanders from 2024-06-13, start of the [craywatch](https://craywatch.inbo.be/) project. Derived from [10.15468/dl.pszsrh](https://doi.org/10.15468/dl.pszsrh). The query the GBIF download was based on, is the same query running real-time to show the layer "Nieuwe waarnemingen" (new observations) in the [craywatch map](https://craywatch.inbo.be/kaart/)!
+
+```{r read_data, message=FALSE}
+cray_raw_df <- readr::read_tsv(
+  here::here("data", "input", "20250224_craywatch_raw.txt"),
+  na = "",
+  guess_max = 10000
+)
+```
+
+Preview (10 rows):
+
+```{r preview}
+head(cray_raw_df, 10)
+```
+
+
+## Clean data
+
+We remove data without a specific year in column `year` and select only few columns we are interested to:
+
+```{r}
+cray_cleaned_df <- cray_raw_df %>%
+  filter(!is.na(year)) %>%
+  select(gbifID, occurrenceID, species, speciesKey, decimalLatitude,
+         decimalLongitude, coordinateUncertaintyInMeters,
+         eventDate, year, month, countryCode, stateProvince,
+         county, locality, basisOfRecord, individualCount,
+         datasetName)
+```
+
+Preview (10 rows):
+
+```{r preview_cleaned_data}
+head(cray_cleaned_df, 10)
+```
+
+
+## Save cleaned data
+
+We save the cleaned data as `20250224_craywatch_cleaned.txt` in `data/20250224`. This file will be the input file for the dashboard.
+
+```{r}
+cray_cleaned_df %>%
+  readr::write_tsv(here::here("data",
+                              "output",
+                              "20250224_craywatch_cleaned.txt")
+  )
+```

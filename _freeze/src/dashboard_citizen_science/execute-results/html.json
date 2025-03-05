@@ -1,0 +1,21 @@
+{
+  "hash": "42e2c7324c87ccec5b0916b8b18703ca",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\nformat: \n  dashboard:\n    scrolling: false\nexecute:\n  # Overwrite general settings in _quarto.yml\n  echo: false\n---\n\n\n\n\n\n\n\n\n## Row\n\n### Craywatch related data\n    \n\n\n\n::: {.cell}\n::: {.cell-output-display}\n\n```{=html}\n<div class=\"gauge html-widget html-fill-item\" id=\"htmlwidget-b687049a82755934fd95\" style=\"width:100%;height:406px;\"></div>\n<script type=\"application/json\" data-for=\"htmlwidget-b687049a82755934fd95\">{\"x\":{\"value\":1220,\"min\":0,\"max\":1617,\"customSectors\":{\"percents\":false,\"ranges\":[{\"lo\":0,\"hi\":1617,\"color\":\"rgba(63, 182, 24, 0.7)\"}]},\"symbol\":null,\"label\":\"waarnemingen.be\",\"humanFriendly\":true,\"humanFriendlyDecimal\":1,\"href\":null},\"evals\":[],\"jsHooks\":[]}</script>\n```\n\n:::\n:::\n\n\n\n\n### Number of observations via waarneemingen.be\n\n\n\n\n::: {.cell content='valuebox' title='Number of observations via waarnemingen.be'}\n::: {.cell-output .cell-output-stdout}\n\n```\n$icon\n[1] \"camera-fill\"\n\n$color\n[1] \"info\"\n\n$value\n[1] 1220\n```\n\n\n:::\n:::\n\n\n\n\n## Row {height=70%}\n\n### Number of observations per dataset\n\n\n\n\n::: {.cell}\n::: {.cell-output-display}\n![](dashboard_citizen_science_files/figure-html/unnamed-chunk-1-1.png){width=768}\n:::\n:::\n",
+    "supporting": [
+      "dashboard_citizen_science_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {
+      "include-in-header": [
+        "<link href=\"../site_libs/htmltools-fill-0.5.8.1/fill.css\" rel=\"stylesheet\" />\n<script src=\"../site_libs/htmlwidgets-1.6.4/htmlwidgets.js\"></script>\n<script src=\"../site_libs/raphael-2.1.4/raphael-2.1.4.min.js\"></script>\n<link href=\"../site_libs/justgage-1.2.2.1/justgage.css\" rel=\"stylesheet\" />\n<script src=\"../site_libs/justgage-1.2.2.1/justgage.js\"></script>\n<script src=\"../site_libs/gauge-binding-0.6.2/gauge.js\"></script>\n<script src=\"../site_libs/jquery-3.6.0/jquery-3.6.0.min.js\"></script>\n"
+      ]
+    },
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

@@ -4,9 +4,14 @@ format: html
 editor: visual
 ---
 
-# Emergency trends indicators of raccoon in Europe
+# Example of a quarto website with dashboard
 
-This is the homepage of the project. Here you can find the following sections:
+Welcome 👋! 
 
-- **Dashboard**: show emergency trend indicators based on number of observations and measured occupancy, i.e. the number of 1x1km grid cells with one or more observations.
-- **About Data**: the workflow in R to calculate the emergency indicators.
+This GitHub Pages based website is the solution of ["Bonus challenge 2: quarto website embedding the dashboard"](https://coding-club.inbo.be/sessions/20250224_static_dashboards.html#19). It shows how to combine dashboards with "standard" workflow webpages.
+
+The website is composed of several pages:
+
+- Homepage: the welcome page you are reading just now.
+- A three paged **dashboard**: show graphs, leaflet map and data table using quarto syntax instead of flexdashboard.
+- **About the Data**: the workflow in R to get the data used in the dashboard starting from th raw data.

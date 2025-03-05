@@ -2,19 +2,46 @@ project:
   type: website
   output-dir: docs
   execute-dir: project
-website:
-  title: "Emerging trends for raccoon in Europe"
-  navbar:
-    logo: images/assets/b3-logo.png
-    left:
-      - href: index.qmd
-        text: Home
-      - href: src/dashboard.qmd
-        text: Dashboard
-      - href: src/about_data.qmd
-        text: About the Data
 format:
   html:
     theme: flatly
+    df-print: paged
+    toc: true
+    toc-float: true
+    toc-depth: 4
+    number-sections: true
+    code-tools: true
+from: markdown+emoji
+website:
+  title: "Craywatch dashboard"
+  favicon: images/assets/craywatch_logo.png
+  navbar:
+    logo: images/assets/craywatch_logo.png
+    search: true
+    foreground: "#c04384" # it overrides the background color of the theme
+    background: "light" # it overrides the background color of the theme
+    left:
+      - href: index.qmd
+        text: Home
+      - text: "Dashboard"
+        menu:
+          - href: src/dashboard_citizen_science.qmd
+            text: Citizence science contribution
+          - href: src/dashboard_taxonomic_and_temporal_distribution.qmd
+            text: Taxonomic and temporal distribution
+          - href: src/dashbaord_explore_the_data.qmd
+            text: Explore the Data
+      - href: src/about_the_data.qmd
+        text: About the Data
+    right:
+      - icon: github
+        href: https://damianooldoni.github.io/qmd_dashboard/
+        aria-label: "GitHub Repository"
 execute:
-  freeze: auto
+  # About `freeze`: https://quarto.org/docs/projects/code-execution.html#freeze
+  freeze: auto # re-render only when source changes
+  eval: true
+  echo: true
+  warning: true
+  error: false
+  include: true

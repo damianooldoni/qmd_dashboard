@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>About the Data – Craywatch dashboard</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../images/assets/craywatch_logo.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link href="../site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+
+<script src="../site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+
+
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../images/assets/craywatch_logo.png" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Craywatch dashboard</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-dashboard" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Dashboard</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-dashboard">    
+        <li>
+    <a class="dropdown-item" href="../src/dashboard_citizen_science.html">
+ <span class="dropdown-text">Citizence science contribution</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../src/dashboard_taxonomic_and_temporal_distribution.html">
+ <span class="dropdown-text">Taxonomic and temporal distribution</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../src/dashbaord_explore_the_data.html">
+ <span class="dropdown-text">Explore the Data</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link active" href="../src/about_the_data.html" aria-current="page"> 
+<span class="menu-text">About the Data</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://damianooldoni.github.io/qmd_dashboard/"> <i class="bi bi-github" role="img" aria-label="GitHub Repository">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">1</span> Introduction</a>
+  <ul>
+  <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup"><span class="header-section-number">1.1</span> Setup</a></li>
+  </ul></li>
+  <li><a href="#read-raw-data" id="toc-read-raw-data" class="nav-link" data-scroll-target="#read-raw-data"><span class="header-section-number">2</span> Read raw data</a></li>
+  <li><a href="#clean-data" id="toc-clean-data" class="nav-link" data-scroll-target="#clean-data"><span class="header-section-number">3</span> Clean data</a></li>
+  <li><a href="#save-cleaned-data" id="toc-save-cleaned-data" class="nav-link" data-scroll-target="#save-cleaned-data"><span class="header-section-number">4</span> Save cleaned data</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">About the Data</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introduction" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">1</span> Introduction</h2>
+<p>This page shows the workflow to get the cleaned data used in the dashboard starting from the raw data. Happy reading 📚.</p>
+<section id="setup" class="level3" data-number="1.1">
+<h3 data-number="1.1" class="anchored" data-anchor-id="setup"><span class="header-section-number">1.1</span> Setup</h3>
+<p>First, list and load the needed packages.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)      <span class="co"># to do datascience</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)           <span class="co"># to work easily with paths</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="read-raw-data" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="read-raw-data"><span class="header-section-number">2</span> Read raw data</h2>
+<p>The raw data are saved in <code>data/input/20250224_craywatch_raw.txt</code> as a tab separated text file. It contains GBIF observations of 6 invasive alien crayfishes in Flanders from 2024-06-13, start of the <a href="https://craywatch.inbo.be/">craywatch</a> project. Derived from <a href="https://doi.org/10.15468/dl.pszsrh">10.15468/dl.pszsrh</a>. The query the GBIF download was based on, is the same query running real-time to show the layer “Nieuwe waarnemingen” (new observations) in the <a href="https://craywatch.inbo.be/kaart/">craywatch map</a>!</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>cray_raw_df <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_tsv</span>(</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"input"</span>, <span class="st">"20250224_craywatch_raw.txt"</span>),</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">na =</span> <span class="st">""</span>,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">guess_max =</span> <span class="dv">10000</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Preview (10 rows):</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cray_raw_df, <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["gbifID"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["accessRights"],"name":[2],"type":["chr"],"align":["left"]},{"label":["bibliographicCitation"],"name":[3],"type":["lgl"],"align":["right"]},{"label":["language"],"name":[4],"type":["chr"],"align":["left"]},{"label":["license"],"name":[5],"type":["chr"],"align":["left"]},{"label":["modified"],"name":[6],"type":["dttm"],"align":["right"]},{"label":["publisher"],"name":[7],"type":["lgl"],"align":["right"]},{"label":["references"],"name":[8],"type":["chr"],"align":["left"]},{"label":["rightsHolder"],"name":[9],"type":["chr"],"align":["left"]},{"label":["type"],"name":[10],"type":["chr"],"align":["left"]},{"label":["institutionID"],"name":[11],"type":["lgl"],"align":["right"]},{"label":["collectionID"],"name":[12],"type":["lgl"],"align":["right"]},{"label":["datasetID"],"name":[13],"type":["chr"],"align":["left"]},{"label":["institutionCode"],"name":[14],"type":["chr"],"align":["left"]},{"label":["collectionCode"],"name":[15],"type":["chr"],"align":["left"]},{"label":["datasetName"],"name":[16],"type":["chr"],"align":["left"]},{"label":["ownerInstitutionCode"],"name":[17],"type":["lgl"],"align":["right"]},{"label":["basisOfRecord"],"name":[18],"type":["chr"],"align":["left"]},{"label":["informationWithheld"],"name":[19],"type":["chr"],"align":["left"]},{"label":["dataGeneralizations"],"name":[20],"type":["lgl"],"align":["right"]},{"label":["dynamicProperties"],"name":[21],"type":["chr"],"align":["left"]},{"label":["occurrenceID"],"name":[22],"type":["chr"],"align":["left"]},{"label":["catalogNumber"],"name":[23],"type":["dbl"],"align":["right"]},{"label":["recordNumber"],"name":[24],"type":["lgl"],"align":["right"]},{"label":["recordedBy"],"name":[25],"type":["chr"],"align":["left"]},{"label":["recordedByID"],"name":[26],"type":["chr"],"align":["left"]},{"label":["individualCount"],"name":[27],"type":["dbl"],"align":["right"]},{"label":["organismQuantity"],"name":[28],"type":["lgl"],"align":["right"]},{"label":["organismQuantityType"],"name":[29],"type":["lgl"],"align":["right"]},{"label":["sex"],"name":[30],"type":["chr"],"align":["left"]},{"label":["lifeStage"],"name":[31],"type":["chr"],"align":["left"]},{"label":["reproductiveCondition"],"name":[32],"type":["chr"],"align":["left"]},{"label":["caste"],"name":[33],"type":["lgl"],"align":["right"]},{"label":["behavior"],"name":[34],"type":["chr"],"align":["left"]},{"label":["vitality"],"name":[35],"type":["lgl"],"align":["right"]},{"label":["establishmentMeans"],"name":[36],"type":["lgl"],"align":["right"]},{"label":["degreeOfEstablishment"],"name":[37],"type":["lgl"],"align":["right"]},{"label":["pathway"],"name":[38],"type":["lgl"],"align":["right"]},{"label":["georeferenceVerificationStatus"],"name":[39],"type":["lgl"],"align":["right"]},{"label":["occurrenceStatus"],"name":[40],"type":["chr"],"align":["left"]},{"label":["preparations"],"name":[41],"type":["lgl"],"align":["right"]},{"label":["disposition"],"name":[42],"type":["lgl"],"align":["right"]},{"label":["associatedOccurrences"],"name":[43],"type":["lgl"],"align":["right"]},{"label":["associatedReferences"],"name":[44],"type":["lgl"],"align":["right"]},{"label":["associatedSequences"],"name":[45],"type":["chr"],"align":["left"]},{"label":["associatedTaxa"],"name":[46],"type":["lgl"],"align":["right"]},{"label":["otherCatalogNumbers"],"name":[47],"type":["lgl"],"align":["right"]},{"label":["occurrenceRemarks"],"name":[48],"type":["chr"],"align":["left"]},{"label":["organismID"],"name":[49],"type":["lgl"],"align":["right"]},{"label":["organismName"],"name":[50],"type":["lgl"],"align":["right"]},{"label":["organismScope"],"name":[51],"type":["lgl"],"align":["right"]},{"label":["associatedOrganisms"],"name":[52],"type":["lgl"],"align":["right"]},{"label":["previousIdentifications"],"name":[53],"type":["lgl"],"align":["right"]},{"label":["organismRemarks"],"name":[54],"type":["lgl"],"align":["right"]},{"label":["materialEntityID"],"name":[55],"type":["lgl"],"align":["right"]},{"label":["materialEntityRemarks"],"name":[56],"type":["lgl"],"align":["right"]},{"label":["verbatimLabel"],"name":[57],"type":["lgl"],"align":["right"]},{"label":["materialSampleID"],"name":[58],"type":["lgl"],"align":["right"]},{"label":["eventID"],"name":[59],"type":["chr"],"align":["left"]},{"label":["parentEventID"],"name":[60],"type":["lgl"],"align":["right"]},{"label":["eventType"],"name":[61],"type":["lgl"],"align":["right"]},{"label":["fieldNumber"],"name":[62],"type":["lgl"],"align":["right"]},{"label":["eventDate"],"name":[63],"type":["dttm"],"align":["right"]},{"label":["eventTime"],"name":[64],"type":["chr"],"align":["left"]},{"label":["startDayOfYear"],"name":[65],"type":["dbl"],"align":["right"]},{"label":["endDayOfYear"],"name":[66],"type":["dbl"],"align":["right"]},{"label":["year"],"name":[67],"type":["dbl"],"align":["right"]},{"label":["month"],"name":[68],"type":["dbl"],"align":["right"]},{"label":["day"],"name":[69],"type":["dbl"],"align":["right"]},{"label":["verbatimEventDate"],"name":[70],"type":["chr"],"align":["left"]},{"label":["habitat"],"name":[71],"type":["chr"],"align":["left"]},{"label":["samplingProtocol"],"name":[72],"type":["chr"],"align":["left"]},{"label":["sampleSizeValue"],"name":[73],"type":["dbl"],"align":["right"]},{"label":["sampleSizeUnit"],"name":[74],"type":["chr"],"align":["left"]},{"label":["samplingEffort"],"name":[75],"type":["lgl"],"align":["right"]},{"label":["fieldNotes"],"name":[76],"type":["lgl"],"align":["right"]},{"label":["eventRemarks"],"name":[77],"type":["lgl"],"align":["right"]},{"label":["locationID"],"name":[78],"type":["chr"],"align":["left"]},{"label":["higherGeographyID"],"name":[79],"type":["lgl"],"align":["right"]},{"label":["higherGeography"],"name":[80],"type":["lgl"],"align":["right"]},{"label":["continent"],"name":[81],"type":["chr"],"align":["left"]},{"label":["waterBody"],"name":[82],"type":["lgl"],"align":["right"]},{"label":["islandGroup"],"name":[83],"type":["lgl"],"align":["right"]},{"label":["island"],"name":[84],"type":["lgl"],"align":["right"]},{"label":["countryCode"],"name":[85],"type":["chr"],"align":["left"]},{"label":["stateProvince"],"name":[86],"type":["chr"],"align":["left"]},{"label":["county"],"name":[87],"type":["lgl"],"align":["right"]},{"label":["municipality"],"name":[88],"type":["chr"],"align":["left"]},{"label":["locality"],"name":[89],"type":["chr"],"align":["left"]},{"label":["verbatimLocality"],"name":[90],"type":["chr"],"align":["left"]},{"label":["verbatimElevation"],"name":[91],"type":["lgl"],"align":["right"]},{"label":["verticalDatum"],"name":[92],"type":["lgl"],"align":["right"]},{"label":["verbatimDepth"],"name":[93],"type":["lgl"],"align":["right"]},{"label":["minimumDistanceAboveSurfaceInMeters"],"name":[94],"type":["lgl"],"align":["right"]},{"label":["maximumDistanceAboveSurfaceInMeters"],"name":[95],"type":["lgl"],"align":["right"]},{"label":["locationAccordingTo"],"name":[96],"type":["lgl"],"align":["right"]},{"label":["locationRemarks"],"name":[97],"type":["chr"],"align":["left"]},{"label":["decimalLatitude"],"name":[98],"type":["dbl"],"align":["right"]},{"label":["decimalLongitude"],"name":[99],"type":["dbl"],"align":["right"]},{"label":["coordinateUncertaintyInMeters"],"name":[100],"type":["dbl"],"align":["right"]},{"label":["coordinatePrecision"],"name":[101],"type":["lgl"],"align":["right"]},{"label":["pointRadiusSpatialFit"],"name":[102],"type":["lgl"],"align":["right"]},{"label":["verbatimCoordinateSystem"],"name":[103],"type":["chr"],"align":["left"]},{"label":["verbatimSRS"],"name":[104],"type":["chr"],"align":["left"]},{"label":["footprintWKT"],"name":[105],"type":["lgl"],"align":["right"]},{"label":["footprintSRS"],"name":[106],"type":["lgl"],"align":["right"]},{"label":["footprintSpatialFit"],"name":[107],"type":["lgl"],"align":["right"]},{"label":["georeferencedBy"],"name":[108],"type":["lgl"],"align":["right"]},{"label":["georeferencedDate"],"name":[109],"type":["lgl"],"align":["right"]},{"label":["georeferenceProtocol"],"name":[110],"type":["lgl"],"align":["right"]},{"label":["georeferenceSources"],"name":[111],"type":["lgl"],"align":["right"]},{"label":["georeferenceRemarks"],"name":[112],"type":["lgl"],"align":["right"]},{"label":["geologicalContextID"],"name":[113],"type":["lgl"],"align":["right"]},{"label":["earliestEonOrLowestEonothem"],"name":[114],"type":["lgl"],"align":["right"]},{"label":["latestEonOrHighestEonothem"],"name":[115],"type":["lgl"],"align":["right"]},{"label":["earliestEraOrLowestErathem"],"name":[116],"type":["lgl"],"align":["right"]},{"label":["latestEraOrHighestErathem"],"name":[117],"type":["lgl"],"align":["right"]},{"label":["earliestPeriodOrLowestSystem"],"name":[118],"type":["lgl"],"align":["right"]},{"label":["latestPeriodOrHighestSystem"],"name":[119],"type":["lgl"],"align":["right"]},{"label":["earliestEpochOrLowestSeries"],"name":[120],"type":["lgl"],"align":["right"]},{"label":["latestEpochOrHighestSeries"],"name":[121],"type":["lgl"],"align":["right"]},{"label":["earliestAgeOrLowestStage"],"name":[122],"type":["lgl"],"align":["right"]},{"label":["latestAgeOrHighestStage"],"name":[123],"type":["lgl"],"align":["right"]},{"label":["lowestBiostratigraphicZone"],"name":[124],"type":["lgl"],"align":["right"]},{"label":["highestBiostratigraphicZone"],"name":[125],"type":["lgl"],"align":["right"]},{"label":["lithostratigraphicTerms"],"name":[126],"type":["lgl"],"align":["right"]},{"label":["group"],"name":[127],"type":["lgl"],"align":["right"]},{"label":["formation"],"name":[128],"type":["lgl"],"align":["right"]},{"label":["member"],"name":[129],"type":["lgl"],"align":["right"]},{"label":["bed"],"name":[130],"type":["lgl"],"align":["right"]},{"label":["identificationID"],"name":[131],"type":["dbl"],"align":["right"]},{"label":["verbatimIdentification"],"name":[132],"type":["lgl"],"align":["right"]},{"label":["identificationQualifier"],"name":[133],"type":["lgl"],"align":["right"]},{"label":["typeStatus"],"name":[134],"type":["lgl"],"align":["right"]},{"label":["identifiedBy"],"name":[135],"type":["chr"],"align":["left"]},{"label":["identifiedByID"],"name":[136],"type":["chr"],"align":["left"]},{"label":["dateIdentified"],"name":[137],"type":["dttm"],"align":["right"]},{"label":["identificationReferences"],"name":[138],"type":["lgl"],"align":["right"]},{"label":["identificationVerificationStatus"],"name":[139],"type":["chr"],"align":["left"]},{"label":["identificationRemarks"],"name":[140],"type":["lgl"],"align":["right"]},{"label":["taxonID"],"name":[141],"type":["chr"],"align":["left"]},{"label":["scientificNameID"],"name":[142],"type":["lgl"],"align":["right"]},{"label":["acceptedNameUsageID"],"name":[143],"type":["lgl"],"align":["right"]},{"label":["parentNameUsageID"],"name":[144],"type":["lgl"],"align":["right"]},{"label":["originalNameUsageID"],"name":[145],"type":["lgl"],"align":["right"]},{"label":["nameAccordingToID"],"name":[146],"type":["lgl"],"align":["right"]},{"label":["namePublishedInID"],"name":[147],"type":["lgl"],"align":["right"]},{"label":["taxonConceptID"],"name":[148],"type":["chr"],"align":["left"]},{"label":["scientificName"],"name":[149],"type":["chr"],"align":["left"]},{"label":["acceptedNameUsage"],"name":[150],"type":["lgl"],"align":["right"]},{"label":["parentNameUsage"],"name":[151],"type":["lgl"],"align":["right"]},{"label":["originalNameUsage"],"name":[152],"type":["lgl"],"align":["right"]},{"label":["nameAccordingTo"],"name":[153],"type":["lgl"],"align":["right"]},{"label":["namePublishedIn"],"name":[154],"type":["lgl"],"align":["right"]},{"label":["namePublishedInYear"],"name":[155],"type":["lgl"],"align":["right"]},{"label":["higherClassification"],"name":[156],"type":["lgl"],"align":["right"]},{"label":["kingdom"],"name":[157],"type":["chr"],"align":["left"]},{"label":["phylum"],"name":[158],"type":["chr"],"align":["left"]},{"label":["class"],"name":[159],"type":["chr"],"align":["left"]},{"label":["order"],"name":[160],"type":["chr"],"align":["left"]},{"label":["superfamily"],"name":[161],"type":["lgl"],"align":["right"]},{"label":["family"],"name":[162],"type":["chr"],"align":["left"]},{"label":["subfamily"],"name":[163],"type":["lgl"],"align":["right"]},{"label":["tribe"],"name":[164],"type":["lgl"],"align":["right"]},{"label":["subtribe"],"name":[165],"type":["lgl"],"align":["right"]},{"label":["genus"],"name":[166],"type":["chr"],"align":["left"]},{"label":["genericName"],"name":[167],"type":["chr"],"align":["left"]},{"label":["subgenus"],"name":[168],"type":["lgl"],"align":["right"]},{"label":["infragenericEpithet"],"name":[169],"type":["lgl"],"align":["right"]},{"label":["specificEpithet"],"name":[170],"type":["chr"],"align":["left"]},{"label":["infraspecificEpithet"],"name":[171],"type":["lgl"],"align":["right"]},{"label":["cultivarEpithet"],"name":[172],"type":["lgl"],"align":["right"]},{"label":["taxonRank"],"name":[173],"type":["chr"],"align":["left"]},{"label":["verbatimTaxonRank"],"name":[174],"type":["lgl"],"align":["right"]},{"label":["vernacularName"],"name":[175],"type":["chr"],"align":["left"]},{"label":["nomenclaturalCode"],"name":[176],"type":["chr"],"align":["left"]},{"label":["taxonomicStatus"],"name":[177],"type":["chr"],"align":["left"]},{"label":["nomenclaturalStatus"],"name":[178],"type":["lgl"],"align":["right"]},{"label":["taxonRemarks"],"name":[179],"type":["lgl"],"align":["right"]},{"label":["datasetKey"],"name":[180],"type":["chr"],"align":["left"]},{"label":["publishingCountry"],"name":[181],"type":["chr"],"align":["left"]},{"label":["lastInterpreted"],"name":[182],"type":["dttm"],"align":["right"]},{"label":["elevation"],"name":[183],"type":["lgl"],"align":["right"]},{"label":["elevationAccuracy"],"name":[184],"type":["lgl"],"align":["right"]},{"label":["depth"],"name":[185],"type":["lgl"],"align":["right"]},{"label":["depthAccuracy"],"name":[186],"type":["lgl"],"align":["right"]},{"label":["distanceFromCentroidInMeters"],"name":[187],"type":["lgl"],"align":["right"]},{"label":["issue"],"name":[188],"type":["chr"],"align":["left"]},{"label":["mediaType"],"name":[189],"type":["chr"],"align":["left"]},{"label":["hasCoordinate"],"name":[190],"type":["lgl"],"align":["right"]},{"label":["hasGeospatialIssues"],"name":[191],"type":["lgl"],"align":["right"]},{"label":["taxonKey"],"name":[192],"type":["dbl"],"align":["right"]},{"label":["acceptedTaxonKey"],"name":[193],"type":["dbl"],"align":["right"]},{"label":["kingdomKey"],"name":[194],"type":["dbl"],"align":["right"]},{"label":["phylumKey"],"name":[195],"type":["dbl"],"align":["right"]},{"label":["classKey"],"name":[196],"type":["dbl"],"align":["right"]},{"label":["orderKey"],"name":[197],"type":["dbl"],"align":["right"]},{"label":["familyKey"],"name":[198],"type":["dbl"],"align":["right"]},{"label":["genusKey"],"name":[199],"type":["dbl"],"align":["right"]},{"label":["subgenusKey"],"name":[200],"type":["lgl"],"align":["right"]},{"label":["speciesKey"],"name":[201],"type":["dbl"],"align":["right"]},{"label":["species"],"name":[202],"type":["chr"],"align":["left"]},{"label":["acceptedScientificName"],"name":[203],"type":["chr"],"align":["left"]},{"label":["verbatimScientificName"],"name":[204],"type":["chr"],"align":["left"]},{"label":["typifiedName"],"name":[205],"type":["lgl"],"align":["right"]},{"label":["protocol"],"name":[206],"type":["chr"],"align":["left"]},{"label":["lastParsed"],"name":[207],"type":["dttm"],"align":["right"]},{"label":["lastCrawled"],"name":[208],"type":["dttm"],"align":["right"]},{"label":["repatriated"],"name":[209],"type":["lgl"],"align":["right"]},{"label":["relativeOrganismQuantity"],"name":[210],"type":["lgl"],"align":["right"]},{"label":["projectId"],"name":[211],"type":["chr"],"align":["left"]},{"label":["isSequenced"],"name":[212],"type":["lgl"],"align":["right"]},{"label":["gbifRegion"],"name":[213],"type":["chr"],"align":["left"]},{"label":["publishedByGbifRegion"],"name":[214],"type":["chr"],"align":["left"]},{"label":["level0Gid"],"name":[215],"type":["chr"],"align":["left"]},{"label":["level0Name"],"name":[216],"type":["chr"],"align":["left"]},{"label":["level1Gid"],"name":[217],"type":["chr"],"align":["left"]},{"label":["level1Name"],"name":[218],"type":["chr"],"align":["left"]},{"label":["level2Gid"],"name":[219],"type":["chr"],"align":["left"]},{"label":["level2Name"],"name":[220],"type":["chr"],"align":["left"]},{"label":["level3Gid"],"name":[221],"type":["chr"],"align":["left"]},{"label":["level3Name"],"name":[222],"type":["chr"],"align":["left"]},{"label":["iucnRedListCategory"],"name":[223],"type":["chr"],"align":["left"]}],"data":[{"1":"5062404391","2":"http://www.natuurpunt.be/normen-voor-datagebruik","3":"NA","4":"en","5":"CC_BY_NC_4_0","6":"<NA>","7":"NA","8":"https://waarnemingen.be/observation/337412457","9":"Natuurpunt Studie","10":"Event","11":"NA","12":"NA","13":"https://doi.org/10.15468/k2aiak","14":"Natuurpunt","15":"waarnemingen.be","16":"Waarnemingen.be - Non-native animal occurrences in Flanders and the Brussels Capital Region, Belgium","17":"NA","18":"HUMAN_OBSERVATION","19":"see metadata","20":"NA","21":"NA","22":"Natuurpunt:Waarnemingen:337412457","23":"NA","24":"NA","25":"NA","26":"NA","27":"1","28":"NA","29":"NA","30":"Male","31":"Adult","32":"NA","33":"NA","34":"NA","35":"NA","36":"NA","37":"NA","38":"NA","39":"NA","40":"PRESENT","41":"NA","42":"NA","43":"NA","44":"NA","45":"NA","46":"NA","47":"NA","48":"NA","49":"NA","50":"NA","51":"NA","52":"NA","53":"NA","54":"NA","55":"NA","56":"NA","57":"NA","58":"NA","59":"NA","60":"NA","61":"NA","62":"NA","63":"2025-01-21","64":"NA","65":"21","66":"21","67":"2025","68":"1","69":"21","70":"NA","71":"NA","72":"unspecified trap","73":"NA","74":"NA","75":"NA","76":"NA","77":"NA","78":"NA","79":"NA","80":"NA","81":"EUROPE","82":"NA","83":"NA","84":"NA","85":"BE","86":"East Flanders","87":"NA","88":"Beveren","89":"NA","90":"NA","91":"NA","92":"NA","93":"NA","94":"NA","95":"NA","96":"NA","97":"NA","98":"51.24567","99":"4.18679","100":"3","101":"NA","102":"NA","103":"NA","104":"NA","105":"NA","106":"NA","107":"NA","108":"NA","109":"NA","110":"NA","111":"NA","112":"NA","113":"NA","114":"NA","115":"NA","116":"NA","117":"NA","118":"NA","119":"NA","120":"NA","121":"NA","122":"NA","123":"NA","124":"NA","125":"NA","126":"NA","127":"NA","128":"NA","129":"NA","130":"NA","131":"NA","132":"NA","133":"NA","134":"NA","135":"NA","136":"NA","137":"<NA>","138":"NA","139":"approved on photographic evidence","140":"NA","141":"https://waarnemingen.be/species/8887","142":"NA","143":"NA","144":"NA","145":"NA","146":"NA","147":"NA","148":"NA","149":"Faxonius limosus (Rafinesque, 1817)","150":"NA","151":"NA","152":"NA","153":"NA","154":"NA","155":"NA","156":"NA","157":"Animalia","158":"Arthropoda","159":"Malacostraca","160":"Decapoda","161":"NA","162":"Cambaridae","163":"NA","164":"NA","165":"NA","166":"Faxonius","167":"Faxonius","168":"NA","169":"NA","170":"limosus","171":"NA","172":"NA","173":"SPECIES","174":"NA","175":"Gevlekte Amerikaanse rivierkreeft","176":"ICZN","177":"ACCEPTED","178":"NA","179":"NA","180":"9a0b66df-7535-4f28-9f4e-5bc11b8b096c","181":"BE","182":"2025-02-15 17:53:31.405","183":"NA","184":"NA","185":"NA","186":"NA","187":"NA","188":"TAXON_MATCH_TAXON_ID_IGNORED;OCCURRENCE_STATUS_INFERRED_FROM_INDIVIDUAL_COUNT","189":"NA","190":"TRUE","191":"FALSE","192":"8909595","193":"8909595","194":"1","195":"54","196":"229","197":"637","198":"4479","199":"4646327","200":"NA","201":"8909595","202":"Faxonius limosus","203":"Faxonius limosus (Rafinesque, 1817)","204":"Faxonius limosus","205":"NA","206":"EML","207":"2025-02-15 17:53:31.405","208":"2025-02-15 17:24:01.049","209":"FALSE","210":"NA","211":"NA","212":"FALSE","213":"EUROPE","214":"EUROPE","215":"BEL","216":"Belgium","217":"BEL.2_1","218":"Vlaanderen","219":"BEL.2.3_1","220":"Oost-Vlaanderen","221":"BEL.2.3.6_1","222":"Sint-Niklaas","223":"NE"},{"1":"5062403477","2":"http://www.natuurpunt.be/normen-voor-datagebruik","3":"NA","4":"en","5":"CC_BY_NC_4_0","6":"<NA>","7":"NA","8":"https://waarnemingen.be/observation/337469526","9":"Natuurpunt Studie","10":"Event","11":"NA","12":"NA","13":"https://doi.org/10.15468/k2aiak","14":"Natuurpunt","15":"waarnemingen.be","16":"Waarnemingen.be - Non-native animal occurrences in Flanders and the Brussels Capital Region, Belgium","17":"NA","18":"HUMAN_OBSERVATION","19":"see metadata","20":"NA","21":"NA","22":"Natuurpunt:Waarnemingen:337469526","23":"NA","24":"NA","25":"NA","26":"NA","27":"1","28":"NA","29":"NA","30":"NA","31":"Adult","32":"NA","33":"NA","34":"NA","35":"NA","36":"NA","37":"NA","38":"NA","39":"NA","40":"PRESENT","41":"NA","42":"NA","43":"NA","44":"NA","45":"NA","46":"NA","47":"NA","48":"found dead","49":"NA","50":"NA","51":"NA","52":"NA","53":"NA","54":"NA","55":"NA","56":"NA","57":"NA","58":"NA","59":"NA","60":"NA","61":"NA","62":"NA","63":"2025-01-22","64":"NA","65":"22","66":"22","67":"2025","68":"1","69":"22","70":"NA","71":"NA","72":"seen","73":"NA","74":"NA","75":"NA","76":"NA","77":"NA","78":"NA","79":"NA","80":"NA","81":"EUROPE","82":"NA","83":"NA","84":"NA","85":"BE","86":"East Flanders","87":"NA","88":"Hamme","89":"NA","90":"NA","91":"NA","92":"NA","93":"NA","94":"NA","95":"NA","96":"NA","97":"NA","98":"51.07253","99":"4.18306","100":"4","101":"NA","102":"NA","103":"NA","104":"NA","105":"NA","106":"NA","107":"NA","108":"NA","109":"NA","110":"NA","111":"NA","112":"NA","113":"NA","114":"NA","115":"NA","116":"NA","117":"NA","118":"NA","119":"NA","120":"NA","121":"NA","122":"NA","123":"NA","124":"NA","125":"NA","126":"NA","127":"NA","128":"NA","129":"NA","130":"NA","131":"NA","132":"NA","133":"NA","134":"NA","135":"NA","136":"NA","137":"<NA>","138":"NA","139":"approved on photographic evidence","140":"NA","141":"https://waarnemingen.be/species/10083","142":"NA","143":"NA","144":"NA","145":"NA","146":"NA","147":"NA","148":"NA","149":"Procambarus clarkii (Girard, 1852)","150":"NA","151":"NA","152":"NA","153":"NA","154":"NA","155":"NA","156":"NA","157":"Animalia","158":"Arthropoda","159":"Malacostraca","160":"Decapoda","161":"NA","162":"Cambaridae","163":"NA","164":"NA","165":"NA","166":"Procambarus","167":"Procambarus","168":"NA","169":"NA","170":"clarkii","171":"NA","172":"NA","173":"SPECIES","174":"NA","175":"Rode Amerikaanse rivierkreeft","176":"ICZN","177":"ACCEPTED","178":"NA","179":"NA","180":"9a0b66df-7535-4f28-9f4e-5bc11b8b096c","181":"BE","182":"2025-02-15 17:53:32.773","183":"NA","184":"NA","185":"NA","186":"NA","187":"NA","188":"TAXON_MATCH_TAXON_ID_IGNORED;OCCURRENCE_STATUS_INFERRED_FROM_INDIVIDUAL_COUNT","189":"NA","190":"TRUE","191":"FALSE","192":"2227300","193":"2227300","194":"1","195":"54","196":"229","197":"637","198":"4479","199":"2227127","200":"NA","201":"2227300","202":"Procambarus clarkii","203":"Procambarus clarkii (Girard, 1852)","204":"Procambarus clarkii","205":"NA","206":"EML","207":"2025-02-15 17:53:32.773","208":"2025-02-15 17:24:01.049","209":"FALSE","210":"NA","211":"NA","212":"FALSE","213":"EUROPE","214":"EUROPE","215":"BEL","216":"Belgium","217":"BEL.2_1","218":"Vlaanderen","219":"BEL.2.3_1","220":"Oost-Vlaanderen","221":"BEL.2.3.2_1","222":"Dendermonde","223":"LC"},{"1":"5062401723","2":"http://www.natuurpunt.be/normen-voor-datagebruik","3":"NA","4":"en","5":"CC_BY_NC_4_0","6":"<NA>","7":"NA","8":"https://waarnemingen.be/observation/337412437","9":"Natuurpunt Studie","10":"Event","11":"NA","12":"NA","13":"https://doi.org/10.15468/k2aiak","14":"Natuurpunt","15":"waarnemingen.be","16":"Waarnemingen.be - Non-native animal occurrences in Flanders and the Brussels Capital Region, Belgium","17":"NA","18":"HUMAN_OBSERVATION","19":"see metadata","20":"NA","21":"NA","22":"Natuurpunt:Waarnemingen:337412437:3720760","23":"NA","24":"NA","25":"NA","26":"NA","27":"1","28":"NA","29":"NA","30":"Male","31":"Adult","32":"NA","33":"NA","34":"NA","35":"NA","36":"NA","37":"NA","38":"NA","39":"NA","40":"PRESENT","41":"NA","42":"NA","43":"NA","44":"NA","45":"NA","46":"NA","47":"NA","48":"NA","49":"NA","50":"NA","51":"NA","52":"NA","53":"NA","54":"NA","55":"NA","56":"NA","57":"NA","58":"NA","59":"NA","60":"NA","61":"NA","62":"NA","63":"2025-01-21","64":"NA","65":"21","66":"21","67":"2025","68":"1","69":"21","70":"NA","71":"NA","72":"unspecified trap","73":"NA","74":"NA","75":"NA","76":"NA","77":"NA","78":"NA","79":"NA","80":"NA","81":"EUROPE","82":"NA","83":"NA","84":"NA","85":"BE","86":"East Flanders","87":"NA","88":"Beveren","89":"NA","90":"NA","91":"NA","92":"NA","93":"NA","94":"NA","95":"NA","96":"NA","97":"NA","98":"51.24718","99":"4.18969","100":"3","101":"NA","102":"NA","103":"NA","104":"NA","105":"NA","106":"NA","107":"NA","108":"NA","109":"NA","110":"NA","111":"NA","112":"NA","113":"NA","114":"NA","115":"NA","116":"NA","117":"NA","118":"NA","119":"NA","120":"NA","121":"NA","122":"NA","123":"NA","124":"NA","125":"NA","126":"NA","127":"NA","128":"NA","129":"NA","130":"NA","131":"NA","132":"NA","133":"NA","134":"NA","135":"NA","136":"NA","137":"<NA>","138":"NA","139":"approved on photographic evidence","140":"NA","141":"https://waarnemingen.be/species/561247","142":"NA","143":"NA","144":"NA","145":"NA","146":"NA","147":"NA","148":"NA","149":"Procambarus acutus (Girard, 1852)","150":"NA","151":"NA","152":"NA","153":"NA","154":"NA","155":"NA","156":"NA","157":"Animalia","158":"Arthropoda","159":"Malacostraca","160":"Decapoda","161":"NA","162":"Cambaridae","163":"NA","164":"NA","165":"NA","166":"Procambarus","167":"Procambarus","168":"NA","169":"NA","170":"acutus","171":"NA","172":"NA","173":"SPECIES","174":"NA","175":"Gestreepte Amerikaanse rivierkreeft","176":"ICZN","177":"ACCEPTED","178":"NA","179":"NA","180":"9a0b66df-7535-4f28-9f4e-5bc11b8b096c","181":"BE","182":"2025-02-15 17:53:45.055","183":"NA","184":"NA","185":"NA","186":"NA","187":"NA","188":"TAXON_MATCH_TAXON_ID_IGNORED;OCCURRENCE_STATUS_INFERRED_FROM_INDIVIDUAL_COUNT","189":"NA","190":"TRUE","191":"FALSE","192":"2227289","193":"2227289","194":"1","195":"54","196":"229","197":"637","198":"4479","199":"2227127","200":"NA","201":"2227289","202":"Procambarus acutus","203":"Procambarus acutus (Girard, 1852)","204":"Procambarus acutus","205":"NA","206":"EML","207":"2025-02-15 17:53:45.055","208":"2025-02-15 17:24:01.049","209":"FALSE","210":"NA","211":"NA","212":"FALSE","213":"EUROPE","214":"EUROPE","215":"BEL","216":"Belgium","217":"BEL.2_1","218":"Vlaanderen","219":"BEL.2.3_1","220":"Oost-Vlaanderen","221":"BEL.2.3.6_1","222":"Sint-Niklaas","223":"LC"},{"1":"5062401402","2":"http://www.natuurpunt.be/normen-voor-datagebruik","3":"NA","4":"en","5":"CC_BY_NC_4_0","6":"<NA>","7":"NA","8":"https://waarnemingen.be/observation/337412440","9":"Natuurpunt Studie","10":"Event","11":"NA","12":"NA","13":"https://doi.org/10.15468/k2aiak","14":"Natuurpunt","15":"waarnemingen.be","16":"Waarnemingen.be - Non-native animal occurrences in Flanders and the Brussels Capital Region, Belgium","17":"NA","18":"HUMAN_OBSERVATION","19":"see metadata","20":"NA","21":"young_bearing_external","22":"Natuurpunt:Waarnemingen:337412440","23":"NA","24":"NA","25":"NA","26":"NA","27":"1","28":"NA","29":"NA","30":"Female","31":"NA","32":"young_bearing_external","33":"NA","34":"NA","35":"NA","36":"NA","37":"NA","38":"NA","39":"NA","40":"PRESENT","41":"NA","42":"NA","43":"NA","44":"NA","45":"NA","46":"NA","47":"NA","48":"young_bearing_external","49":"NA","50":"NA","51":"NA","52":"NA","53":"NA","54":"NA","55":"NA","56":"NA","57":"NA","58":"NA","59":"NA","60":"NA","61":"NA","62":"NA","63":"2025-01-21","64":"NA","65":"21","66":"21","67":"2025","68":"1","69":"21","70":"NA","71":"NA","72":"unspecified trap","73":"NA","74":"NA","75":"NA","76":"NA","77":"NA","78":"NA","79":"NA","80":"NA","81":"EUROPE","82":"NA","83":"NA","84":"NA","85":"BE","86":"East Flanders","87":"NA","88":"Beveren","89":"NA","90":"NA","91":"NA","92":"NA","93":"NA","94":"NA","95":"NA","96":"NA","97":"NA","98":"51.24699","99":"4.18949","100":"3","101":"NA","102":"NA","103":"NA","104":"NA","105":"NA","106":"NA","107":"NA","108":"NA","109":"NA","110":"NA","111":"NA","112":"NA","113":"NA","114":"NA","115":"NA","116":"NA","117":"NA","118":"NA","119":"NA","120":"NA","121":"NA","122":"NA","123":"NA","124":"NA","125":"NA","126":"NA","127":"NA","128":"NA","129":"NA","130":"NA","131":"NA","132":"NA","133":"NA","134":"NA","135":"NA","136":"NA","137":"<NA>","138":"NA","139":"approved on photographic evidence","140":"NA","141":"https://waarnemingen.be/species/561247","142":"NA","143":"NA","144":"NA","145":"NA","146":"NA","147":"NA","148":"NA","149":"Procambarus acutus (Girard, 1852)","150":"NA","151":"NA","152":"NA","153":"NA","154":"NA","155":"NA","156":"NA","157":"Animalia","158":"Arthropoda","159":"Malacostraca","160":"Decapoda","161":"NA","162":"Cambaridae","163":"NA","164":"NA","165":"NA","166":"Procambarus","167":"Procambarus","168":"NA","169":"NA","170":"acutus","171":"NA","172":"NA","173":"SPECIES","174":"NA","175":"Gestreepte Amerikaanse rivierkreeft","176":"ICZN","177":"ACCEPTED","178":"NA","179":"NA","180":"9a0b66df-7535-4f28-9f4e-5bc11b8b096c","181":"BE","182":"2025-02-15 17:53:30.762","183":"NA","184":"NA","185":"NA","186":"NA","187":"NA","188":"TAXON_MATCH_TAXON_ID_IGNORED;OCCURRENCE_STATUS_INFERRED_FROM_INDIVIDUAL_COUNT","189":"NA","190":"TRUE","191":"FALSE","192":"2227289","193":"2227289","194":"1","195":"54","196":"229","197":"637","198":"4479","199":"2227127","200":"NA","201":"2227289","202":"Procambarus acutus","203":"Procambarus acutus (Girard, 1852)","204":"Procambarus acutus","205":"NA","206":"EML","207":"2025-02-15 17:53:30.762","208":"2025-02-15 17:24:01.049","209":"FALSE","210":"NA","211":"NA","212":"FALSE","213":"EUROPE","214":"EUROPE","215":"BEL","216":"Belgium","217":"BEL.2_1","218":"Vlaanderen","219":"BEL.2.3_1","220":"Oost-Vlaanderen","221":"BEL.2.3.6_1","222":"Sint-Niklaas","223":"LC"},{"1":"5062400637","2":"http://www.natuurpunt.be/normen-voor-datagebruik","3":"NA","4":"en","5":"CC_BY_NC_4_0","6":"<NA>","7":"NA","8":"https://waarnemingen.be/observation/337638856","9":"Natuurpunt Studie","10":"Event","11":"NA","12":"NA","13":"https://doi.org/10.15468/k2aiak","14":"Natuurpunt","15":"waarnemingen.be","16":"Waarnemingen.be - Non-native animal occurrences in Flanders and the Brussels Capital Region, Belgium","17":"NA","18":"HUMAN_OBSERVATION","19":"see metadata","20":"NA","21":"NA","22":"Natuurpunt:Waarnemingen:337638856","23":"NA","24":"NA","25":"NA","26":"NA","27":"1","28":"NA","29":"NA","30":"NA","31":"Adult","32":"NA","33":"NA","34":"NA","35":"NA","36":"NA","37":"NA","38":"NA","39":"NA","40":"PRESENT","41":"NA","42":"NA","43":"NA","44":"NA","45":"NA","46":"NA","47":"NA","48":"seen while diving","49":"NA","50":"NA","51":"NA","52":"NA","53":"NA","54":"NA","55":"NA","56":"NA","57":"NA","58":"NA","59":"NA","60":"NA","61":"NA","62":"NA","63":"2025-01-26","64":"NA","65":"26","66":"26","67":"2025","68":"1","69":"26","70":"NA","71":"NA","72":"casual observation","73":"NA","74":"NA","75":"NA","76":"NA","77":"NA","78":"NA","79":"NA","80":"NA","81":"EUROPE","82":"NA","83":"NA","84":"NA","85":"BE","86":"Antwerp","87":"NA","88":"Antwerpen","89":"NA","90":"NA","91":"NA","92":"NA","93":"NA","94":"NA","95":"NA","96":"NA","97":"NA","98":"51.28421","99":"4.39067","100":"30","101":"NA","102":"NA","103":"NA","104":"NA","105":"NA","106":"NA","107":"NA","108":"NA","109":"NA","110":"NA","111":"NA","112":"NA","113":"NA","114":"NA","115":"NA","116":"NA","117":"NA","118":"NA","119":"NA","120":"NA","121":"NA","122":"NA","123":"NA","124":"NA","125":"NA","126":"NA","127":"NA","128":"NA","129":"NA","130":"NA","131":"NA","132":"NA","133":"NA","134":"NA","135":"NA","136":"NA","137":"<NA>","138":"NA","139":"approved on photographic evidence","140":"NA","141":"https://waarnemingen.be/species/8887","142":"NA","143":"NA","144":"NA","145":"NA","146":"NA","147":"NA","148":"NA","149":"Faxonius limosus (Rafinesque, 1817)","150":"NA","151":"NA","152":"NA","153":"NA","154":"NA","155":"NA","156":"NA","157":"Animalia","158":"Arthropoda","159":"Malacostraca","160":"Decapoda","161":"NA","162":"Cambaridae","163":"NA","164":"NA","165":"NA","166":"Faxonius","167":"Faxonius","168":"NA","169":"NA","170":"limosus","171":"NA","172":"NA","173":"SPECIES","174":"NA","175":"Gevlekte Amerikaanse rivierkreeft","176":"ICZN","177":"ACCEPTED","178":"NA","179":"NA","180":"9a0b66df-7535-4f28-9f4e-5bc11b8b096c","181":"BE","182":"2025-02-15 17:53:34.163","183":"NA","184":"NA","185":"NA","186":"NA","187":"NA","188":"TAXON_MATCH_TAXON_ID_IGNORED;OCCURRENCE_STATUS_INFERRED_FROM_INDIVIDUAL_COUNT","189":"NA","190":"TRUE","191":"FALSE","192":"8909595","193":"8909595","194":"1","195":"54","196":"229","197":"637","198":"4479","199":"4646327","200":"NA","201":"8909595","202":"Faxonius limosus","203":"Faxonius limosus (Rafinesque, 1817)","204":"Faxonius limosus","205":"NA","206":"EML","207":"2025-02-15 17:53:34.163","208":"2025-02-15 17:24:01.049","209":"FALSE","210":"NA","211":"NA","212":"FALSE","213":"EUROPE","214":"EUROPE","215":"BEL","216":"Belgium","217":"BEL.2_1","218":"Vlaanderen","219":"BEL.2.1_1","220":"Antwerpen","221":"BEL.2.1.1_1","222":"Antwerpen","223":"NE"},{"1":"5062400597","2":"http://www.natuurpunt.be/normen-voor-datagebruik","3":"NA","4":"en","5":"CC_BY_NC_4_0","6":"<NA>","7":"NA","8":"https://waarnemingen.be/observation/337606626","9":"Natuurpunt Studie","10":"Event","11":"NA","12":"NA","13":"https://doi.org/10.15468/k2aiak","14":"Natuurpunt","15":"waarnemingen.be","16":"Waarnemingen.be - Non-native animal occurrences in Flanders and the Brussels Capital Region, Belgium","17":"NA","18":"HUMAN_OBSERVATION","19":"see metadata","20":"NA","21":"NA","22":"Natuurpunt:Waarnemingen:337606626","23":"NA","24":"NA","25":"NA","26":"NA","27":"1","28":"NA","29":"NA","30":"NA","31":"NA","32":"NA","33":"NA","34":"NA","35":"NA","36":"NA","37":"NA","38":"NA","39":"NA","40":"PRESENT","41":"NA","42":"NA","43":"NA","44":"NA","45":"NA","46":"NA","47":"NA","48":"found dead","49":"NA","50":"NA","51":"NA","52":"NA","53":"NA","54":"NA","55":"NA","56":"NA","57":"NA","58":"NA","59":"NA","60":"NA","61":"NA","62":"NA","63":"2025-01-25","64":"NA","65":"25","66":"25","67":"2025","68":"1","69":"25","70":"NA","71":"NA","72":"seen","73":"NA","74":"NA","75":"NA","76":"NA","77":"NA","78":"NA","79":"NA","80":"NA","81":"EUROPE","82":"NA","83":"NA","84":"NA","85":"BE","86":"Antwerp","87":"NA","88":"Zandhoven","89":"NA","90":"NA","91":"NA","92":"NA","93":"NA","94":"NA","95":"NA","96":"NA","97":"NA","98":"51.18088","99":"4.65290","100":"1","101":"NA","102":"NA","103":"NA","104":"NA","105":"NA","106":"NA","107":"NA","108":"NA","109":"NA","110":"NA","111":"NA","112":"NA","113":"NA","114":"NA","115":"NA","116":"NA","117":"NA","118":"NA","119":"NA","120":"NA","121":"NA","122":"NA","123":"NA","124":"NA","125":"NA","126":"NA","127":"NA","128":"NA","129":"NA","130":"NA","131":"NA","132":"NA","133":"NA","134":"NA","135":"NA","136":"NA","137":"<NA>","138":"NA","139":"unverified","140":"NA","141":"https://waarnemingen.be/species/151906","142":"NA","143":"NA","144":"NA","145":"NA","146":"NA","147":"NA","148":"NA","149":"Procambarus acutus (Girard, 1852)","150":"NA","151":"NA","152":"NA","153":"NA","154":"NA","155":"NA","156":"NA","157":"Animalia","158":"Arthropoda","159":"Malacostraca","160":"Decapoda","161":"NA","162":"Cambaridae","163":"NA","164":"NA","165":"NA","166":"Procambarus","167":"Procambarus","168":"NA","169":"NA","170":"acutus","171":"NA","172":"NA","173":"SPECIES","174":"NA","175":"Gestreepte Amerikaanse rivierkreeft","176":"ICZN","177":"ACCEPTED","178":"NA","179":"NA","180":"9a0b66df-7535-4f28-9f4e-5bc11b8b096c","181":"BE","182":"2025-02-15 17:53:33.881","183":"NA","184":"NA","185":"NA","186":"NA","187":"NA","188":"TAXON_MATCH_TAXON_ID_IGNORED;OCCURRENCE_STATUS_INFERRED_FROM_INDIVIDUAL_COUNT","189":"NA","190":"TRUE","191":"FALSE","192":"2227289","193":"2227289","194":"1","195":"54","196":"229","197":"637","198":"4479","199":"2227127","200":"NA","201":"2227289","202":"Procambarus acutus","203":"Procambarus acutus (Girard, 1852)","204":"Procambarus acutus/zonangulus","205":"NA","206":"EML","207":"2025-02-15 17:53:33.881","208":"2025-02-15 17:24:01.049","209":"FALSE","210":"NA","211":"NA","212":"FALSE","213":"EUROPE","214":"EUROPE","215":"BEL","216":"Belgium","217":"BEL.2_1","218":"Vlaanderen","219":"BEL.2.1_1","220":"Antwerpen","221":"BEL.2.1.1_1","222":"Antwerpen","223":"LC"},{"1":"5051536736","2":"http://www.natuurpunt.be/normen-voor-datagebruik","3":"NA","4":"en","5":"CC_BY_NC_4_0","6":"<NA>","7":"NA","8":"https://waarnemingen.be/observation/337123873","9":"Natuurpunt Studie","10":"Event","11":"NA","12":"NA","13":"https://doi.org/10.15468/k2aiak","14":"Natuurpunt","15":"waarnemingen.be","16":"Waarnemingen.be - Non-native animal occurrences in Flanders and the Brussels Capital Region, Belgium","17":"NA","18":"HUMAN_OBSERVATION","19":"see metadata","20":"NA","21":"NA","22":"Natuurpunt:Waarnemingen:337123873","23":"NA","24":"NA","25":"NA","26":"NA","27":"8","28":"NA","29":"NA","30":"NA","31":"Adult","32":"NA","33":"NA","34":"NA","35":"NA","36":"NA","37":"NA","38":"NA","39":"NA","40":"PRESENT","41":"NA","42":"NA","43":"NA","44":"NA","45":"NA","46":"NA","47":"NA","48":"NA","49":"NA","50":"NA","51":"NA","52":"NA","53":"NA","54":"NA","55":"NA","56":"NA","57":"NA","58":"NA","59":"NA","60":"NA","61":"NA","62":"NA","63":"2025-01-14","64":"NA","65":"14","66":"14","67":"2025","68":"1","69":"14","70":"NA","71":"NA","72":"catch by net","73":"NA","74":"NA","75":"NA","76":"NA","77":"NA","78":"NA","79":"NA","80":"NA","81":"EUROPE","82":"NA","83":"NA","84":"NA","85":"BE","86":"Antwerp","87":"NA","88":"Antwerpen","89":"NA","90":"NA","91":"NA","92":"NA","93":"NA","94":"NA","95":"NA","96":"NA","97":"NA","98":"51.21450","99":"4.47713","100":"15","101":"NA","102":"NA","103":"NA","104":"NA","105":"NA","106":"NA","107":"NA","108":"NA","109":"NA","110":"NA","111":"NA","112":"NA","113":"NA","114":"NA","115":"NA","116":"NA","117":"NA","118":"NA","119":"NA","120":"NA","121":"NA","122":"NA","123":"NA","124":"NA","125":"NA","126":"NA","127":"NA","128":"NA","129":"NA","130":"NA","131":"NA","132":"NA","133":"NA","134":"NA","135":"NA","136":"NA","137":"<NA>","138":"NA","139":"unverified","140":"NA","141":"https://waarnemingen.be/species/8887","142":"NA","143":"NA","144":"NA","145":"NA","146":"NA","147":"NA","148":"NA","149":"Faxonius limosus (Rafinesque, 1817)","150":"NA","151":"NA","152":"NA","153":"NA","154":"NA","155":"NA","156":"NA","157":"Animalia","158":"Arthropoda","159":"Malacostraca","160":"Decapoda","161":"NA","162":"Cambaridae","163":"NA","164":"NA","165":"NA","166":"Faxonius","167":"Faxonius","168":"NA","169":"NA","170":"limosus","171":"NA","172":"NA","173":"SPECIES","174":"NA","175":"Gevlekte Amerikaanse rivierkreeft","176":"ICZN","177":"ACCEPTED","178":"NA","179":"NA","180":"9a0b66df-7535-4f28-9f4e-5bc11b8b096c","181":"BE","182":"2025-02-15 17:53:31.717","183":"NA","184":"NA","185":"NA","186":"NA","187":"NA","188":"TAXON_MATCH_TAXON_ID_IGNORED;OCCURRENCE_STATUS_INFERRED_FROM_INDIVIDUAL_COUNT","189":"NA","190":"TRUE","191":"FALSE","192":"8909595","193":"8909595","194":"1","195":"54","196":"229","197":"637","198":"4479","199":"4646327","200":"NA","201":"8909595","202":"Faxonius limosus","203":"Faxonius limosus (Rafinesque, 1817)","204":"Faxonius limosus","205":"NA","206":"EML","207":"2025-02-15 17:53:31.717","208":"2025-02-15 17:24:01.049","209":"FALSE","210":"NA","211":"NA","212":"FALSE","213":"EUROPE","214":"EUROPE","215":"BEL","216":"Belgium","217":"BEL.2_1","218":"Vlaanderen","219":"BEL.2.1_1","220":"Antwerpen","221":"BEL.2.1.1_1","222":"Antwerpen","223":"NE"},{"1":"5051536678","2":"http://www.natuurpunt.be/normen-voor-datagebruik","3":"NA","4":"en","5":"CC_BY_NC_4_0","6":"<NA>","7":"NA","8":"https://waarnemingen.be/observation/337033819","9":"Natuurpunt Studie","10":"Event","11":"NA","12":"NA","13":"https://doi.org/10.15468/k2aiak","14":"Natuurpunt","15":"waarnemingen.be","16":"Waarnemingen.be - Non-native animal occurrences in Flanders and the Brussels Capital Region, Belgium","17":"NA","18":"HUMAN_OBSERVATION","19":"see metadata","20":"NA","21":"NA","22":"Natuurpunt:Waarnemingen:337033819","23":"NA","24":"NA","25":"NA","26":"NA","27":"1","28":"NA","29":"NA","30":"Male","31":"NA","32":"NA","33":"NA","34":"NA","35":"NA","36":"NA","37":"NA","38":"NA","39":"NA","40":"PRESENT","41":"NA","42":"NA","43":"NA","44":"NA","45":"NA","46":"NA","47":"NA","48":"NA","49":"NA","50":"NA","51":"NA","52":"NA","53":"NA","54":"NA","55":"NA","56":"NA","57":"NA","58":"NA","59":"NA","60":"NA","61":"NA","62":"NA","63":"2025-01-14","64":"NA","65":"14","66":"14","67":"2025","68":"1","69":"14","70":"NA","71":"NA","72":"unspecified trap","73":"NA","74":"NA","75":"NA","76":"NA","77":"NA","78":"NA","79":"NA","80":"NA","81":"EUROPE","82":"NA","83":"NA","84":"NA","85":"BE","86":"East Flanders","87":"NA","88":"Beveren","89":"NA","90":"NA","91":"NA","92":"NA","93":"NA","94":"NA","95":"NA","96":"NA","97":"NA","98":"51.24565","99":"4.18653","100":"3","101":"NA","102":"NA","103":"NA","104":"NA","105":"NA","106":"NA","107":"NA","108":"NA","109":"NA","110":"NA","111":"NA","112":"NA","113":"NA","114":"NA","115":"NA","116":"NA","117":"NA","118":"NA","119":"NA","120":"NA","121":"NA","122":"NA","123":"NA","124":"NA","125":"NA","126":"NA","127":"NA","128":"NA","129":"NA","130":"NA","131":"NA","132":"NA","133":"NA","134":"NA","135":"NA","136":"NA","137":"<NA>","138":"NA","139":"approved on photographic evidence","140":"NA","141":"https://waarnemingen.be/species/561247","142":"NA","143":"NA","144":"NA","145":"NA","146":"NA","147":"NA","148":"NA","149":"Procambarus acutus (Girard, 1852)","150":"NA","151":"NA","152":"NA","153":"NA","154":"NA","155":"NA","156":"NA","157":"Animalia","158":"Arthropoda","159":"Malacostraca","160":"Decapoda","161":"NA","162":"Cambaridae","163":"NA","164":"NA","165":"NA","166":"Procambarus","167":"Procambarus","168":"NA","169":"NA","170":"acutus","171":"NA","172":"NA","173":"SPECIES","174":"NA","175":"Gestreepte Amerikaanse rivierkreeft","176":"ICZN","177":"ACCEPTED","178":"NA","179":"NA","180":"9a0b66df-7535-4f28-9f4e-5bc11b8b096c","181":"BE","182":"2025-02-15 17:53:31.553","183":"NA","184":"NA","185":"NA","186":"NA","187":"NA","188":"TAXON_MATCH_TAXON_ID_IGNORED;OCCURRENCE_STATUS_INFERRED_FROM_INDIVIDUAL_COUNT","189":"NA","190":"TRUE","191":"FALSE","192":"2227289","193":"2227289","194":"1","195":"54","196":"229","197":"637","198":"4479","199":"2227127","200":"NA","201":"2227289","202":"Procambarus acutus","203":"Procambarus acutus (Girard, 1852)","204":"Procambarus acutus","205":"NA","206":"EML","207":"2025-02-15 17:53:31.553","208":"2025-02-15 17:24:01.049","209":"FALSE","210":"NA","211":"NA","212":"FALSE","213":"EUROPE","214":"EUROPE","215":"BEL","216":"Belgium","217":"BEL.2_1","218":"Vlaanderen","219":"BEL.2.3_1","220":"Oost-Vlaanderen","221":"BEL.2.3.6_1","222":"Sint-Niklaas","223":"LC"},{"1":"5051536378","2":"http://www.natuurpunt.be/normen-voor-datagebruik","3":"NA","4":"en","5":"CC_BY_NC_4_0","6":"<NA>","7":"NA","8":"https://waarnemingen.be/observation/337112767","9":"Natuurpunt Studie","10":"Event","11":"NA","12":"NA","13":"https://doi.org/10.15468/k2aiak","14":"Natuurpunt","15":"waarnemingen.be","16":"Waarnemingen.be - Non-native animal occurrences in Flanders and the Brussels Capital Region, Belgium","17":"NA","18":"HUMAN_OBSERVATION","19":"see metadata","20":"NA","21":"NA","22":"Natuurpunt:Waarnemingen:337112767:3714869","23":"NA","24":"NA","25":"NA","26":"NA","27":"2","28":"NA","29":"NA","30":"Female","31":"NA","32":"NA","33":"NA","34":"NA","35":"NA","36":"NA","37":"NA","38":"NA","39":"NA","40":"PRESENT","41":"NA","42":"NA","43":"NA","44":"NA","45":"NA","46":"NA","47":"NA","48":"NA","49":"NA","50":"NA","51":"NA","52":"NA","53":"NA","54":"NA","55":"NA","56":"NA","57":"NA","58":"NA","59":"NA","60":"NA","61":"NA","62":"NA","63":"2025-01-15","64":"NA","65":"15","66":"15","67":"2025","68":"1","69":"15","70":"NA","71":"NA","72":"catch by net","73":"NA","74":"NA","75":"NA","76":"NA","77":"NA","78":"NA","79":"NA","80":"NA","81":"EUROPE","82":"NA","83":"NA","84":"NA","85":"BE","86":"Antwerp","87":"NA","88":"Antwerpen","89":"NA","90":"NA","91":"NA","92":"NA","93":"NA","94":"NA","95":"NA","96":"NA","97":"NA","98":"51.21456","99":"4.47430","100":"15","101":"NA","102":"NA","103":"NA","104":"NA","105":"NA","106":"NA","107":"NA","108":"NA","109":"NA","110":"NA","111":"NA","112":"NA","113":"NA","114":"NA","115":"NA","116":"NA","117":"NA","118":"NA","119":"NA","120":"NA","121":"NA","122":"NA","123":"NA","124":"NA","125":"NA","126":"NA","127":"NA","128":"NA","129":"NA","130":"NA","131":"NA","132":"NA","133":"NA","134":"NA","135":"NA","136":"NA","137":"<NA>","138":"NA","139":"approved on photographic evidence","140":"NA","141":"https://waarnemingen.be/species/8887","142":"NA","143":"NA","144":"NA","145":"NA","146":"NA","147":"NA","148":"NA","149":"Faxonius limosus (Rafinesque, 1817)","150":"NA","151":"NA","152":"NA","153":"NA","154":"NA","155":"NA","156":"NA","157":"Animalia","158":"Arthropoda","159":"Malacostraca","160":"Decapoda","161":"NA","162":"Cambaridae","163":"NA","164":"NA","165":"NA","166":"Faxonius","167":"Faxonius","168":"NA","169":"NA","170":"limosus","171":"NA","172":"NA","173":"SPECIES","174":"NA","175":"Gevlekte Amerikaanse rivierkreeft","176":"ICZN","177":"ACCEPTED","178":"NA","179":"NA","180":"9a0b66df-7535-4f28-9f4e-5bc11b8b096c","181":"BE","182":"2025-02-15 17:53:45.213","183":"NA","184":"NA","185":"NA","186":"NA","187":"NA","188":"TAXON_MATCH_TAXON_ID_IGNORED;OCCURRENCE_STATUS_INFERRED_FROM_INDIVIDUAL_COUNT","189":"NA","190":"TRUE","191":"FALSE","192":"8909595","193":"8909595","194":"1","195":"54","196":"229","197":"637","198":"4479","199":"4646327","200":"NA","201":"8909595","202":"Faxonius limosus","203":"Faxonius limosus (Rafinesque, 1817)","204":"Faxonius limosus","205":"NA","206":"EML","207":"2025-02-15 17:53:45.213","208":"2025-02-15 17:24:01.049","209":"FALSE","210":"NA","211":"NA","212":"FALSE","213":"EUROPE","214":"EUROPE","215":"BEL","216":"Belgium","217":"BEL.2_1","218":"Vlaanderen","219":"BEL.2.1_1","220":"Antwerpen","221":"BEL.2.1.1_1","222":"Antwerpen","223":"NE"},{"1":"5051536126","2":"http://www.natuurpunt.be/normen-voor-datagebruik","3":"NA","4":"en","5":"CC_BY_NC_4_0","6":"<NA>","7":"NA","8":"https://waarnemingen.be/observation/337112767","9":"Natuurpunt Studie","10":"Event","11":"NA","12":"NA","13":"https://doi.org/10.15468/k2aiak","14":"Natuurpunt","15":"waarnemingen.be","16":"Waarnemingen.be - Non-native animal occurrences in Flanders and the Brussels Capital Region, Belgium","17":"NA","18":"HUMAN_OBSERVATION","19":"see metadata","20":"NA","21":"NA","22":"Natuurpunt:Waarnemingen:337112767:3714868","23":"NA","24":"NA","25":"NA","26":"NA","27":"2","28":"NA","29":"NA","30":"Male","31":"NA","32":"NA","33":"NA","34":"NA","35":"NA","36":"NA","37":"NA","38":"NA","39":"NA","40":"PRESENT","41":"NA","42":"NA","43":"NA","44":"NA","45":"NA","46":"NA","47":"NA","48":"NA","49":"NA","50":"NA","51":"NA","52":"NA","53":"NA","54":"NA","55":"NA","56":"NA","57":"NA","58":"NA","59":"NA","60":"NA","61":"NA","62":"NA","63":"2025-01-15","64":"NA","65":"15","66":"15","67":"2025","68":"1","69":"15","70":"NA","71":"NA","72":"catch by net","73":"NA","74":"NA","75":"NA","76":"NA","77":"NA","78":"NA","79":"NA","80":"NA","81":"EUROPE","82":"NA","83":"NA","84":"NA","85":"BE","86":"Antwerp","87":"NA","88":"Antwerpen","89":"NA","90":"NA","91":"NA","92":"NA","93":"NA","94":"NA","95":"NA","96":"NA","97":"NA","98":"51.21456","99":"4.47430","100":"15","101":"NA","102":"NA","103":"NA","104":"NA","105":"NA","106":"NA","107":"NA","108":"NA","109":"NA","110":"NA","111":"NA","112":"NA","113":"NA","114":"NA","115":"NA","116":"NA","117":"NA","118":"NA","119":"NA","120":"NA","121":"NA","122":"NA","123":"NA","124":"NA","125":"NA","126":"NA","127":"NA","128":"NA","129":"NA","130":"NA","131":"NA","132":"NA","133":"NA","134":"NA","135":"NA","136":"NA","137":"<NA>","138":"NA","139":"approved on photographic evidence","140":"NA","141":"https://waarnemingen.be/species/8887","142":"NA","143":"NA","144":"NA","145":"NA","146":"NA","147":"NA","148":"NA","149":"Faxonius limosus (Rafinesque, 1817)","150":"NA","151":"NA","152":"NA","153":"NA","154":"NA","155":"NA","156":"NA","157":"Animalia","158":"Arthropoda","159":"Malacostraca","160":"Decapoda","161":"NA","162":"Cambaridae","163":"NA","164":"NA","165":"NA","166":"Faxonius","167":"Faxonius","168":"NA","169":"NA","170":"limosus","171":"NA","172":"NA","173":"SPECIES","174":"NA","175":"Gevlekte Amerikaanse rivierkreeft","176":"ICZN","177":"ACCEPTED","178":"NA","179":"NA","180":"9a0b66df-7535-4f28-9f4e-5bc11b8b096c","181":"BE","182":"2025-02-15 17:53:45.177","183":"NA","184":"NA","185":"NA","186":"NA","187":"NA","188":"TAXON_MATCH_TAXON_ID_IGNORED;OCCURRENCE_STATUS_INFERRED_FROM_INDIVIDUAL_COUNT","189":"NA","190":"TRUE","191":"FALSE","192":"8909595","193":"8909595","194":"1","195":"54","196":"229","197":"637","198":"4479","199":"4646327","200":"NA","201":"8909595","202":"Faxonius limosus","203":"Faxonius limosus (Rafinesque, 1817)","204":"Faxonius limosus","205":"NA","206":"EML","207":"2025-02-15 17:53:45.177","208":"2025-02-15 17:24:01.049","209":"FALSE","210":"NA","211":"NA","212":"FALSE","213":"EUROPE","214":"EUROPE","215":"BEL","216":"Belgium","217":"BEL.2_1","218":"Vlaanderen","219":"BEL.2.1_1","220":"Antwerpen","221":"BEL.2.1.1_1","222":"Antwerpen","223":"NE"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+</section>
+<section id="clean-data" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="clean-data"><span class="header-section-number">3</span> Clean data</h2>
+<p>We remove data without a specific year in column <code>year</code> and select only few columns we are interested to:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>cray_cleaned_df <span class="ot">&lt;-</span> cray_raw_df <span class="sc">%&gt;%</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(year)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(gbifID, occurrenceID, species, speciesKey, decimalLatitude,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>         decimalLongitude, coordinateUncertaintyInMeters,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>         eventDate, year, month, countryCode, stateProvince,</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>         county, locality, basisOfRecord, individualCount,</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>         datasetName)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Preview (10 rows):</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cray_cleaned_df, <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["gbifID"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["occurrenceID"],"name":[2],"type":["chr"],"align":["left"]},{"label":["species"],"name":[3],"type":["chr"],"align":["left"]},{"label":["speciesKey"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["decimalLatitude"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["decimalLongitude"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["coordinateUncertaintyInMeters"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["eventDate"],"name":[8],"type":["dttm"],"align":["right"]},{"label":["year"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["month"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["countryCode"],"name":[11],"type":["chr"],"align":["left"]},{"label":["stateProvince"],"name":[12],"type":["chr"],"align":["left"]},{"label":["county"],"name":[13],"type":["lgl"],"align":["right"]},{"label":["locality"],"name":[14],"type":["chr"],"align":["left"]},{"label":["basisOfRecord"],"name":[15],"type":["chr"],"align":["left"]},{"label":["individualCount"],"name":[16],"type":["dbl"],"align":["right"]},{"label":["datasetName"],"name":[17],"type":["chr"],"align":["left"]}],"data":[{"1":"5062404391","2":"Natuurpunt:Waarnemingen:337412457","3":"Faxonius limosus","4":"8909595","5":"51.24567","6":"4.18679","7":"3","8":"2025-01-21","9":"2025","10":"1","11":"BE","12":"East Flanders","13":"NA","14":"NA","15":"HUMAN_OBSERVATION","16":"1","17":"Waarnemingen.be - Non-native animal occurrences in Flanders and the Brussels Capital Region, Belgium"},{"1":"5062403477","2":"Natuurpunt:Waarnemingen:337469526","3":"Procambarus clarkii","4":"2227300","5":"51.07253","6":"4.18306","7":"4","8":"2025-01-22","9":"2025","10":"1","11":"BE","12":"East Flanders","13":"NA","14":"NA","15":"HUMAN_OBSERVATION","16":"1","17":"Waarnemingen.be - Non-native animal occurrences in Flanders and the Brussels Capital Region, Belgium"},{"1":"5062401723","2":"Natuurpunt:Waarnemingen:337412437:3720760","3":"Procambarus acutus","4":"2227289","5":"51.24718","6":"4.18969","7":"3","8":"2025-01-21","9":"2025","10":"1","11":"BE","12":"East Flanders","13":"NA","14":"NA","15":"HUMAN_OBSERVATION","16":"1","17":"Waarnemingen.be - Non-native animal occurrences in Flanders and the Brussels Capital Region, Belgium"},{"1":"5062401402","2":"Natuurpunt:Waarnemingen:337412440","3":"Procambarus acutus","4":"2227289","5":"51.24699","6":"4.18949","7":"3","8":"2025-01-21","9":"2025","10":"1","11":"BE","12":"East Flanders","13":"NA","14":"NA","15":"HUMAN_OBSERVATION","16":"1","17":"Waarnemingen.be - Non-native animal occurrences in Flanders and the Brussels Capital Region, Belgium"},{"1":"5062400637","2":"Natuurpunt:Waarnemingen:337638856","3":"Faxonius limosus","4":"8909595","5":"51.28421","6":"4.39067","7":"30","8":"2025-01-26","9":"2025","10":"1","11":"BE","12":"Antwerp","13":"NA","14":"NA","15":"HUMAN_OBSERVATION","16":"1","17":"Waarnemingen.be - Non-native animal occurrences in Flanders and the Brussels Capital Region, Belgium"},{"1":"5062400597","2":"Natuurpunt:Waarnemingen:337606626","3":"Procambarus acutus","4":"2227289","5":"51.18088","6":"4.65290","7":"1","8":"2025-01-25","9":"2025","10":"1","11":"BE","12":"Antwerp","13":"NA","14":"NA","15":"HUMAN_OBSERVATION","16":"1","17":"Waarnemingen.be - Non-native animal occurrences in Flanders and the Brussels Capital Region, Belgium"},{"1":"5051536736","2":"Natuurpunt:Waarnemingen:337123873","3":"Faxonius limosus","4":"8909595","5":"51.21450","6":"4.47713","7":"15","8":"2025-01-14","9":"2025","10":"1","11":"BE","12":"Antwerp","13":"NA","14":"NA","15":"HUMAN_OBSERVATION","16":"8","17":"Waarnemingen.be - Non-native animal occurrences in Flanders and the Brussels Capital Region, Belgium"},{"1":"5051536678","2":"Natuurpunt:Waarnemingen:337033819","3":"Procambarus acutus","4":"2227289","5":"51.24565","6":"4.18653","7":"3","8":"2025-01-14","9":"2025","10":"1","11":"BE","12":"East Flanders","13":"NA","14":"NA","15":"HUMAN_OBSERVATION","16":"1","17":"Waarnemingen.be - Non-native animal occurrences in Flanders and the Brussels Capital Region, Belgium"},{"1":"5051536378","2":"Natuurpunt:Waarnemingen:337112767:3714869","3":"Faxonius limosus","4":"8909595","5":"51.21456","6":"4.47430","7":"15","8":"2025-01-15","9":"2025","10":"1","11":"BE","12":"Antwerp","13":"NA","14":"NA","15":"HUMAN_OBSERVATION","16":"2","17":"Waarnemingen.be - Non-native animal occurrences in Flanders and the Brussels Capital Region, Belgium"},{"1":"5051536126","2":"Natuurpunt:Waarnemingen:337112767:3714868","3":"Faxonius limosus","4":"8909595","5":"51.21456","6":"4.47430","7":"15","8":"2025-01-15","9":"2025","10":"1","11":"BE","12":"Antwerp","13":"NA","14":"NA","15":"HUMAN_OBSERVATION","16":"2","17":"Waarnemingen.be - Non-native animal occurrences in Flanders and the Brussels Capital Region, Belgium"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+</section>
+<section id="save-cleaned-data" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="save-cleaned-data"><span class="header-section-number">4</span> Save cleaned data</h2>
+<p>We save the cleaned data as <code>20250224_craywatch_cleaned.txt</code> in <code>data/20250224</code>. This file will be the input file for the dashboard.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>cray_cleaned_df <span class="sc">%&gt;%</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  readr<span class="sc">::</span><span class="fu">write_tsv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>,</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"output"</span>,</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"20250224_craywatch_cleaned.txt"</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+
+
+<!-- -->
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb7" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "About the Data"</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">## Introduction</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>This page shows the workflow to get the cleaned data used in the dashboard starting from the raw data. Happy reading 📚.</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="fu">### Setup</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>First, list and load the needed packages.</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="in">```{r pkgs, message=FALSE, warning=FALSE}</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="in">library(tidyverse)      # to do datascience</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="in">library(here)           # to work easily with paths</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="fu">## Read raw data</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>The raw data are saved in <span class="in">`data/input/20250224_craywatch_raw.txt`</span> as a tab separated text file. It contains GBIF observations of 6 invasive alien crayfishes in Flanders from 2024-06-13, start of the <span class="co">[</span><span class="ot">craywatch</span><span class="co">](https://craywatch.inbo.be/)</span> project. Derived from <span class="co">[</span><span class="ot">10.15468/dl.pszsrh</span><span class="co">](https://doi.org/10.15468/dl.pszsrh)</span>. The query the GBIF download was based on, is the same query running real-time to show the layer "Nieuwe waarnemingen" (new observations) in the <span class="co">[</span><span class="ot">craywatch map</span><span class="co">](https://craywatch.inbo.be/kaart/)</span>!</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="in">```{r read_data, message=FALSE}</span></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a><span class="in">cray_raw_df &lt;- readr::read_tsv(</span></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="in">  here::here("data", "input", "20250224_craywatch_raw.txt"),</span></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="in">  na = "",</span></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a><span class="in">  guess_max = 10000</span></span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>Preview (10 rows):</span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a><span class="in">```{r preview}</span></span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a><span class="in">head(cray_raw_df, 10)</span></span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a><span class="fu">## Clean data</span></span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a>We remove data without a specific year in column <span class="in">`year`</span> and select only few columns we are interested to:</span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a>cray_cleaned_df <span class="ot">&lt;-</span> cray_raw_df <span class="sc">%&gt;%</span></span>
+<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(year)) <span class="sc">%&gt;%</span></span>
+<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(gbifID, occurrenceID, species, speciesKey, decimalLatitude,</span>
+<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a>         decimalLongitude, coordinateUncertaintyInMeters,</span>
+<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a>         eventDate, year, month, countryCode, stateProvince,</span>
+<span id="cb7-49"><a href="#cb7-49" aria-hidden="true" tabindex="-1"></a>         county, locality, basisOfRecord, individualCount,</span>
+<span id="cb7-50"><a href="#cb7-50" aria-hidden="true" tabindex="-1"></a>         datasetName)</span>
+<span id="cb7-51"><a href="#cb7-51" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb7-52"><a href="#cb7-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-53"><a href="#cb7-53" aria-hidden="true" tabindex="-1"></a>Preview (10 rows):</span>
+<span id="cb7-54"><a href="#cb7-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-55"><a href="#cb7-55" aria-hidden="true" tabindex="-1"></a><span class="in">```{r preview_cleaned_data}</span></span>
+<span id="cb7-56"><a href="#cb7-56" aria-hidden="true" tabindex="-1"></a><span class="in">head(cray_cleaned_df, 10)</span></span>
+<span id="cb7-57"><a href="#cb7-57" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb7-58"><a href="#cb7-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-59"><a href="#cb7-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-60"><a href="#cb7-60" aria-hidden="true" tabindex="-1"></a><span class="fu">## Save cleaned data</span></span>
+<span id="cb7-61"><a href="#cb7-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-62"><a href="#cb7-62" aria-hidden="true" tabindex="-1"></a>We save the cleaned data as <span class="in">`20250224_craywatch_cleaned.txt`</span> in <span class="in">`data/20250224`</span>. This file will be the input file for the dashboard.</span>
+<span id="cb7-63"><a href="#cb7-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-66"><a href="#cb7-66" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb7-67"><a href="#cb7-67" aria-hidden="true" tabindex="-1"></a>cray_cleaned_df <span class="sc">%&gt;%</span></span>
+<span id="cb7-68"><a href="#cb7-68" aria-hidden="true" tabindex="-1"></a>  readr<span class="sc">::</span><span class="fu">write_tsv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data"</span>,</span>
+<span id="cb7-69"><a href="#cb7-69" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"output"</span>,</span>
+<span id="cb7-70"><a href="#cb7-70" aria-hidden="true" tabindex="-1"></a>                              <span class="st">"20250224_craywatch_cleaned.txt"</span>)</span>
+<span id="cb7-71"><a href="#cb7-71" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb7-72"><a href="#cb7-72" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+</code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
