@@ -38,8 +38,6 @@ website:
         href: https://github.com/damianooldoni/qmd_dashboard
         aria-label: "GitHub Repository"
 execute:
-  # About `freeze`: https://quarto.org/docs/projects/code-execution.html#freeze
-  freeze: auto # re-render only when source changes
   eval: true
   echo: true
   warning: true
